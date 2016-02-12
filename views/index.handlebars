@@ -18,8 +18,8 @@
   <nav class="navbar-fixed">
     <div class="nav-wrapper teal">
       <a href="#" class="brand-logo center">Friendler</a>
-      <ul id="nav-mobile" class="right">
-        <li onClick="Materialize.toast('This page is currently a work in progress', 2000)"><a href="#">About Us</li>
+      <!-- <ul id="nav-mobile" class="right"> -->
+        <!-- <li onClick="Materialize.toast('This page is currently a work in progress', 2000)"><a href="#">About Us</li> -->
     </div>
   </nav>
 
@@ -32,7 +32,7 @@
         <img class="responsive-img" src="/images/corgi_friendler.png">
       </div>
       <div class="row center">
-        <form class="col s12" name="">
+        <form class="col s12">
           <div class="row">
             <div class="col s0 m2 l3">&nbsp;</div>
             <div class="input-field col s8 m6 l6">
@@ -55,52 +55,52 @@
           <div class="row center">
             <a href="#signUpModal" onClick="$('#signUpModal').openModal();">New User? Sign up here</a>
           </div>
-
-          <!-- Sign Up Modal -->
-          <div id="signUpModal" class="modal">
-            <div class="modal-content">
-              <div class="container">
-                <h5>Create an Account</h5>
-                <div class="row">
-                  <form class="col s12" name="signUpForm">
-                    <div class="row">
-                      <div class="input-field col s6">
-                        <input id="firstName" type="text" class="validate" required>
-                        <label for="firstName">First Name</label>
-                      </div>
-                      <div class="input-field col s6">
-                        <input id="lastName" type="text" class="validate" required>
-                        <label for="lastName">Last Name</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input id="username" type="text" class="validate" required>
-                        <label for="username">Username</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input id="email" type="email" class="validate" required>
-                        <label for="email">Email</label>
-                      </div>
-                    </div>                      
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input id="password" type="password" class="validate" required>
-                        <label for="password">Password</label>
-                      </div>
-                    </div>
-                  </form>  
-                </div>
-              </div>            
-            </div>
-            <div class="modal-footer">
-              <button id="signUpButton" class="btn waves-effect waves-light" onClick="signUp()" type="submit" name="action">Sign Up</button>            
-            </div>
-          </div>
         </form>
       </div>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div id="signUpModal" class="modal">
+    <div class="modal-content">
+      <div class="container">
+        <h5>Create an Account</h5>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="firstName" type="text" class="validate" required>
+                <label for="firstName">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="lastName" type="text" class="validate" required>
+                <label for="lastName">Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="username" type="text" class="validate" required>
+                <label for="username">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate" required>
+                <label for="email">Email</label>
+              </div>
+            </div>                      
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate" required>
+                <label for="password">Password</label>
+              </div>
+            </div>
+          </form>  
+        </div>
+      </div>            
+    </div>
+    <div class="modal-footer">
+      <button id="signUpButton" class="btn waves-effect waves-light" onClick="signUp()" type="submit" name="action">Sign Up</button>            
     </div>
   </div>
 
