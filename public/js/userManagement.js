@@ -4,15 +4,12 @@
 Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
 
 function automaticLogin() {
-	console.log("automaticLogin");
-	// if (Parse.User.currentUser()) {
-	// 	// user is logged in
-	// } else {
-	// 	// user is not logged in
-	// }
+	
 };
 
 function signUp() {
+	event.preventDefault();
+
 	var firstName = document.getElementById("firstName").value;
 	var lastName = document.getElementById("lastName").value;
 	var username = document.getElementById("username").value;
@@ -35,11 +32,11 @@ function signUp() {
 	      console.log(error);
 	  }});
 	}
-  
-   event.preventDefault();
 };
 
 function login() {
+	event.preventDefault();
+
 	var username = document.getElementById("usernameLogin").value;
 	var password = document.getElementById("passwordLogin").value;
 

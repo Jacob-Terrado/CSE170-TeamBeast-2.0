@@ -32,7 +32,7 @@
         <img class="responsive-img" src="/images/corgi_friendler.png">
       </div>
       <div class="row center">
-        <form class="col s12">
+        <form class="col s12" name="">
           <div class="row">
             <div class="col s0 m2 l3">&nbsp;</div>
             <div class="input-field col s8 m6 l6">
@@ -50,7 +50,7 @@
             <div class="col s0 m2 l3">&nbsp;</div>
           </div>
           <div class="row center">
-            <button id="signUpButton" class="btn waves-effect waves-light" onClick="login()" type="submit" name="action">Login</button>
+            <button id="signUpButton" class="btn waves-effect waves-light" onClick="login()" type="submit">Login</button>
           </div>
           <div class="row center">
             <a href="#signUpModal" onClick="$('#signUpModal').openModal();">New User? Sign up here</a>
@@ -62,7 +62,7 @@
               <div class="container">
                 <h5>Create an Account</h5>
                 <div class="row">
-                  <form class="col s12">
+                  <form class="col s12" name="signUpForm">
                     <div class="row">
                       <div class="input-field col s6">
                         <input id="firstName" type="text" class="validate" required>
