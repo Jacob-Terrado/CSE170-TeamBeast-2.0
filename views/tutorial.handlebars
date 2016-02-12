@@ -13,13 +13,18 @@
 	<!-- Navigation Header -->
   <nav class="navbar-fixed">
     <div class="nav-wrapper teal">
-      <a href="#" class="brand-logo center">Friendler</a>
-      <ul id="nav-mobile" class="left">
-        <li><a href="profile.html">Home</a></li>
+      <ul id="slide-out" class="left side-nav">
+        <li><a href="profile"><i class="material-icons left">perm_identity</i>Profile</a></li>
+        <li><a href="store"><i class="material-icons left">local_grocery_store</i>Store</a></li>
+        <li><a href="inventory"><i class="material-icons left">assignment</i>Inventory</a></li>
+        <li><a href="friends"><i class="material-icons left">contacts</i>Friends List</a></li>
+        <li><a href="checkin"><i class="material-icons left">place</i>Check-In</a></li>
       </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <a href="#" class="brand-logo center">Friendler</a>
       <ul id="nav-mobile" class="right">
-      	<li><a href="#" class="hide-on-small-only" onClick="$('this').preventDefault();">Tricia Ngoon</a>
-        <li><a href="index.html">Logout</a></li>
+        <li><a href="#" class="hide-on-small-only" onClick="$('this').preventDefault();">Tricia Ngoon</a>
+        <li><a href="index">Logout</a></li>
       </ul>
     </div>
   </nav>
