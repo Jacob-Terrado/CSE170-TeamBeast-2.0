@@ -1,0 +1,10 @@
+.img {
+	width: 100%;
+	border: 3px solid black;
+}
+
+.img1, .img3 {
+	margin-top: 1cm;
+	width: 100%;
+	border: 3px solid black;
+}
