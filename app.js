@@ -14,7 +14,8 @@ var inventory = require('./routes/inventory');
 var tutorial = require('./routes/tutorial');
 var profile = require('./routes/profile');
 var friends = require('./routes/friends');
-
+var checkin = require('./routes/checkin');
+var friendsCheckin = require('./routes/friendsCheckin');
 // Example route
 // var user = require('./routes/user');
 var app = express();
@@ -47,6 +48,8 @@ app.get('/store', store.view);
 app.get('/tutorial', tutorial.view);
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
+app.get('/checkin', checkin.view);
+app.get('/friendsCheckin', friendsCheckin.view);
 
 
 http.createServer(app).listen(app.get('port'), function(){
