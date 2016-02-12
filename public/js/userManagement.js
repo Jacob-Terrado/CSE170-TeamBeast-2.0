@@ -25,8 +25,8 @@ function signUp() {
 	  person.set("lastName", lastName);
 
 	  person.signUp(null, {success: function(user){
-	  		window.location = "http://localhost:3000/profile"
-	  		//window.location = "http://friendler.herokuapp.com/profile"
+	  		// window.location = "http://localhost:3000/profile"
+	  		window.location = "http://friendler.herokuapp.com/profile"
 	      console.log("Sign up Success");
 	  }, error: function(user, error){
 	      console.log(error);
@@ -44,8 +44,8 @@ function login() {
 		Parse.User.logIn(username, password, {
 		  success: function(user) {
 		    // Do stuff after successful login.
-		    window.location = "http://localhost:3000/profile"
-		    // window.location = "http://friendler.herokuapp.com/profile"
+		    // window.location = "http://localhost:3000/profile"
+		    window.location = "http://friendler.herokuapp.com/profile"
 		    console.log("successfull");
 		  },
 		  error: function(user, error) {
