@@ -1,13 +1,13 @@
 {
 	"inventory": [
 	{
-		"name": "Waiting in Line",
+		"name": "Super Backpack",
 		"image": "/backpack.png",
 		"id": "01",			
 		"description": "This is a backpack..."
 	},
 	{
-		"name": "User Test Results and Online Test Proposal",
+		"name": "Ditto",
 		"image": "/ditto.png",
 		"id": "08",			
 		"description": "This is a ditto..."

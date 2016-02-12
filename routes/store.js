@@ -1,12 +1,12 @@
 exports.view = function(req, res){
 	res.render('./store.handlebars', {
 	'stores': [
-		{ 	'name': 'Waiting in Line',
+		{ 	'name': 'Super Backpack',
 		    'image': '/backpack.png',
 		    'description': 'This is a backpack...',
 		    'id': 'store01'
 		},
-		{ 	'name': 'User Test Results and Online Test Proposal',
+		{ 	'name': 'Ditto',
 			'image': '/ditto.png',
 			'description': 'This is a ditto...',
 			'id': 'store08'
