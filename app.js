@@ -1,6 +1,6 @@
 
 /**
- * Module dependencies.
+ * Module dependencies`
  */
 
 var express = require('express');
@@ -11,9 +11,12 @@ var handlebars = require('express3-handlebars')
 var index = require('./routes/index');
 var store = require('./routes/store');
 var inventory = require('./routes/inventory');
+var tutorial = require('./routes/tutorial');
+var profile = require('./routes/profile');
+var friends = require('./routes/friends');
+
 // Example route
 // var user = require('./routes/user');
-var art = require('./routes/palette');
 var app = express();
 
 // all environments
@@ -40,9 +43,10 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/store', store.view);
 app.get('/inventory', inventory.view);
-// Example route
-// app.get('/users', user.list);
-app.get('/palette', art.randomPalette);
+app.get('/store', store.view);
+app.get('/tutorial', tutorial.view);
+app.get('/profile', profile.view);
+app.get('/friends', friends.view);
 
 
 http.createServer(app).listen(app.get('port'), function(){

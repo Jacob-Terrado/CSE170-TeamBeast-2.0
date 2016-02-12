@@ -15,7 +15,7 @@
     <div class="nav-wrapper teal">
       <a href="#" class="brand-logo center">Friendler</a>
       <ul id="nav-mobile" class="right">
-        <li onClick="Materialize.toast('This page is currently a work in progress', 2000)"><a href="#" class="hide-on-small-only">About Us</li>
+        <li onClick="Materialize.toast('This page is currently a work in progress', 2000)"><a href="#">About Us</li>
     </div>
   </nav>
 
@@ -49,7 +49,18 @@
             <a class="waves-effect waves-light btn" href="profile.html">Login</a>
           </div>
           <div class="row center">
-            <a href="signup.html">New User? Sign up here</a>
+            <a href="#signUpModal" onClick="$('#signUpModal').openModa();">New User? Sign up here</a>
+          </div>
+
+          <!-- Sign Up Modal -->
+          <div id="signUpModal" class="modal">
+            <div class="modal-content">
+              <h4>Create an Account</h4>
+              <p>TEST</p>
+            </div>
+            <div class="modal-footer">
+              <a class="waves-effect waves-light btn" href="#modal1">Sign Up</a>
+            </div>
           </div>
         </form>
       </div>
@@ -75,6 +86,10 @@
 
   <!-- Scripts for Materialize -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="/js/materialize.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+
+  <!-- Script for Parse + User Management -->
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  <script type="text/javascript" src="js/userManagement.js"></script>
 </body>
 </html>
