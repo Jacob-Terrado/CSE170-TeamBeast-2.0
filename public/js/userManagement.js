@@ -26,7 +26,7 @@ function signUp() {
 
 	  person.signUp(null, {success: function(user){
 	  		// window.location = "http://localhost:3000/profile"
-	  		window.location = "http://friendler.herokuapp.com/profile"
+	  		window.location = "http://friendler.herokuapp.com/tutorial"
 	      console.log("Sign up Success");
 	  }, error: function(user, error){
 	      console.log(error);

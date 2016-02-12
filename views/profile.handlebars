@@ -8,13 +8,32 @@
   <!-- CSS for Materialize -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
-  <style>
-  .faaab {
-    color:black;
-  }
-  </style>
+  <script>
+    var encouragementArray = new Array();
+    var index = 0;
+
+    encouragementArray[0] = "I hope you're doing well!";
+    encouragementArray[1] = "Let's hangout with your friends today :D!";
+    encouragementArray[2] = "Don't be afraid to socialize!";
+    encouragementArray[3] = "Let's go somewhere!";
+    encouragementArray[4] = "Take small steps";
+    encouragementArray[5] = "Let's hangout with Team Beast!";
+
+    function sendEncouragement() {
+      console.log("hi");
+      if (window.location == "http://friendler.herokuapp.com/profile") {
+        Materialize.toast(encouragementArray[index], 3000);
+
+        index = ++index % 6;
+        setTimeout('sendEncouragement()', 6000);
+        return;
+      } else {
+        return;
+      }
+    }
+  </script>
 </head>
-<body onLoad="Materialize.fadeInImage('#main-content')">
+<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement();">
   <!-- Navigation Header -->
   <nav class="navbar-fixed">
     <div class="nav-wrapper teal">
@@ -25,10 +44,11 @@
         <li><a href="friends"><i class="material-icons left">contacts</i>Friends List</a></li>
         <li><a href="checkin"><i class="material-icons left">place</i>Check-In</a></li>
       </ul>
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <ul class="left">
+        <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a></li>
+      </ul>
       <a href="profile" class="brand-logo center">Friendler</a>
       <ul id="nav-mobile" class="right">
-        <li><a href="#" class="hide-on-small-only" onClick="$('this').preventDefault();">Tricia Ngoon</a>
         <li><a href="index">Logout</a></li>
       </ul>
     </div>
