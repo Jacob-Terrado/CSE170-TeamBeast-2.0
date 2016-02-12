@@ -13,10 +13,15 @@
   <!-- Navigation Header -->
   <nav class="navbar-fixed">
     <div class="nav-wrapper teal">
-      <a href="#" class="brand-logo center">Friendler</a>
-      <ul id="nav-mobile" class="left">
-        <li><a href="profile.html">Back</a></li>
+      <ul id="slide-out" class="left side-nav">
+        <li><a href="profile.html"><i class="material-icons left">perm_identity</i>Profile</a></li>
+        <li><a href="store.html"><i class="material-icons left">local_grocery_store</i>Store</a></li>
+        <li><a href="inventory.html"><i class="material-icons left">assignment</i>Inventory</a></li>
+        <li><a href="friends.html"><i class="material-icons left">contacts</i>Friends List</a></li>
+        <li><a href="checkin.html"><i class="material-icons left">place</i>Check-In</a></li>
       </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <a href="#" class="brand-logo center">Friendler</a>
       <ul id="nav-mobile" class="right">
         <li><a href="#" class="hide-on-small-only" onClick="$('this').preventDefault();">Tricia Ngoon</a>
         <li><a href="index.html">Logout</a></li>
@@ -25,49 +30,33 @@
   </nav>
 
   <!-- Content -->
-  <div class="container">
-    <div id = "main-content" class ="card">
-      <h2 class="header center black-text">Welcome to the Store!</h2>
-      <div class="container center">
-        <img class="responsive-img" src="http://www.kelowna.com/wp-content/uploads/2010/01/100111-monopoly-man.jpg">
-      </div>
-    </div>
+  <div id="map-content" class="container">
 
-
-    <div class="ui four doubling stackable cards">
-      {{#each stores}}
-      <div class = "col s0 m1 l2">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator responsive img" src="images/{{image}}">
+  </div>
+  <div id="search-form" class="container">
+    <h5 style="text-align: center">Where are you checking in at?</h5>
+    <div class="row">
+      <form class="col s12">
+        <div class="input-field col s6">
+          <input placeholder="Type your location here" id="searchFor" type="text">
         </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
-          <p>Point Value: {{id}}</p>
+        <div style="padding: 20px">
+          <button class="btn waves-light" id="searchBtn">Search<i class="material-icons right">send</i></button>
         </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          <div class="center card-action"> 
-            <a href="#BuyModal" onClick="$('#BuyModal').openModal();">Buy</a>
-          </div>  
-        </div>
-      </div>
-    </div>
-      {{/each}}
+      </form>
     </div>
   </div>
-
-  <div id="BuyModal" class="modal modal-fixed-footer">
+  <div id="places">
+  </div>
+  <div id="modal1" class="modal">
     <div class="modal-content">
-      <p>Current Points: Infinity</p>
-      <p>New Points: Still Infinity</p>
-      <div class="center card-action"> 
-        <a href="#" onClick="$('#BuyModal').closeModal();">Confirm</a>
+      <h4>Who are you checking in with?</h4>
+      <div class="modal-footer">
+        <a href="profile.html" class="modal-action modal-close waves-effect waves-green btn-flat">By yourself</a>
+        <a href="friendsCheckin.html" class="modal-action modal-close waves-effect waves-green btn-flat">With friends</a>
       </div>
     </div>
   </div>
-
 
   <!-- Footer -->
  	<footer class="page-footer teal">
@@ -89,5 +78,7 @@
 	<!-- Scripts for Materialize -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../js/materialize.min.js"></script>
+  <script src="../js/sidenav.js"></script>
+  <script src="../js/checkin.js"></script>
 </body>
 </html>
