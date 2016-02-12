@@ -19,9 +19,8 @@ function getVenues(e) {
 
 function displayVenues(result) {
 	$.each(result.response.venues, function(i,venues){
-			var openModal = $('#modal1').openModal();
             var content = 
-            	'<a href="#modal1 onClick="' + openModal + ';"> <div class="row" id="' + venues.name + '">' +
+            	'<a href="friendsCheckin"> <div class="row" id="' + venues.name + '">' +
             	'<p>' + venues.name + '</p></div></a>';
             $(content).appendTo("#places");
     });

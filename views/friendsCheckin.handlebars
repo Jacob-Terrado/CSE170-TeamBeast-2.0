@@ -7,24 +7,24 @@
 
 	<!-- CSS for Materialize -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="../public/css/materialize.css"/>
+	<link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
 <body onLoad="Materialize.fadeInImage('#main-content')">
   <!-- Navigation Header -->
   <nav class="navbar-fixed">
     <div class="nav-wrapper teal">
       <ul id="slide-out" class="left side-nav">
-        <li><a href="profile.handlebars"><i class="material-icons left">perm_identity</i>Profile</a></li>
-        <li><a href="store.handlebars"><i class="material-icons left">local_grocery_store</i>Store</a></li>
-        <li><a href="inventory.handlebars"><i class="material-icons left">assignment</i>Inventory</a></li>
-        <li><a href="friends.handlebars"><i class="material-icons left">contacts</i>Friends List</a></li>
-        <li><a href="checkin.handlebars"><i class="material-icons left">place</i>Check-In</a></li>
+        <li><a href="profile"><i class="material-icons left">perm_identity</i>Profile</a></li>
+        <li><a href="store"><i class="material-icons left">local_grocery_store</i>Store</a></li>
+        <li><a href="inventory"><i class="material-icons left">assignment</i>Inventory</a></li>
+        <li><a href="friends"><i class="material-icons left">contacts</i>Friends List</a></li>
+        <li><a href="checkin"><i class="material-icons left">place</i>Check-In</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       <a href="#" class="brand-logo center">Friendler</a>
       <ul id="nav-mobile" class="right">
         <li><a href="#" class="hide-on-small-only" onClick="$('this').preventDefault();">Tricia Ngoon</a>
-        <li><a href="index.handlebars">Logout</a></li>
+        <li><a href="index">Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -63,8 +63,8 @@
         <label for="seventh">More Friends</label>
       </li>
     </ul>
-    <a href="profile.handlebars" style="color:white;">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Check-In With These Friends
+    <a href="profile" style="color:white;">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Check-In
       <i class="material-icons right">send</i>
       </button>
     </a>
@@ -89,6 +89,7 @@
 
 	<!-- Scripts for Materialize -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../routes/materialize.min.js"></script>
+  <script src="../js/materialize.min.js"></script>
+  <script src="../js/sidenav.js"></script>
 </body>
 </html>
