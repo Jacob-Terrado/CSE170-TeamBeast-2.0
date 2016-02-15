@@ -23,6 +23,8 @@ function signUp() {
 	  person.set("email", email);
 	  person.set("firstName", firstName);
 	  person.set("lastName", lastName);
+	  person.set("points", 100);
+	  person.set("level", 1);
 
 	  person.signUp(null, {success: function(user){
 	  		// window.location = "http://localhost:3000/profile"
@@ -78,3 +80,29 @@ function addFriends() {
 	// Get the friends array, then push an object in it, then set it again
 };
 
+function showPoints() {
+	var currentUser = Parse.User.current(); 
+	return currentUser.get('points');
+};
+
+function showLevel() {
+	var currentUser = Parse.User.current(); 
+	return currentUser.get('level');
+};
+
+function purchase() {
+	var currentUser = Parse.User.current;
+	var itemName = document.getElementById("name").value;
+	var itemValue = document.getElementById("pts").value;
+	var itemDescript = document.getElementById("descript").value;
+
+	var Item = Parse.Object.extend("Item");
+	var item = new Item();
+	item.set("name", itemName);
+	item.set("id", itemValue);
+	item.set("description", itemDescript);
+
+	
+
+
+};
