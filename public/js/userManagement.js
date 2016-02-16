@@ -23,7 +23,7 @@ function signUp() {
 	  person.set("email", email);
 	  person.set("firstName", firstName);
 	  person.set("lastName", lastName);
-	  person.set("points", 100);
+	  person.set("points", 0);
 	  person.set("level", 1);
 
 	  person.signUp(null, {success: function(user){
@@ -81,13 +81,35 @@ function addFriends() {
 };
 
 function showPoints() {
-	var currentUser = Parse.User.current(); 
+	var currentUser = Parse.User.current();
+	currentUser.fetch();
 	return currentUser.get('points');
 };
 
 function showLevel() {
 	var currentUser = Parse.User.current(); 
+	currentUser.fetch();
 	return currentUser.get('level');
+};
+
+function updatePoints() {
+	//event.preventDefault();
+	var currUser = Parse.User.current();
+	console.log(currUser);
+	var currPoints = currUser.get('points');
+	console.log(currPoints);
+	var newPoints = currPoints + 200;
+	currUser.save({
+		points: newPoints,
+	}, {
+		success: function(currUser) {
+			alert("YOU JUST GAINED XP");
+		},
+		error: function(currUser, error) {
+			alert("FAILED TO GAIN XP");
+		}
+	});
+	console.log(currUser.get("points"));
 };
 
 function purchase() {
