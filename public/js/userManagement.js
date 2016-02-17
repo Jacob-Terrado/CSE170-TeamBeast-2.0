@@ -77,8 +77,15 @@ function resetPassword() {
 };
 
 function addFriends() {
-	// Get the friends array, then push an object in it, then set it again
-};
+	var currUser = Parse.User.current();
+	console.log(currUser);
+	var newFriend = document.getElementById('username').value;
+	console.log(newFriend);
+	currUser.addUnique("friends", newFriend);
+	currUser.save();
+	alert("You have just added " + newFriend + " as a friend!");
+}
+
 
 function showPoints() {
 	var currentUser = Parse.User.current();
@@ -111,6 +118,7 @@ function updatePoints() {
 	});
 	console.log(currUser.get("points"));
 };
+
 
 function purchase() {
 	var currentUser = Parse.User.current;
