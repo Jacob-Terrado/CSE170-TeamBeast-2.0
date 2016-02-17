@@ -121,18 +121,19 @@ function updatePoints() {
 
 
 function purchase() {
-	var currentUser = Parse.User.current;
-	var itemName = document.getElementById("name").value;
-	var itemValue = document.getElementById("pts").value;
-	var itemDescript = document.getElementById("descript").value;
-
-	var Item = Parse.Object.extend("Item");
-	var item = new Item();
-	item.set("name", itemName);
-	item.set("id", itemValue);
-	item.set("description", itemDescript);
-
-	
-
-
+	var currentUser = Parse.User.current(); 
+	var pls = document.getElementById("pts").innerHTML;
+	var userPts = currentUser.get('points');
+	if (userPts >= 1000){
+		console.log(pls);
+		currentUser.set("points", userPts - 1000);
+		currentUser.save();
+		$('#BuyModal').openModal();
+		console.log("success");
+	}
+	else{
+		$('#FailModal').openModal();
+		console.log("fail");
+		console.log(userPts);
+	}
 };

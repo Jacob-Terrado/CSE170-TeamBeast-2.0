@@ -1,16 +1,16 @@
 {
 	"store": [
 	{
-		"name": "waiting",
+		"name": "Super Backpack",
 		"image": "/backpack.png",
 		"id": "01",			
 		"description": "This is a backpack..."
 	},
 	{
-		"name": "waiting",
-		"image": "/backpack.png",
-		"id": "02",			
-		"description": "This is a backpack..."
+		"name": "Ditto",
+		"image": "/ditto.png",
+		"id": "08",			
+		"description": "This is a ditto..."
 	}
 	]
 }

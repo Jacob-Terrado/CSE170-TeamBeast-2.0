@@ -44,7 +44,6 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/store', store.view);
 app.get('/inventory', inventory.view);
-app.get('/store', store.view);
 app.get('/tutorial', tutorial.view);
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
