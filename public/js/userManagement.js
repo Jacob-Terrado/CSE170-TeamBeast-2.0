@@ -15,7 +15,8 @@ function validateSession() {
 	} else if (currentUser == null && window.location.pathname != "/") {
 		window.location = "/";
 	}
-};
+
+var checkCount = 0;
 
 function signUp() {
 	event.preventDefault();
@@ -36,6 +37,7 @@ function signUp() {
 	  person.set("points", 1000);
 	  person.set("level", 1);
 	  person.set("avatar", 1);
+	  person.set("emotion", 50);
 
 	  person.signUp(null, {success: function(user){
 	  		// window.location = "http://localhost:3000/profile"
@@ -98,9 +100,45 @@ function addFriends() {
 	alert("You have just added " + newFriend + " as a friend!");
 }
 
+function listFriends() {
+	var currUser = Parse.User.current();
+	currUser.fetch();
+	console.log(currUser);
+	console.log(currUser.get("username"));
+	var friendsList = currUser.get("friends");
+	var container = document.getElementById("friendsList");
+	//var friends = '';
+	for(var i = 0; i < friendsList.length; i++) {
+		var node = document.createElement("LI");
+		var inputNode = document.createElement("input");
+		var label = document.createElement("label");
+		label.setAttribute("for", "name" + i);
+		label.innerHTML = friendsList[i];
+		inputNode.type = "checkbox";
+		inputNode.name = "name" + i;
+		inputNode.id = friendsList[i];
+		node.appendChild(inputNode);
+		node.appendChild(label);
+		container.appendChild(node);
+	}
+	console.log("listFriends is being called");
+	console.log(inputNode.checked);
+	//$("#friendsList").append(friends);
+};
+
+function resetCheckCount() {
+	checkCount = 0;
+};
+
+function checkedFriends() {
+	if(this.checked)
+		checkCount++;
+	else
+		checkCount--;
+	console.log(checkCount);
+};
 
 function showPoints() {
-	var currentUser = Parse.User.current();
 	currentUser.fetch();
 	return currentUser.get('points');
 };
@@ -108,6 +146,11 @@ function showPoints() {
 function showLevel() {
 	currentUser.fetch();
 	return currentUser.get('level');
+};
+
+function showEmotion() {
+	currentUser.fetch();
+	return currentUser.get('emotion');
 };
 
 function avatarCheck() {
@@ -119,14 +162,41 @@ function avatarCheck() {
 function avatarSet() {
 	var ava = avatarCheck();
 	var place = "images/ditto.png";
-	if (ava == 1)
-	{
+	if (ava == 1) {
 		return place = "images/ditto.png";
 
 	}
-	else if (ava == 2)
-	{
+	else if (ava == 2) {
 		return place = "images/corgi_friendler.png";
+	}
+	else if (ava == 3) {
+		return place = "images/check.jpg";
+	} else if (ava == 4) {
+		return place = "images/backpack.png";
+	}
+};
+
+function moodSet() {
+	var mood = showEmotion();
+	if (mood <= 25)
+	{
+		return "('°□°）'︵ ┻━┻";
+	}
+	else if (mood > 25 && mood <= 50)
+	{
+		return place = "┬─┬ノ( º _ ºノ)";
+	}
+	else if (mood > 50 && mood <= 75)
+	{
+		return place = "v(^_^)v";
+	}
+	else if (mood > 75 && mood <= 99)
+	{
+		return place = ":)";
+	}
+	else if (mood == 100)
+	{
+		return place = "( ﾟヮﾟ)";
 	}
 };
 
@@ -150,7 +220,6 @@ function updatePoints() {
 	console.log(currUser.get("points"));
 };
 
-
 function purchase() {
 	var pls = document.getElementById("pts").innerHTML;
 	var userPts = currentUser.get('points');
@@ -167,3 +236,4 @@ function purchase() {
 		console.log(userPts);
 	}
 };
+

@@ -1,18 +1,21 @@
 {
 	"store": [
 	{
+		"id": 1, 
 		"name": "Super Backpack",
 		"image": "/backpack.png",
 		"value": "1000",			
 		"description": "This is a backpack..."
 	},
 	{
+		"id": 2,
 		"name": "Ditto",
 		"image": "/ditto.png",
 		"value": "500",			
 		"description": "This is a ditto..."
 	},
 	{
+		"id": 3,
 		"name": "Evolution Stone",
 		"image": "/evo.png",
 		"value": "1000",			

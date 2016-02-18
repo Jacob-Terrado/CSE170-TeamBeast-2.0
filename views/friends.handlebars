@@ -13,51 +13,19 @@
   {{> navbar}}
 
   <div id="main-content" class="container">
-    <ul class="collection-header">
+    <ul class="collection-header" id="friendsList">
       <li class="collection-header"><h4>Friends List</h4></li>
+      {{#each friends}}
+      <li class="collection-item">
+        <input type="checkbox" class="filled-in" id="{{name}}">
+        <label for="{{name}}">{{name}}</label>
+      </li>
+      {{/each}}
     </ul>
     <!-- Modal Trigger -->
     <button data-target="modal1" class="btn modal-trigger" onClick="$('#addFriendModal').openModal();">Add Friend</button>
-    <!-- Modal Structure -->
-    <!---
-    <ul class="collection with-header">
-      <li class="collection-header"><h4>Friends List</h4></li>
-      <li class="collection-item">
-        <input type="checkbox" class="filled-in" id="first"/>
-        <label for="first">Jimmy Quach</label>
-      </li>
-      <li class="collection-item">
-        <input type="checkbox" class="filled-in" id="second"/>
-        <label for="second">Jacob Terrado</label>
-      </li>
-      <li class="collection-item">
-        <input type="checkbox" class="filled-in" id="third"/>
-        <label for="third">Nicholas Siphengphone</label>
-      </li>
-      <li class="collection-item">
-        <input type="checkbox" class="filled-in" id="fourth"/>
-        <label for="fourth">Scott Klemmer</label>
-      </li>
-      <li class="collection-item">
-        <input type="checkbox" class="filled-in" id="fifth"/>
-        <label for="fifth">Tricia's Other Friend</label>
-      </li>
-      <li class="collection-item">
-        <input type="checkbox" class="filled-in" id="sixth"/>
-        <label for="sixth">Tricia's Other Friend</label>
-      </li>
-      <li class="collection-item">
-        <input type="checkbox" class="filled-in" id="seventh"/>
-        <label for="seventh">More Friends</label>
-      </li>
-    </ul>
-    <a href="checkin" style="color:white;">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Check In
-      <i class="material-icons right">send</i>
-      </button>
-    </a>
-  --> 
   </div>
+  
   <div id="addFriendModal" class="modal modal-fixed-footer">
     <h5>Add a new friend!</h5>
     <div class="modal-content">
