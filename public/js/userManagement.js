@@ -3,6 +3,8 @@
 
 Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
 
+var checkCount = 0;
+
 function automaticLogin() {
 	
 };
@@ -86,6 +88,43 @@ function addFriends() {
 	alert("You have just added " + newFriend + " as a friend!");
 }
 
+function listFriends() {
+	var currUser = Parse.User.current();
+	currUser.fetch();
+	console.log(currUser);
+	console.log(currUser.get("username"));
+	var friendsList = currUser.get("friends");
+	var container = document.getElementById("friendsList");
+	//var friends = '';
+	for(var i = 0; i < friendsList.length; i++) {
+		var node = document.createElement("LI");
+		var inputNode = document.createElement("input");
+		var label = document.createElement("label");
+		label.setAttribute("for", "name" + i);
+		label.innerHTML = friendsList[i];
+		inputNode.type = "checkbox";
+		inputNode.name = "name" + i;
+		inputNode.id = friendsList[i];
+		node.appendChild(inputNode);
+		node.appendChild(label);
+		container.appendChild(node);
+	}
+	console.log("listFriends is being called");
+	console.log(inputNode.checked);
+	//$("#friendsList").append(friends);
+};
+
+function resetCheckCount() {
+	checkCount = 0;
+};
+
+function checkedFriends() {
+	if(this.checked)
+		checkCount++;
+	else
+		checkCount--;
+	console.log(checkCount);
+};
 
 function showPoints() {
 	var currentUser = Parse.User.current();
@@ -118,7 +157,6 @@ function updatePoints() {
 	});
 	console.log(currUser.get("points"));
 };
-
 
 function purchase() {
 	var currentUser = Parse.User.current(); 
