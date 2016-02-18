@@ -3,19 +3,19 @@
 	{
 		"name": "Super Backpack",
 		"image": "/backpack.png",
-		"id": "01",			
+		"value": "1000",			
 		"description": "This is a backpack..."
 	},
 	{
 		"name": "Ditto",
 		"image": "/ditto.png",
-		"id": "08",			
+		"value": "500",			
 		"description": "This is a ditto..."
 	},
 	{
 		"name": "Evolution Stone",
 		"image": "/evo.png",
-		"id": "1000",			
+		"value": "1000",			
 		"description": "This is an evo stone..."
 	}
 	]

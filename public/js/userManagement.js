@@ -25,6 +25,7 @@ function signUp() {
 	  person.set("lastName", lastName);
 	  person.set("points", 1000);
 	  person.set("level", 1);
+	  person.set("avatar", 1);
 
 	  person.signUp(null, {success: function(user){
 	  		// window.location = "http://localhost:3000/profile"
@@ -97,6 +98,27 @@ function showLevel() {
 	var currentUser = Parse.User.current(); 
 	currentUser.fetch();
 	return currentUser.get('level');
+};
+
+function avatarCheck() {
+	var currentUser = Parse.User.current(); 
+	currentUser.fetch();
+	console.log(currentUser.get('avatar'));
+	return currentUser.get('avatar');
+};
+
+function avatarSet() {
+	var ava = avatarCheck();
+	var place = "images/ditto.png";
+	if (ava == 1)
+	{
+		return place = "images/ditto.png";
+
+	}
+	else if (ava == 2)
+	{
+		return place = "images/corgi_friendler.png";
+	}
 };
 
 function updatePoints() {
