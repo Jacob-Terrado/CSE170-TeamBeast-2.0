@@ -3,8 +3,18 @@
 
 Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
 
-function automaticLogin() {
-	
+var currentUser = Parse.User.current(); 
+
+$(document).ready(function() {
+	validateSession();
+})
+
+function validateSession() {
+	if (currentUser && window.location.pathname == "/") {
+		window.location = "/profile";
+	} else if (currentUser == null && window.location.pathname != "/") {
+		window.location = "/";
+	}
 };
 
 function signUp() {
@@ -37,7 +47,7 @@ function signUp() {
 	}
 };
 
-function login() {
+function login(res) {
 	event.preventDefault();
 
 	var username = document.getElementById("usernameLogin").value;
@@ -48,8 +58,9 @@ function login() {
 		  success: function(user) {
 		    // Do stuff after successful login.
 		    // window.location = "http://localhost:3000/profile"
-		    window.location = "http://friendler.herokuapp.com/profile"
-		    console.log("successfull");
+		    // window.location = "http://friendler.herokuapp.com/profile"
+				console.log("successfull");
+				window.location = "/profile";
 		  },
 		  error: function(user, error) {
 		    // The login failed. Check error to see why.
@@ -95,15 +106,13 @@ function showPoints() {
 };
 
 function showLevel() {
-	var currentUser = Parse.User.current(); 
 	currentUser.fetch();
 	return currentUser.get('level');
 };
 
 function avatarCheck() {
-	var currentUser = Parse.User.current(); 
 	currentUser.fetch();
-	console.log(currentUser.get('avatar'));
+	// console.log(currentUser.get('avatar'));
 	return currentUser.get('avatar');
 };
 
@@ -143,7 +152,6 @@ function updatePoints() {
 
 
 function purchase() {
-	var currentUser = Parse.User.current(); 
 	var pls = document.getElementById("pts").innerHTML;
 	var userPts = currentUser.get('points');
 	if (userPts >= 1000){
