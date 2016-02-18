@@ -46,16 +46,28 @@
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
-          <p>Point Value: {{id}}</p>
+          <p>Point Value: {{value}}</p>
         </div>
         <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+          <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
           <p>{{description}}.</p>
           <div class="center card-action"> 
-            <a href="inventory">Use</a>
+            <a href="#UseModal" onClick="$('#UseModal').openModal();">Use</a>
           </div>  
         </div>
       </div>
+
+      <div id="UseModal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <p>You used the: {{name}} </p>
+          <p>Your Friendler feels happier!</p>
+          <div id = "update"></div>
+          <div class="center card-action"> 
+            <a href="inventory" onClick="$('#UseModal').closeModal();">Confirm</a>
+          </div>
+        </div>
+      </div>
+
       {{/each}}
     </div>
   </div>

@@ -27,6 +27,8 @@ function signUp() {
 	  person.set("lastName", lastName);
 	  person.set("points", 1000);
 	  person.set("level", 1);
+	  person.set("avatar", 1);
+	  person.set("emotion", 50);
 
 	  person.signUp(null, {success: function(user){
 	  		// window.location = "http://localhost:3000/profile"
@@ -138,6 +140,65 @@ function showLevel() {
 	return currentUser.get('level');
 };
 
+function showEmotion() {
+	var currentUser = Parse.User.current(); 
+	currentUser.fetch();
+	return currentUser.get('emotion');
+};
+
+function avatarCheck() {
+	var currentUser = Parse.User.current(); 
+	currentUser.fetch();
+	console.log(currentUser.get('avatar'));
+	return currentUser.get('avatar');
+};
+
+function avatarSet() {
+	var ava = avatarCheck();
+	var place = "images/ditto.png";
+	if (ava == 1)
+	{
+		return place = "images/ditto.png";
+
+	}
+	else if (ava == 2)
+	{
+		return place = "images/corgi_friendler.png";
+	}
+	else if (ava == 3)
+	{
+		return place = "images/check.jpg";
+	}
+	else if (ava == 4)
+	{
+		return place = "images/backpack.png";
+	}
+};
+
+function moodSet() {
+	var mood = showEmotion();
+	if (mood <= 25)
+	{
+		return "('°□°）'︵ ┻━┻";
+	}
+	else if (mood > 25 && mood <= 50)
+	{
+		return place = "┬─┬ノ( º _ ºノ)";
+	}
+	else if (mood > 50 && mood <= 75)
+	{
+		return place = "v(^_^)v";
+	}
+	else if (mood > 75 && mood <= 99)
+	{
+		return place = ":)";
+	}
+	else if (mood == 100)
+	{
+		return place = "( ﾟヮﾟ)";
+	}
+};
+
 function updatePoints() {
 	//event.preventDefault();
 	var currUser = Parse.User.current();
@@ -175,3 +236,4 @@ function purchase() {
 		console.log(userPts);
 	}
 };
+

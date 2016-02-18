@@ -17,8 +17,28 @@
     $(document).ready(function() {
       document.getElementById("point").innerHTML = showPoints();
       document.getElementById("level").innerHTML = showLevel();
+      
+      var midnight = new Date();
+      midnight.setHours(23,59,59,0);
+      if(document.cookie = "username = emotionCookie; expires = midnight"){
+      } 
+      else {
+      document.cookie = "username = emotionCookie; expires = midnight";
+      var currentUser = Parse.User.current(); 
+      var emo = showEmotion();
+      if ((emo - 5) < 0){
+          currentUser.set("emotion", 0);
+          currentUser.save();
+        }
+      else{
+        currentUser.set("emotion", emo - 5);
+        currentUser.save();
+      } 
+      }
+
+      document.getElementById("mood").innerHTML = moodSet();
          });
-    
+
       var lvl = showLevel();
       var check = true;
       if (lvl >= 10 && check){
@@ -81,12 +101,12 @@
         <br>
         <h2 class="header center black-text">My Friendler</h2>
         <div class="container center">
-          <img class="responsive-img" src="images/ditto.png">
+          <img id = "avatar" class="responsive-img" src="images/ditto.png">
         </div>
         <div class="container">
           <div class="collection">
             <a href="#!" class="collection-item">Name:<span class="badge">Ditto</span></a>
-            <a href="#!" class="collection-item">Mood:<span class="badge">v(^_^)v</span></a>
+            <a href="#!" class="collection-item">Mood:<span class="badge"><span id = "mood",</span></span></a>
             <a href="#!" class="collection-item">Level:<span class="badge"><span id = "level"></span></span></a>
             <a href="#!" class="collection-item">XP To Spend:<span class="badge"><span id = "point"></span></span></a>
             <a href="#!" class="collection-item">Wants:<span class="new badge">Food</span></a>
@@ -116,14 +136,16 @@
 <!-- Scripts for Materialize -->
 <script src="../js/materialize.min.js"></script>
 <script src="../js/sidenav.js"></script>
-<!--
+
  <script>
-    point = showPoints();
+/*    point = showPoints();
     level = showLevel();
     document.getElementById("point").innerHTML = point; 
-    document.getElementById("level").innerHTML = level; 
+    document.getElementById("level").innerHTML = level; */
+    var imgAvatar = avatarSet();
+    document.getElementById("avatar").src = imgAvatar;
   </script>
--->
+
 </body>
 
 </html>
