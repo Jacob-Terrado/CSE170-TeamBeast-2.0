@@ -39,8 +39,8 @@
       <li class="collection-header"><h4>Friends List</h4></li>
       {{#each friends}}
       <li class="collection-item">
-        <input type="checkbox" name="friendsName">
-        <label for="friendsName">{{name}}</label>
+        <input type="checkbox" class="filled-in" id="{{name}}">
+        <label for="{{name}}">{{name}}</label>
       </li>
       {{/each}}
     </ul>
