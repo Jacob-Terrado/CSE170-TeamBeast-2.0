@@ -23,7 +23,7 @@ function signUp() {
 	  person.set("email", email);
 	  person.set("firstName", firstName);
 	  person.set("lastName", lastName);
-	  person.set("points", 0);
+	  person.set("points", 1000);
 	  person.set("level", 1);
 
 	  person.signUp(null, {success: function(user){

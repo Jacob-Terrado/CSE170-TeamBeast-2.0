@@ -11,6 +11,12 @@
 		"image": "/ditto.png",
 		"id": "08",			
 		"description": "This is a ditto..."
+	},
+	{
+		"name": "Evolution Stone",
+		"image": "/evo.png",
+		"id": "1000",			
+		"description": "This is an evo stone..."
 	}
 	]
 }
