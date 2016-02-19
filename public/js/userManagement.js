@@ -25,7 +25,7 @@ function signUp() {
 
     if (firstName && lastName && username && email && password) {
         var person = new Parse.User();
-        person.set("username", username);
+        person.set("username", username.toLowerCase());
         person.set("password", password);
         person.set("email", email);
         person.set("firstName", firstName);
@@ -56,7 +56,7 @@ function login() {
     var password = document.getElementById("passwordLogin").value;
 
     if (username && password) {
-        Parse.User.logIn(username, password, {
+        Parse.User.logIn(username.toLowerCase(), password, {
             success: function (user) {
                 window.location = "/profile";
             },
@@ -122,18 +122,20 @@ function listFriends() {
     console.log(currUser.get("username"));
     var friendsList = currUser.get("friends");
     var container = document.getElementById("friendsList");
-    for (var i = 0; i < friendsList.length; i++) {
-        var node = document.createElement("LI");
-        var inputNode = document.createElement("input");
-        var label = document.createElement("label");
-        label.setAttribute("for", friendsList[i]);
-        label.innerHTML = friendsList[i];
-        inputNode.type = "checkbox";
-        inputNode.class = "filled-in"
-        inputNode.id = friendsList[i];
-        node.appendChild(inputNode);
-        node.appendChild(label);
-        container.appendChild(node);
+    if (friendsList) {
+        for (var i = 0; i < friendsList.length; i++) {
+            var node = document.createElement("LI");
+            var inputNode = document.createElement("input");
+            var label = document.createElement("label");
+            label.setAttribute("for", friendsList[i]);
+            label.innerHTML = friendsList[i];
+            inputNode.type = "checkbox";
+            inputNode.class = "filled-in"
+            inputNode.id = friendsList[i];
+            node.appendChild(inputNode);
+            node.appendChild(label);
+            container.appendChild(node);
+        }
     }
     console.log("listFriends is being called");
     console.log(inputNode.checked);
