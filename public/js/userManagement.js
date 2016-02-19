@@ -34,6 +34,7 @@ function signUp() {
     person.set("level", 1);
     person.set("avatar", 1);
     person.set("emotion", 50);
+    person.set("bar", 0);
 
     person.signUp(null, {
       success: function(user) {
@@ -170,6 +171,11 @@ function showEmotion() {
   return currentUser.get('emotion');
 };
 
+function showXP() {
+  currentUser.fetch();
+  return currentUser.get('bar');
+};
+
 function avatarCheck() {
   currentUser.fetch();
   // console.log(currentUser.get('avatar'));
@@ -211,13 +217,18 @@ function updatePoints(count) {
   console.log(currUser);
   var currPoints = currUser.get('points');
   console.log(currPoints);
-  var gainedXP = 200 * count;
-  var newPoints = currPoints + gainedXP;
+  var pt = 200 * count;
+  var newPoints = currPoints + pt;
+  var currXP = currUser.get('bar');
+  var exp = 10 * count;
+  var newXP = currXP + exp;
   currUser.save({
     points: newPoints,
+    bar: newXP,
   }, {
     success: function(currUser) {
-      alert("YOU JUST GAINED " + gainedXP + " XP!!");
+      alert("YOU JUST GAINED " + pt + " Points!!");
+      alert("YOU JUST GAINED " + exp + " XP!! Keep ganing to Level UP!");
       window.location.href = "profile";
     },
     error: function(currUser, error) {
