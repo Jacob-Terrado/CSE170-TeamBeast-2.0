@@ -1,4 +1,1 @@
-lab6
-====
-
-Lab 6: AJAX
+CSE 170 Team Beast - 2.0
