@@ -146,6 +146,7 @@ function checkedFriends() {
 };
 
 function showPoints() {
+  //only should be used for profile
   currentUser.fetch();
   var newPoints = currentUser.get("points");
   document.getElementById("point").innerHTML = newPoints;
@@ -153,6 +154,7 @@ function showPoints() {
 };
 
 function showLevel() {
+  //only should be used for profile
   currentUser.fetch();
   var newLevel = currentUser.get("level");
   document.getElementById("level").innerHTML = newLevel;

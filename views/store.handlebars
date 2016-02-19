@@ -71,7 +71,9 @@
   {{> parseScripts}}
 
 <script>
-  point = showPoints();
+  var currentUser = Parse.User.current();
+  currentUser.fetch();
+  var point = currentUser.get("points");
   document.getElementById("update").innerHTML = point-1000; 
 </script>
 
