@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Friendler</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Friendler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- CSS for Materialize -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
+  <!-- CSS for Materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
 <body>
-    {{> navbar}}
-    {{> materializeScripts}}
-    {{> parseScripts}}  
+{{> navbar}}
 
-  <!-- Content -->
-  <div id="map-content" class="container">
+<!-- Content -->
+<div id="map-content" class="container">
 
-  </div>
-  <div id="search-form" class="container">
-    <h5 style="text-align: center">Where are you checking in at?</h5>
-    <div class="row">
-      <form class="col s12">
-        <div class="input-field col s6">
-          <input placeholder="Type your location here" id="searchFor" type="text">
-        </div>
-        <div style="padding: 20px">
-          <button class="btn waves-light" id="searchBtn">Search<i class="material-icons right">send</i></button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div id="places">
-  </div>
-  <div id="modal1" class="modal" >
-    <div class="modal-content">
-      <h4>Who are you checking in with?</h4>
-      <div class="modal-footer">
-        <a href="profile" class="modal-action modal-close waves-effect waves-green btn-flat">By yourself</a>
-        <a href="friendsCheckin" class="modal-action modal-close waves-effect waves-green btn-flat">With friends</a>
+</div>
+<div id="search-form" class="container">
+  <h5 style="text-align: center">Where are you checking in at?</h5>
+  <div class="row">
+    <form class="col s12">
+      <div class="input-field col s6">
+        <input placeholder="Type your location here" id="searchFor" type="text">
       </div>
+      <div style="padding: 20px">
+        <button class="btn waves-light" id="searchBtn">Search<i class="material-icons right">send</i></button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="places">
+</div>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Who are you checking in with?</h4>
+    <div class="modal-footer">
+      <a href="profile" class="modal-action modal-close waves-effect waves-green btn-flat">By yourself</a>
+      <a href="friendsCheckin" class="modal-action modal-close waves-effect waves-green btn-flat">With friends</a>
     </div>
   </div>
+</div>
 
-  {{> footer}}
+{{> footer}}
 
-
-  <script src="../js/checkin.js"></script>
+{{> materializeScripts}}
+{{> parseScripts}}
+<script src="../js/checkin.js"></script>
 </body>
 </html>

@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Friendler</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Friendler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- CSS for Materialize -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
+  <!-- CSS for Materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
 <body onLoad="Materialize.fadeInImage('#main-content')">
-  {{> navbar}}
+{{> navbar}}
 
-  <!-- Content -->
-  <div class="container">
-    <div id = "main-content" class ="card">
-      <h2 class="header center black-text">Inventory</h2>
-    </div>
+<!-- Content -->
+<div class="container">
+  <div id="main-content" class="card">
+    <h2 class="header center black-text">Inventory</h2>
+  </div>
 
-    <div class="ui four doubling stackable cards">
-      {{#each inventory}}
+  <div class="ui four doubling stackable cards">
+    {{#each inventory}}
       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="images/{{image}}">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
+          <span class="card-title activator grey-text text-darken-4">{{name}}<i
+            class="material-icons right">more_vert</i></span>
           <p>Point Value: {{value}}</p>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
           <p>{{description}}.</p>
-          <div class="center card-action"> 
+          <div class="center card-action">
             <a onClick="itemUsed();">Use</a>
-          </div>  
+          </div>
         </div>
       </div>
 
@@ -41,20 +42,20 @@
         <div class="modal-content">
           <p>You used the: {{name}} </p>
           <p>Your Friendler feels happier!</p>
-          <div id = "update"></div>
-          <div class="center card-action"> 
+          <div id="update"></div>
+          <div class="center card-action">
             <a href="inventory" onClick="$('#UseModal').closeModal();">Confirm</a>
           </div>
         </div>
       </div>
 
-      {{/each}}
-    </div>
+    {{/each}}
   </div>
+</div>
 
-  {{> footer}}
+{{> footer}}
 
-  {{> materializeScripts}}
-  {{> parseScripts}}
+{{> materializeScripts}}
+{{> parseScripts}}
 </body>
 </html>
