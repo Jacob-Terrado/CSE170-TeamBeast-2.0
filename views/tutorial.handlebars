@@ -50,28 +50,28 @@
         </div>
       </div>
       <div class="center card-action">
-        <a href="profile.html">Start my journey</a>
+        <a href="profile">Start my journey</a>
         <a href="#learnMoreModal" onClick="$('#learnMoreModal').openModal();">How To Play</a>
       </div>  
       <div class="col s0 m1 l2">&nbsp;</div>
       <div id="learnMoreModal" class="modal modal-fixed-footer">
         <div class="modal-content">
           <h4>How to Play</h4>
-            <p>Earn XP by checking into public places like restaurants, parks, and other venues!</p>
-            <p>Bonus XP is rewarded if you check in with
-              <ul class="collection">
-                <li class="collection-item">friends (200 XP)</li>
-                <li class="collection-item">new friends (1000 XP)</li>
-                <li class="collection-item">multiple friends (200 XP/ friend)</li>
-              </ul>
-            </p>
-            <p>Use your XP to:
-              <ul class="collection">
-                <li class="collection-item">level up your Friendler</li>
-                <li class="collection-item">purchase new equipment for your Friendler</li>
-                <li class="collection-item">feed your Friendler</li>
-              </ul>            
-            </p>
+          <p>Earn XP by checking into public places like restaurants, parks, and other venues!</p>
+          <p>Bonus XP is rewarded if you check in with
+            <ul class="collection">
+              <li class="collection-item">friends (200 XP)</li>
+              <li class="collection-item">new friends (1000 XP)</li>
+              <li class="collection-item">multiple friends (200 XP/ friend)</li>
+            </ul>
+          </p>
+          <p>Use your XP to:
+            <ul class="collection">
+              <li class="collection-item">level up your Friendler</li>
+              <li class="collection-item">purchase new equipment for your Friendler</li>
+              <li class="collection-item">feed your Friendler</li>
+            </ul>            
+          </p>
         </div>
         <div class="modal-footer">
           <a href="profile" class=" modal-action modal-close waves-effect waves-green btn-flat">Start my journey</a>
@@ -80,25 +80,9 @@
     </div>
   </div>
 
-  <!-- Footer -->
- 	<footer class="page-footer teal">
- 		<div class="container">
-      <div class="row">
-        <div class="col s12">
-        	<h5 class="white-text">Friendler</h5>
-          <p class="grey-text text-lighten-4">Here at Friendler, we understand that social anxiety is often an inhibitting factor for people that prevent them from meeting new friends and strengthening old bonds. However, by providing you with small and incremental incentives, we hope to mitigate these anchors to help you lean into your discomforts and make social interactions feel more routine and encouraging.</p>
-        </div>
-      </div>
-    </div>
- 	  <div class="footer-copyright">
-    	<div class="container">
-        © 2016 Copyright
-      </div>
-    </div>
-  </footer>
+  {{> footer}}
 
-	<!-- Scripts for Materialize -->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../js/materialize.min.js"></script>
+  {{> materializeScripts}}
+  {{> parseScripts}}
 </body>
 </html>

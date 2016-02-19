@@ -1,3 +1,3 @@
-exports.view = function(req, res){
-	res.render('./profile.handlebars');
+exports.viewProfile = function(req, res){
+	res.render("profile");
 };

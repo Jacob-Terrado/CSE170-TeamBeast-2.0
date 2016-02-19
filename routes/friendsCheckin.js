@@ -1,3 +1,3 @@
-exports.view = function(req, res){
-	res.render('./friendsCheckin.handlebars');
+exports.viewFriendsCheckIn = function(req, res){
+	res.render("friendsCheckin");
 };

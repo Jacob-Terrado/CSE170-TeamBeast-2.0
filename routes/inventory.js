@@ -1,5 +1,5 @@
 var data = require('../inventory.json');
 
-exports.view = function(req, res){
-	res.render('./inventory.handlebars', data);
+exports.viewInventory = function(req, res){
+	res.render("inventory", data);
 };
