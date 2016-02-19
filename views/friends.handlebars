@@ -12,7 +12,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="../js/userManagement.js"></script> 
 </head>
-<body onLoad="Materialize.fadeInImage('#main-content')">
+<body onLoad="Materialize.fadeInImage('#main-content'); listFriends();">
   <!-- Navigation Header -->
   <nav class="navbar-fixed">
     <div class="nav-wrapper teal">
@@ -37,12 +37,6 @@
   <div id="main-content" class="container">
     <ul class="collection-header" id="friendsList">
       <li class="collection-header"><h4>Friends List</h4></li>
-      {{#each friends}}
-      <li class="collection-item">
-        <input type="checkbox" class="filled-in" id="{{name}}">
-        <label for="{{name}}">{{name}}</label>
-      </li>
-      {{/each}}
     </ul>
     <!-- Modal Trigger -->
     <button data-target="modal1" class="btn modal-trigger" onClick="$('#addFriendModal').openModal();">Add Friend</button>

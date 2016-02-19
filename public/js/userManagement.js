@@ -87,6 +87,18 @@ function addFriends() {
 	console.log(newFriend);
 	currUser.addUnique("friends", newFriend);
 	currUser.save();
+	var container = document.getElementById("friendsList");
+	var node = document.createElement("LI");
+	var inputNode = document.createElement("input");
+	var label = document.createElement("label");
+	label.setAttribute("for", newFriend);
+	label.innerHTML = newFriend;
+	inputNode.type = "checkbox";
+	inputNode.class = "filled-in";
+	inputNode.id = newFriend;
+	node.appendChild(inputNode);
+	node.appendChild(label);
+	container.appendChild(node);
 	alert("You have just added " + newFriend + " as a friend!");
 }
 
@@ -102,10 +114,10 @@ function listFriends() {
 		var node = document.createElement("LI");
 		var inputNode = document.createElement("input");
 		var label = document.createElement("label");
-		label.setAttribute("for", "name" + i);
+		label.setAttribute("for", friendsList[i]);
 		label.innerHTML = friendsList[i];
 		inputNode.type = "checkbox";
-		inputNode.name = "name" + i;
+		inputNode.class ="filled-in"
 		inputNode.id = friendsList[i];
 		node.appendChild(inputNode);
 		node.appendChild(label);
