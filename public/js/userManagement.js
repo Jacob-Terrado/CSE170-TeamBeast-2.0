@@ -147,12 +147,16 @@ function checkedFriends() {
 
 function showPoints() {
   currentUser.fetch();
-  return currentUser.get('points');
+  var newPoints = currentUser.get("points");
+  document.getElementById("point").innerHTML = newPoints;
+  return newPoints;
 };
 
 function showLevel() {
   currentUser.fetch();
-  return currentUser.get('level');
+  var newLevel = currentUser.get("level");
+  document.getElementById("level").innerHTML = newLevel;
+  return newLevel;
 };
 
 function showEmotion() {
