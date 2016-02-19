@@ -139,17 +139,13 @@ function resetCheckCount() {
 function checkedCount() {
   event.preventDefault();
   var checkCount = 0;
-  var listItems = document.getElementById("friendsList");
-  var items = listItems.getElementsByTagName("li");
-  console.log(items.length);
-  console.log($("#checkbox:checked").length);
-  for(var i = 0; i < items.length; i++) {
-    console.log($("#checkbox").checked);
-    if($("#checkbox").checked) {
+  console.log($(":checkbox").length);
+  $(":checkbox").each(function() {
+    if(this.checked) {
       checkCount++;
-      console.log(checkCount + "@ " + i);
+      console.log(checkCount);
     }
-  }
+  });
   console.log(checkCount);
   updatePoints(checkCount);
 };
@@ -216,12 +212,13 @@ function updatePoints(count) {
   console.log(currUser);
   var currPoints = currUser.get('points');
   console.log(currPoints);
-  var newPoints = currPoints + count;
+  var gainedXP = 200 * count;
+  var newPoints = currPoints + gainedXP;
   currUser.save({
     points: newPoints,
   }, {
     success: function(currUser) {
-      alert("YOU JUST GAINED XP");
+      alert("YOU JUST GAINED " + gainedXP + " XP!!");
     },
     error: function(currUser, error) {
       alert("FAILED TO GAIN XP");
