@@ -171,7 +171,6 @@ function avatarSet() {
   var place = "images/ditto.png";
   if (ava == 1) {
     return place = "images/ditto.png";
-
   } else if (ava == 2) {
     return place = "images/corgi_friendler.png";
   } else if (ava == 3) {
@@ -185,12 +184,12 @@ function moodSet() {
   var mood = showEmotion();
   if (mood <= 25) {
     return "('°□°）'︵ ┻━┻";
-  } else if (mood > 25 && mood <= 50) {
+  } else if (mood > 25 && mood <= 40) {
     return place = "┬─┬ノ( º _ ºノ)";
-  } else if (mood > 50 && mood <= 75) {
+  } else if (mood > 40 && mood <= 60) {
+    return place = "(•_•)";
+  } else if (mood > 60 && mood <= 99) {
     return place = "v(^_^)v";
-  } else if (mood > 75 && mood <= 99) {
-    return place = ":)";
   } else if (mood == 100) {
     return place = "( ﾟヮﾟ)";
   }
@@ -230,4 +229,17 @@ function purchase() {
     console.log("fail");
     console.log(userPts);
   }
+};
+
+function itemUsed() {
+	var increase = showEmotion();
+	if (increase + 5 > 100)
+	{
+		currentUser.set("emotion", 100);
+	} else {
+		currentUser.set("emotion", increase + 5);
+	}
+	currentUser.save();
+	console.log(increase);
+  $('#UseModal').openModal();
 };
