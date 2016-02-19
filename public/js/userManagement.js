@@ -224,10 +224,10 @@ function updatePoints(count) {
     console.log(currUser);
     var currPoints = currUser.get('points');
     console.log(currPoints);
-    var pt = 200 * count;
+    var pt = 200 * (count + 1);
     var newPoints = currPoints + pt;
     var currXP = currUser.get('bar');
-    var exp = 10 * count;
+    var exp = 10 * (count + 1);
     var newXP = currXP + exp;
     currUser.save({
         points: newPoints,
