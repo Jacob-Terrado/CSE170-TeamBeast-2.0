@@ -44,7 +44,7 @@
       
       <div id="BuyModal" class="modal modal-fixed-footer">
         <div class="modal-content">
-          <p>You bought a: {{name}} </p>
+          <p>Thanks for buying that item!</p>
           <p>Updated Points:</p>
           <div id = "update"></div>
           <div class="center card-action"> 
@@ -71,7 +71,9 @@
   {{> parseScripts}}
 
 <script>
-  point = showPoints();
+  var currentUser = Parse.User.current();
+  currentUser.fetch();
+  var point = currentUser.get("points");
   document.getElementById("update").innerHTML = point-1000; 
 </script>
 
