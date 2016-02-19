@@ -35,6 +35,7 @@ function signUp() {
         person.set("avatar", 1);
         person.set("emotion", 50);
         person.set("bar", 0);
+        person.set("friends", []);
 
         person.signUp(null, {
             success: function (user) {
