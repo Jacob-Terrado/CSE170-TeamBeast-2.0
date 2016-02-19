@@ -1,3 +1,3 @@
-exports.view = function(req, res){
+exports.viewCheckIn = function(req, res){
 	res.render('checkin');
 };

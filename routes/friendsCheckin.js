@@ -1,3 +1,3 @@
-exports.view = function(req, res){
+exports.viewFriendsCheckIn = function(req, res){
 	res.render("friendsCheckin");
 };

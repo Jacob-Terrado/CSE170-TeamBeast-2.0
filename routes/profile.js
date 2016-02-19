@@ -1,3 +1,3 @@
-exports.view = function(req, res){
+exports.viewProfile = function(req, res){
 	res.render("profile");
 };

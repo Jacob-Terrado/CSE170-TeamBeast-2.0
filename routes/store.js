@@ -1,5 +1,5 @@
 var data = require('../store.json');
 
-exports.view = function(req, res){
+exports.viewStore = function(req, res){
 	res.render("store", data);
 };
