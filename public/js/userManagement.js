@@ -1,7 +1,6 @@
 Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
 
 var currentUser = Parse.User.current();
-var checkCount = 0;
 
 $(document).ready(function() {
   validateSession();
@@ -137,12 +136,22 @@ function resetCheckCount() {
   checkCount = 0;
 };
 
-function checkedFriends() {
-  if (this.checked)
-    checkCount++;
-  else
-    checkCount--;
+function checkedCount() {
+  event.preventDefault();
+  var checkCount = 0;
+  var listItems = document.getElementById("friendsList");
+  var items = listItems.getElementsByTagName("li");
+  console.log(items.length);
+  console.log($("#checkbox:checked").length);
+  for(var i = 0; i < items.length; i++) {
+    console.log($("#checkbox").checked);
+    if($("#checkbox").checked) {
+      checkCount++;
+      console.log(checkCount + "@ " + i);
+    }
+  }
   console.log(checkCount);
+  updatePoints(checkCount);
 };
 
 function showPoints() {
@@ -200,13 +209,13 @@ function moodSet() {
   }
 };
 
-function updatePoints() {
-  //event.preventDefault();
+function updatePoints(count) {
+  event.preventDefault();
   var currUser = Parse.User.current();
   console.log(currUser);
   var currPoints = currUser.get('points');
   console.log(currPoints);
-  var newPoints = currPoints + 200;
+  var newPoints = currPoints + count;
   currUser.save({
     points: newPoints,
   }, {
