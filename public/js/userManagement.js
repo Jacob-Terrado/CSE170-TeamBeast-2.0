@@ -137,7 +137,6 @@ function resetCheckCount() {
 };
 
 function checkedCount() {
-  event.preventDefault();
   var checkCount = 0;
   console.log($(":checkbox").length);
   $(":checkbox").each(function() {
@@ -219,6 +218,7 @@ function updatePoints(count) {
   }, {
     success: function(currUser) {
       alert("YOU JUST GAINED " + gainedXP + " XP!!");
+      window.location.href = "profile";
     },
     error: function(currUser, error) {
       alert("FAILED TO GAIN XP");
