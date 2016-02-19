@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
-<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement();">
+<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); showPoints(); showLevel();">
   {{> navbar}}
 
   <!-- Content -->
@@ -40,9 +40,6 @@
 
   <script>
     $(document).ready(function() {
-      document.getElementById("point").innerHTML = showPoints();
-      document.getElementById("level").innerHTML = showLevel();
-      
       var midnight = new Date();
       midnight.setHours(23,59,59,0);
       if(document.cookie = "username = emotionCookie; expires = midnight"){
