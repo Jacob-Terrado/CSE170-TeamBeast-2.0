@@ -1,5 +1,5 @@
 var data = require('../friends.json');
 
-exports.view = function(req, res){
-	res.render('./friends.handlebars', data);
+exports.viewFriends = function(req, res) {
+	res.render("friends");
 };

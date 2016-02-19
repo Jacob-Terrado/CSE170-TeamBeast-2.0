@@ -41,14 +41,14 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', index.view);
-app.get('/store', store.view);
-app.get('/inventory', inventory.view);
-app.get('/tutorial', tutorial.view);
-app.get('/profile', profile.view);
-app.get('/friends', friends.view);
-app.get('/checkin', checkin.view);
-app.get('/friendsCheckin', friendsCheckin.view);
+app.get('/', index.viewIndex);
+app.get('/store', store.viewStore);
+app.get('/inventory', inventory.viewInventory);
+app.get('/tutorial', tutorial.viewTutorial);
+app.get('/profile', profile.viewProfile);
+app.get('/friends', friends.viewFriends);
+app.get('/checkin', checkin.viewCheckIn);
+app.get('/friendsCheckin', friendsCheckin.viewFriendsCheckIn);
 
 
 http.createServer(app).listen(app.get('port'), function(){
