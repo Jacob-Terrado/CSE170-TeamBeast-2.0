@@ -297,7 +297,4 @@ function levelUp() {
         alert("You have just leveled up to " + nextLevel + "!!");
         //window.location.href = "profile";
     }
-
-    
-
 };
