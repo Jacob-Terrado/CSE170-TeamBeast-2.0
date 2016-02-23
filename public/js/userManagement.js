@@ -295,7 +295,6 @@ function levelUp() {
         currentUser.set("bar", 0);
         currentUser.save();
         alert("You have just leveled up to " + nextLevel + "!!");
-        window.location.href = "profile";
+        //window.location.href = "profile";
     }
-
 };
