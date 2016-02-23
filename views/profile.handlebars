@@ -41,19 +41,24 @@
   $(document).ready(function () {
     var midnight = new Date();
     midnight.setHours(23, 59, 59, 0);
-    if (document.cookie = "username = emotionCookie; expires = midnight") {
+    var x = null;
+    if (x) {
+      console.log("yes");
     }
     else {
-      document.cookie = "username = emotionCookie; expires = midnight";
+      x = document.cookie = "username = emotionCookie; expires = midnight";
+      console.log("yes2");
       var currentUser = Parse.User.current();
       var emo = showEmotion();
       if ((emo - 5) < 0) {
         currentUser.set("emotion", 0);
         currentUser.save();
+        console.log("leggo");
       }
       else {
         currentUser.set("emotion", emo - 5);
         currentUser.save();
+        console.log("stillgood");
       }
     }
     document.getElementById("mood").innerHTML = moodSet();
