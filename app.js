@@ -14,6 +14,7 @@ var tutorial = require('./routes/tutorial');
 var profile = require('./routes/profile');
 var friends = require('./routes/friends');
 var checkin = require('./routes/checkin');
+var evolution = require('./routes/evolution');
 var friendsCheckin = require('./routes/friendsCheckin');
 // Example route
 // var user = require('./routes/user');
@@ -48,6 +49,7 @@ app.get('/profile', profile.viewProfile);
 app.get('/friends', friends.viewFriends);
 app.get('/checkin', checkin.viewCheckIn);
 app.get('/friendsCheckin', friendsCheckin.viewFriendsCheckIn);
+app.get('/evolution', evolution.viewEvolution);
 
 
 http.createServer(app).listen(app.get('port'), function () {

@@ -58,12 +58,6 @@
     }
     document.getElementById("mood").innerHTML = moodSet();
   });
-/*  var lvl = showLevel();
-  var check = true;
-  if (lvl >= 10 && check) {
-    // alert("YOU CAN EVOLVE YOUR FRIENDLER NOW! Use an Evolution Stone!");
-    check = false;
-  }*/
 </script>
 
 <script>
@@ -88,25 +82,5 @@
   }
 </script>
 
-<!--
-<script>
-  /*    point = showPoints();
-  level = showLevel();
-  document.getElementById("point").innerHTML = point;
-  document.getElementById("level").innerHTML = level; */
-  var imgAvatar = avatarSet();
-  document.getElementById("avatar").src = imgAvatar;
-  var currentUser = Parse.User.current();
-  var cat = showXP();
-  if (cat == 100){
-    currentUser.fetch();
-    var nLevel = currentUser.get("level") + 1;
-    currentUser.set("level", nLevel);
-    currentUser.set("bar", 0);
-    currentUser.save();
-    alert("You leveled UP, Congragulations!");
-  }
-</script>
--->
 </body>
 </html>
