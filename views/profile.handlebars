@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
-<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel();">
+<body onLoad="showEvo(); Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel();">
 {{> navbar}}
 
 <!-- Content -->
@@ -27,7 +27,10 @@
         <a href="#" class="collection-item">Level:<span class="badge"><span id="level"></span></span></a>
         <a href="#" class="collection-item">Points To Spend:<span class="badge"><span id="point"></span></span></a>
       </div>
+        <div class="container center">
+      <div> <a class="waves-effect waves-light btn-large" href = "evolution" id = "evo" style="visibility:hidden;"><i class="material-icons right">autorenew</i>EVOLUTION</a></div>
       <br>
+    </div>
     </div>
   </div>
 </div>

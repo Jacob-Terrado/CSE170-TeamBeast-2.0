@@ -4,6 +4,8 @@ var currentUser = Parse.User.current();
 
 $(document).ready(function () {
     validateSession();
+    $('.slider').slider();
+    $('.carousel').carousel();
 });
 
 function validateSession() {
@@ -296,5 +298,17 @@ function levelUp() {
         currentUser.save();
         alert("You have just leveled up to " + nextLevel + "!!");
         //window.location.href = "profile";
+    }
+}
+
+function showEvo() {
+    currentUser.fetch();
+    var checkLevel = currentUser.get("level");
+    if (checkLevel >= 10) {
+        alert("You can now evolve your friendler!!!");
+        document.getElementById('evo').style.visibility = 'visible';
+    }
+    else {
+        document.getElementById('evo').style.visibility = 'hidden';
     }
 };
