@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
-<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); showPoints(); showLevel();">
+<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel();">
 {{> navbar}}
 
 <!-- Content -->
@@ -41,29 +41,28 @@
   $(document).ready(function () {
     var midnight = new Date();
     midnight.setHours(23, 59, 59, 0);
-    if (document.cookie = "username = emotionCookie; expires = midnight") {
+    var x = null;
+    if (x) {
+      console.log("yes");
     }
     else {
-      document.cookie = "username = emotionCookie; expires = midnight";
+      x = document.cookie = "username = emotionCookie; expires = midnight";
+      console.log("yes2");
       var currentUser = Parse.User.current();
       var emo = showEmotion();
       if ((emo - 5) < 0) {
         currentUser.set("emotion", 0);
         currentUser.save();
+        console.log("leggo");
       }
       else {
         currentUser.set("emotion", emo - 5);
         currentUser.save();
+        console.log("stillgood");
       }
     }
     document.getElementById("mood").innerHTML = moodSet();
   });
-/*  var lvl = showLevel();
-  var check = true;
-  if (lvl >= 10 && check) {
-    // alert("YOU CAN EVOLVE YOUR FRIENDLER NOW! Use an Evolution Stone!");
-    check = false;
-  }*/
 </script>
 
 <script>
@@ -85,25 +84,6 @@
       setTimeout('sendEncouragement()', 10000);
       return;
     }
-  }
-</script>
-
-<script>
-  /*    point = showPoints();
-  level = showLevel();
-  document.getElementById("point").innerHTML = point;
-  document.getElementById("level").innerHTML = level; */
-  var imgAvatar = avatarSet();
-  document.getElementById("avatar").src = imgAvatar;
-  var currentUser = Parse.User.current();
-  var cat = showXP();
-  if (cat == 100){
-    currentUser.fetch();
-    var nLevel = currentUser.get("level") + 1;
-    currentUser.set("level", nLevel);
-    currentUser.set("bar", 0);
-    currentUser.save();
-    alert("You leveled UP, Congragulations!");
   }
 </script>
 

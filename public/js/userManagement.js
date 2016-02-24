@@ -30,7 +30,7 @@ function signUp() {
         person.set("email", email);
         person.set("firstName", firstName);
         person.set("lastName", lastName);
-        person.set("points", 1000);
+        person.set("points", 0);
         person.set("level", 1);
         person.set("avatar", 1);
         person.set("emotion", 50);
@@ -139,7 +139,7 @@ function listFriends() {
         }
     }
     console.log("listFriends is being called");
-    console.log(inputNode.checked);
+    //console.log(inputNode.checked);
 }
 
 function resetCheckCount() {
@@ -222,33 +222,37 @@ function moodSet() {
 
 function updatePoints(count) {
     event.preventDefault();
-    var currUser = Parse.User.current();
-    console.log(currUser);
-    var currPoints = currUser.get('points');
+    currentUser.fetch();
+    console.log(currentUser);
+    // get the current amount of spending points
+    var currPoints = currentUser.get('points');
+    // get the current amount of total points earned
+    var currXP = currentUser.get('bar');
     console.log(currPoints);
+    // set the new point values to be stored
     var pt = 200 * (count + 1);
     var newPoints = currPoints + pt;
-    var currXP = currUser.get('bar');
-    var exp = 10 * (count + 1);
+    var exp = 200 * (count + 1);
     var newXP = currXP + exp;
-    currUser.save({
+    // save data to the database
+    currentUser.save({
         points: newPoints,
         bar: newXP
     }, {
         success: function (currUser) {
             alert("YOU JUST GAINED " + pt + " Points!!");
-            alert("YOU JUST GAINED " + exp + " XP!! Keep ganing to Level UP!");
             window.location.href = "profile";
         },
         error: function (currUser, error) {
             alert("FAILED TO GAIN XP");
         }
     });
-    console.log(currUser.get("points"));
+    console.log(currentUser.get("points"));
 }
 
 function purchase() {
     var pls = document.getElementById("pts").innerHTML;
+    currentUser.fetch();
     var userPts = currentUser.get('points');
     if (userPts >= 1000) {
         console.log(pls);
@@ -274,3 +278,23 @@ function itemUsed() {
     console.log(increase);
     $('#UseModal').openModal();
 }
+
+function levelUp() {
+    currentUser.fetch();
+    // store previous level 
+    var prevLevel = currentUser.get("level");
+    // get the current user's total points
+    var totalPoints = currentUser.get("bar");
+    // variable for the next level
+    var nextLevel;
+
+    // check if the total points entitle a level up
+    if (totalPoints >= 1000) {
+        nextLevel = prevLevel + 1;
+        currentUser.set("level", nextLevel);
+        currentUser.set("bar", 0);
+        currentUser.save();
+        alert("You have just leveled up to " + nextLevel + "!!");
+        //window.location.href = "profile";
+    }
+};
