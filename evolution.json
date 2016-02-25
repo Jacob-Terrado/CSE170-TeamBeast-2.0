@@ -1,0 +1,58 @@
+{
+	"friendler": [
+	{
+		"id": 1,
+		"name": "Alpaca",
+		"image":"images/alpaca.jpg",
+		"description": "This alpaca has the ability to conduct electricity and use it!" 
+	},
+	{
+		"id": 2,
+		"name": "Captain",
+		"image": "images/captainPlanet.jpg",
+		"description": "If you never thought that there is something in this world that has the same large appetite as you, you're wrong." 
+	},
+	{
+		"id": 3,
+		"name": "Chao",
+		"image": "images/chao.jpg",
+		"description": "Don't be fooled by its cuteness because it has the ability to control water."
+	},
+	{
+		"id": 4,
+		"name": "Chocobo",
+		"image": "images/chocobo.jpg",
+		"description": "You ever thought about how it is like to fly without having to use an airplane? This bird can fulfill those dreams."
+	},
+	{
+		"id": 5,
+		"name": "Corgi",
+		"image": "images/corgi_friendler.png",
+		"description": "This dog is a master of backflips."
+	},
+	{
+		"id": 6,
+		"name": "Arty",
+		"image": "images/dragonSlime.png",
+		"description": "Thinking about drawing or painting a masterpiece in the near future or all the time? This slime will be your buddy and helping hand."
+	},
+	{
+		"id": 7,
+		"name": "Zangy",
+		"image": "images/dragonSlimeZangeif.png",
+		"description": "Though it doesn't have any arms or legs, don't be fooled because this slime is a karate master."
+	},
+	{
+		"id": 8,
+		"name": "Okami",
+		"image": "images/okamiden.jpg",
+		"description": "If you ever need something to protect you from danger, then this wolf is a safe bet."
+	},
+	{
+		"id": 9,
+		"name": "Yoshi",
+		"image": "images/yoshi.jpg",
+		"description": "This baby dinosaur loves to eat fruit and vegetables. Once it grows bigger, you will be able to ride it for transportation."
+	}
+	]
+}

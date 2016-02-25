@@ -147,15 +147,10 @@ function listEvolutions() {
     // stores all the friendler objects
     var query = new Parse.Query("Friendler");
     var container = document.getElementById("evolutions");
+    var projectHTML = "";
     query.each(function(user) {
-        var list = document.createElement("LI");
-        var img = document.createElement("img");
-        list.id = user.get("name");
-        img.class = "materialboxed";
-        //img.(data-caption) = "a little something";
-        img.src = user.get("path");
-        list.appendChild(img);
-        container.appendChild(list);
+        projectHTML = "<li><img class='responsive-img' src='" + user.get("path") + "' id='" + user.get("name") + "'</li>'";
+        $('#evolutions').append(projectHTML);
         console.log(user);
         console.log("Friendler name: " + user.get("name"));
         console.log("Friendler path: " + user.get("path"));
@@ -207,22 +202,44 @@ function showXP() {
 
 function avatarCheck() {
     currentUser.fetch();
-    // console.log(currentUser.get('avatar'));
+    console.log(currentUser.get('avatar'));
     return currentUser.get('avatar');
 }
 
-function avatarSet() {
-    var ava = avatarCheck();
-    var place = "images/ditto.png";
-    if (ava == 1) {
-        return place = "images/ditto.png";
-    } else if (ava == 2) {
-        return place = "images/corgi_friendler.png";
-    } else if (ava == 3) {
-        return place = "images/check.jpg";
-    } else if (ava == 4) {
-        return place = "images/backpack.png";
+function avatarSet(number, name) {
+    currentUser.fetch();
+    switch (number) {
+        case 1:
+            currentUser.set("avatar", "images/alpaca.jpg");
+            break;
+        case 2:
+            currentUser.set("avatar", "images/captainPlanet.jpg");
+            break;
+        case 3:
+            currentUser.set("avatar", "images/chao.jpg");
+            break;
+        case 4:
+            currentUser.set("avatar", "images/chocobo.jpg");
+            break;
+        case 5:
+            currentUser.set("avatar", "images/corgi_friendler.png");
+            break;
+        case 6:
+            currentUser.set("avatar", "images/dragonSlime.png");
+            break;
+        case 7:
+            currentUser.set("avatar", "images/dragonSlimeZangeif.png");
+            break;
+        case 8:
+            currentUser.set("avatar", "images/okamiden.jpg");
+            break;
+        case 9:
+            currentUser.set("avatar", "images/yoshi.jpg");
+            break;
     }
+    currentUser.save();
+    alert("You have chosen " + name + " as your new Friendler!");
+    window.location.href = "profile";
 }
 
 function moodSet() {
