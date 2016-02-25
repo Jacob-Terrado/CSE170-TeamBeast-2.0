@@ -119,11 +119,10 @@ function addFriends() {
 }
 
 function listFriends() {
-    var currUser = Parse.User.current();
-    currUser.fetch();
-    console.log(currUser);
-    console.log(currUser.get("username"));
-    var friendsList = currUser.get("friends");
+    currentUser.fetch();
+    console.log(currentUser);
+    console.log(currentUser.get("username"));
+    var friendsList = currentUser.get("friends");
     var container = document.getElementById("friendsList");
     if (friendsList) {
         for (var i = 0; i < friendsList.length; i++) {
@@ -142,6 +141,25 @@ function listFriends() {
     }
     console.log("listFriends is being called");
     //console.log(inputNode.checked);
+}
+
+function listEvolutions() {
+    // stores all the friendler objects
+    var query = new Parse.Query("Friendler");
+    var container = document.getElementById("evolutions");
+    query.each(function(user) {
+        var list = document.createElement("LI");
+        var img = document.createElement("img");
+        list.id = user.get("name");
+        img.class = "materialboxed";
+        //img.(data-caption) = "a little something";
+        img.src = user.get("path");
+        list.appendChild(img);
+        container.appendChild(list);
+        console.log(user);
+        console.log("Friendler name: " + user.get("name"));
+        console.log("Friendler path: " + user.get("path"));
+    });
 }
 
 function resetCheckCount() {
@@ -299,12 +317,12 @@ function levelUp() {
         alert("You have just leveled up to " + nextLevel + "!!");
         //window.location.href = "profile";
     }
-}
+};
 
 function showEvo() {
     currentUser.fetch();
     var checkLevel = currentUser.get("level");
-    if (checkLevel >= 10) {
+    if (checkLevel >= 3) {
         alert("You can now evolve your friendler!!!");
         document.getElementById('evo').style.visibility = 'visible';
     }
