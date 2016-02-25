@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
-<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel();">
+<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel(); showEvo(); avatarCheck()">
 {{> navbar}}
 
 <!-- Content -->
@@ -17,8 +17,7 @@
   <div id="main-content" class="card">
     <br>
     <h2 class="header center black-text">My Friendler</h2>
-    <div class="container center">
-      <img id="avatar" class="responsive-img" src="images/ditto.png">
+    <div class="container center" id="avatar">
     </div>
     <div class="container">
       <div class="collection">
@@ -27,7 +26,10 @@
         <a href="#" class="collection-item">Level:<span class="badge"><span id="level"></span></span></a>
         <a href="#" class="collection-item">Points To Spend:<span class="badge"><span id="point"></span></span></a>
       </div>
+        <div class="container center">
+      <div> <a class="waves-effect waves-light btn-large" href = "evolution" id = "evo" style="visibility:hidden;"><i class="material-icons right">autorenew</i>EVOLUTION</a></div>
       <br>
+    </div>
     </div>
   </div>
 </div>
@@ -36,6 +38,8 @@
 
 {{> materializeScripts}}
 {{> parseScripts}}
+{{> checkInFab}}
+
 
 <script>
   $(document).ready(function () {

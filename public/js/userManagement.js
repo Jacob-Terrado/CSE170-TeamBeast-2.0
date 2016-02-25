@@ -4,6 +4,8 @@ var currentUser = Parse.User.current();
 
 $(document).ready(function () {
     validateSession();
+    $('.slider').slider();
+    $('.carousel').carousel();
 });
 
 function validateSession() {
@@ -32,9 +34,10 @@ function signUp() {
         person.set("lastName", lastName);
         person.set("points", 0);
         person.set("level", 1);
-        person.set("avatar", 1);
+        person.set("avatar", "images/ditto.png");
         person.set("emotion", 50);
         person.set("bar", 0);
+        person.set("evolved", false);
         person.set("friends", []);
 
         person.signUp(null, {
@@ -117,11 +120,10 @@ function addFriends() {
 }
 
 function listFriends() {
-    var currUser = Parse.User.current();
-    currUser.fetch();
-    console.log(currUser);
-    console.log(currUser.get("username"));
-    var friendsList = currUser.get("friends");
+    currentUser.fetch();
+    console.log(currentUser);
+    console.log(currentUser.get("username"));
+    var friendsList = currentUser.get("friends");
     var container = document.getElementById("friendsList");
     if (friendsList) {
         for (var i = 0; i < friendsList.length; i++) {
@@ -141,7 +143,21 @@ function listFriends() {
     console.log("listFriends is being called");
     //console.log(inputNode.checked);
 }
-
+/*
+function listEvolutions() {
+    // stores all the friendler objects
+    var query = new Parse.Query("Friendler");
+    var container = document.getElementById("evolutions");
+    var projectHTML = "";
+    query.each(function(user) {
+        projectHTML = "<li><img class='responsive-img' src='" + user.get("path") + "' id='" + user.get("name") + "'</li>'";
+        $('#evolutions').append(projectHTML);
+        console.log(user);
+        console.log("Friendler name: " + user.get("name"));
+        console.log("Friendler path: " + user.get("path"));
+    });
+}
+*/
 function resetCheckCount() {
     checkCount = 0;
 }
@@ -187,22 +203,48 @@ function showXP() {
 
 function avatarCheck() {
     currentUser.fetch();
-    // console.log(currentUser.get('avatar'));
-    return currentUser.get('avatar');
+    console.log(currentUser.get('avatar'));
+    var userAvatar = currentUser.get('avatar');
+    console.log(userAvatar);
+    var imgHTML = "<img class='responsive-img' src='" + userAvatar + "'>";
+    $("#avatar").append(imgHTML);
 }
 
-function avatarSet() {
-    var ava = avatarCheck();
-    var place = "images/ditto.png";
-    if (ava == 1) {
-        return place = "images/ditto.png";
-    } else if (ava == 2) {
-        return place = "images/corgi_friendler.png";
-    } else if (ava == 3) {
-        return place = "images/check.jpg";
-    } else if (ava == 4) {
-        return place = "images/backpack.png";
+function avatarSet(number) {
+    currentUser.fetch();
+    switch (number) {
+        case 1:
+            currentUser.set("avatar", "images/alpaca.jpg");
+            break;
+        case 2:
+            currentUser.set("avatar", "images/captainPlanet.jpg");
+            break;
+        case 3:
+            currentUser.set("avatar", "images/chao.jpg");
+            break;
+        case 4:
+            currentUser.set("avatar", "images/chocobo.jpg");
+            break;
+        case 5:
+            currentUser.set("avatar", "images/corgi_friendler.png");
+            break;
+        case 6:
+            currentUser.set("avatar", "images/dragonSlime.png");
+            break;
+        case 7:
+            currentUser.set("avatar", "images/dragonSlimeZangeif.png");
+            break;
+        case 8:
+            currentUser.set("avatar", "images/okamiden.jpg");
+            break;
+        case 9:
+            currentUser.set("avatar", "images/yoshi.jpg");
+            break;
     }
+    currentUser.set("evolved", true);
+    currentUser.save();
+    alert("You have evolved into a new Friendler!");
+    window.location.href = "profile";
 }
 
 function moodSet() {
@@ -296,5 +338,18 @@ function levelUp() {
         currentUser.save();
         alert("You have just leveled up to " + nextLevel + "!!");
         //window.location.href = "profile";
+    }
+};
+
+function showEvo() {
+    currentUser.fetch();
+    var checkLevel = currentUser.get("level");
+    var evolved = currentUser.get('evolved');
+    if (checkLevel >= 3 && !evolved) {
+        alert("You can now evolve your friendler!!!");
+        document.getElementById('evo').style.visibility = 'visible';
+    }
+    else {
+        document.getElementById('evo').style.visibility = 'hidden';
     }
 };
