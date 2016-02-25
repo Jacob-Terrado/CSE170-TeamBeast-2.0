@@ -34,9 +34,10 @@ function signUp() {
         person.set("lastName", lastName);
         person.set("points", 0);
         person.set("level", 1);
-        person.set("avatar", 1);
+        person.set("avatar", "images/ditto.png");
         person.set("emotion", 50);
         person.set("bar", 0);
+        person.set("evolved", false);
         person.set("friends", []);
 
         person.signUp(null, {
@@ -142,7 +143,7 @@ function listFriends() {
     console.log("listFriends is being called");
     //console.log(inputNode.checked);
 }
-
+/*
 function listEvolutions() {
     // stores all the friendler objects
     var query = new Parse.Query("Friendler");
@@ -156,7 +157,7 @@ function listEvolutions() {
         console.log("Friendler path: " + user.get("path"));
     });
 }
-
+*/
 function resetCheckCount() {
     checkCount = 0;
 }
@@ -203,10 +204,13 @@ function showXP() {
 function avatarCheck() {
     currentUser.fetch();
     console.log(currentUser.get('avatar'));
-    return currentUser.get('avatar');
+    var userAvatar = currentUser.get('avatar');
+    console.log(userAvatar);
+    var imgHTML = "<img class='responsive-img' src='" + userAvatar + "'>";
+    $("#avatar").append(imgHTML);
 }
 
-function avatarSet(number, name) {
+function avatarSet(number) {
     currentUser.fetch();
     switch (number) {
         case 1:
@@ -237,8 +241,9 @@ function avatarSet(number, name) {
             currentUser.set("avatar", "images/yoshi.jpg");
             break;
     }
+    currentUser.set("evolved", true);
     currentUser.save();
-    alert("You have chosen " + name + " as your new Friendler!");
+    alert("You have evolved into a new Friendler!");
     window.location.href = "profile";
 }
 
@@ -339,7 +344,8 @@ function levelUp() {
 function showEvo() {
     currentUser.fetch();
     var checkLevel = currentUser.get("level");
-    if (checkLevel >= 3) {
+    var evolved = currentUser.get('evolved');
+    if (checkLevel >= 3 && !evolved) {
         alert("You can now evolve your friendler!!!");
         document.getElementById('evo').style.visibility = 'visible';
     }

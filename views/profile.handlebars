@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
-<body onLoad="showEvo(); Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel();">
+<body onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel(); showEvo(); avatarCheck()">
 {{> navbar}}
 
 <!-- Content -->
@@ -17,8 +17,7 @@
   <div id="main-content" class="card">
     <br>
     <h2 class="header center black-text">My Friendler</h2>
-    <div class="container center">
-      <img id="avatar" class="responsive-img" src=avatarCheck()>
+    <div class="container center" id="avatar">
     </div>
     <div class="container">
       <div class="collection">
