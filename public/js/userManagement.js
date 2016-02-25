@@ -208,6 +208,7 @@ function avatarCheck() {
     console.log(userAvatar);
     var imgHTML = "<img class='responsive-img' src='" + userAvatar + "'>";
     $("#avatar").append(imgHTML);
+    return userAvatar;
 }
 
 function avatarSet(number) {
@@ -244,7 +245,6 @@ function avatarSet(number) {
     currentUser.set("evolved", true);
     currentUser.save();
     alert("You have evolved into a new Friendler!");
-    window.location.href = "profile";
 }
 
 function moodSet() {
