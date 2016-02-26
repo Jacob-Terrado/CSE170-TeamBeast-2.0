@@ -42,10 +42,10 @@ function updatePoints2() {
     // set the new point values to be stored
     var newCount = parseInt(count) + 1;
     console.log("The newCount is at: " + newCount);
-    var pt = 200 * (newCount + 1);
+    var pt = 200 * (newCount);
     console.log("pt value is: " + pt + " and count is " + newCount);
     var newPoints = currPoints + pt;
-    var exp = 200 * (count + 1);
+    var exp = 200 * (newCount);
     var newXP = currXP + exp;
     // save data to the database
     currentUser.save({
