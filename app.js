@@ -14,6 +14,7 @@ var tutorial = require('./routes/tutorial');
 var profile = require('./routes/profile');
 var friends = require('./routes/friends');
 var checkin = require('./routes/checkin');
+var checkin2 = require('./routes/checkin2');
 var evolution = require('./routes/evolution');
 var friendsCheckin = require('./routes/friendsCheckin');
 // Example route
@@ -48,6 +49,7 @@ app.get('/tutorial', tutorial.viewTutorial);
 app.get('/profile', profile.viewProfile);
 app.get('/friends', friends.viewFriends);
 app.get('/checkin', checkin.viewCheckIn);
+app.get('/checkin2', checkin2.viewCheckIn2);
 app.get('/friendsCheckin', friendsCheckin.viewFriendsCheckIn);
 app.get('/evolution', evolution.viewEvolution);
 

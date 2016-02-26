@@ -175,6 +175,18 @@ function checkedCount() {
     updatePoints(checkCount);
 }
 
+function storeFriendCount() {
+    var friendCount = 0;
+    console.log("There are these many checkboxes: " + $(":checkbox").length);
+    $(":checkbox").each(function() {
+        if (this.checked) {
+            friendCount++;
+        }
+    });
+    console.log("Friend count is at: " + friendCount);
+    localStorage.setItem("numOfFriends", friendCount);
+}
+
 function showPoints() {
     //only should be used for profile
     currentUser.fetch();
@@ -325,8 +337,10 @@ function levelUp() {
     currentUser.fetch();
     // store previous level 
     var prevLevel = currentUser.get("level");
+    console.log(prevLevel);
     // get the current user's total points
     var totalPoints = currentUser.get("bar");
+    console.log(totalPoints);
     // variable for the next level
     var nextLevel;
 
