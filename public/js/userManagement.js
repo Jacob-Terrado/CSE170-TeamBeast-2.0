@@ -292,6 +292,12 @@ function updatePoints(count) {
     console.log(currentUser.get("points"));
 }
 
+function confMod(text) {
+    $(".modal-content #descript").val(text);
+    $('#ConfirmModal').openModal();
+}
+
+
 function purchase() {
     var pls = document.getElementById("pts").innerHTML;
     currentUser.fetch();
