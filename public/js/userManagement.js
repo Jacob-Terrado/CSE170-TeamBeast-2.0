@@ -304,21 +304,31 @@ function updatePoints(count) {
     console.log(currentUser.get("points"));
 }
 
-function confMod(text) {
-    $(".modal-content #descript").val(text);
+function confMod(des, nameF, imageF, valueF) {
+    console.log(des);
+    console.log(nameF);
+    console.log(imageF);
+    console.log(valueF);
+    $(".modal-content #descript").val(des);
+    $(".modal-content #price").val("Price:" + valueF);
     $('#ConfirmModal').openModal();
 }
 
 
 function purchase() {
     var pls = document.getElementById("pts").innerHTML;
+    console.log($(".modal-content #descript").val());
+    console.log($(".modal-content #price").val());
+    var itemP = $(".modal-content #price").val();
     currentUser.fetch();
     var userPts = currentUser.get('points');
-    if (userPts >= 1000) {
+    if (userPts >= itemP) {
         console.log(pls);
-        currentUser.set("points", userPts - 1000);
+        newP = userPts - itemP
+        currentUser.set("points", newP);
         currentUser.save();
         $('#BuyModal').openModal();
+        document.getElementById("update").innerHTML = newP;
         console.log("success");
     } else {
         $('#FailModal').openModal();
