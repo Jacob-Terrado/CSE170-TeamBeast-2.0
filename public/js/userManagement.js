@@ -261,15 +261,15 @@ function avatarSet(number) {
 
 function moodSet() {
     var mood = showEmotion();
-    if (mood <= 25) {
+    if (mood < 25) {
         return "('°□°）'︵ ┻━┻";
-    } else if (mood > 25 && mood <= 40) {
+    } else if (mood >= 25 && mood < 40) {
         return place = "┬─┬ノ( º _ ºノ)";
-    } else if (mood > 40 && mood <= 60) {
+    } else if (mood >= 40 && mood < 60) {
         return place = "(•_•)";
-    } else if (mood > 60 && mood <= 99) {
+    } else if (mood >= 60 && mood < 90) {
         return place = "v(^_^)v";
-    } else if (mood == 100) {
+    } else if (mood >= 90) {
         return place = "( ﾟヮﾟ)";
     }
 }
@@ -337,16 +337,30 @@ function purchase() {
     }
 }
 
-function itemUsed() {
+function itemUsed(text) {
     var increase = showEmotion();
+    $('#UseModal').openModal();
+    $(".modal-content #invName").val(text);
     if (increase + 5 > 100) {
         currentUser.set("emotion", 100);
     } else {
         currentUser.set("emotion", increase + 5);
+        if ((increase + 5 >= 25) && (increase < 25))
+        {
+            alert("Your Friendler has finally put the table down. More gifts will make it happier!");
+        }
+        else if ((increase + 5 >= 40 ) && (increase < 40)){
+            alert("Your Friendler is currently satisfied");
+        }
+        else if ((increase + 5 >= 60) && (increase < 60)) {
+            alert("Your Friendler is currently happy, Good job!");
+        }
+        else if ((increase + 5 >= 90) && (increase < 90)){
+            alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+        }
     }
     currentUser.save();
     console.log(increase);
-    $('#UseModal').openModal();
 }
 
 function levelUp() {
