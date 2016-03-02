@@ -19,18 +19,18 @@
     <h2 class="header center black-text">My Friendler</h2>
     <div class="container center" id="avatar">
     </div>
-    <div class="container">
+    <ul class="container">
       <div class="collection">
-        <a href="#" class="collection-item">Name:<span class="badge">Ditto</span></a>
-        <a href="#" class="collection-item">Mood:<span class="badge"><span id="mood"></span></span></a>
-        <a href="#" class="collection-item">Level:<span class="badge"><span id="level"></span></span></a>
-        <a href="#" class="collection-item">Points To Spend:<span class="badge"><span id="point"></span></span></a>
+        <li class="collection-item">Name:<span class="badge">Ditto</span></li>
+        <a href="inventory" class="collection-item">Mood:<span class="badge"><span id="mood"></span></span></a>
+        <li href="" class="collection-item">Level:<span class="badge"><span id="level"></span></span></li>
+        <a href="store" class="collection-item">Points To Spend:<span class="badge"><span id="point"></span></span></a>
       </div>
         <div class="container center">
       <div> <a class="waves-effect waves-light btn-large" href = "evolution" id = "evo" style="visibility:hidden;"><i class="material-icons right">autorenew</i>EVOLUTION</a></div>
       <br>
     </div>
-    </div>
+    </ul>
   </div>
 </div>
 
@@ -39,7 +39,7 @@
 {{> materializeScripts}}
 {{> parseScripts}}
 {{> checkInFab}}
-
+{{> googleAnalytics}}
 
 <script>
   $(document).ready(function () {

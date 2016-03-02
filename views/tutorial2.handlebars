@@ -8,7 +8,6 @@
   <!-- CSS for Materialize -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
-  {{> googleAnalyticsExperiment}}
 </head>
 <body onLoad="Materialize.fadeInImage('#main-content')">
 <!-- Navigation Header -->
@@ -35,7 +34,7 @@
     </div>
     <div class="center card-action">
       <a href="profile">Start my journey</a>
-      <a id="tutorialTest" href="#learnMoreModal" onClick="$('#learnMoreModal').openModal();">How To Play</a>
+      <a href="#learnMoreModal" onClick="$('#learnMoreModal').openModal();" style="color:red;">How To Play</a>
     </div>
     <div class="col s1">&nbsp;</div>
     <div id="learnMoreModal" class="modal modal-fixed-footer">
@@ -54,7 +53,7 @@
           <li class="collection-item">Food to feed your Friendler</li>
         </ul>
         </p>
-        <p>The number of points you earn also add up to help you level up your Friendler and reaching certain levels will unlock surprising new contents! 
+        <p>The number of points you earn also add up to help you level up your Friendler and reaching certain levels will unlock surprising new contents!
         </p>
       </div>
       <div class="modal-footer">

@@ -46,6 +46,7 @@ app.get('/', index.viewIndex);
 app.get('/store', store.viewStore);
 app.get('/inventory', inventory.viewInventory);
 app.get('/tutorial', tutorial.viewTutorial);
+app.get('/tutorial2', tutorial.viewTutorial2);
 app.get('/profile', profile.viewProfile);
 app.get('/friends', friends.viewFriends);
 app.get('/checkin', checkin.viewCheckIn);
