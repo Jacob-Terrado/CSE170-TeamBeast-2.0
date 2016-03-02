@@ -1,4 +1,4 @@
-Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
+    Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
 
 var currentUser = Parse.User.current();
 
@@ -310,7 +310,7 @@ function confMod(des, nameF, imageF, valueF) {
     console.log(imageF);
     console.log(valueF);
     $(".modal-content #descript").val(des);
-    $(".modal-content #price").val("Price:" + valueF);
+    $(".modal-content #price").val(valueF);
     $('#ConfirmModal').openModal();
 }
 
@@ -320,8 +320,10 @@ function purchase() {
     console.log($(".modal-content #descript").val());
     console.log($(".modal-content #price").val());
     var itemP = $(".modal-content #price").val();
+    console.log(itemP);
     currentUser.fetch();
     var userPts = currentUser.get('points');
+    console.log(userPts);
     if (userPts >= itemP) {
         console.log(pls);
         newP = userPts - itemP
