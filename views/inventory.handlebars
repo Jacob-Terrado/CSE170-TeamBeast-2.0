@@ -33,14 +33,14 @@
           <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
           <p>{{description}}.</p>
           <div class="center card-action">
-            <a onClick="itemUsed();">Use</a>
+            <a onClick="itemUsed('{{name}}', {{value}});">Use</a>
           </div>
         </div>
       </div>
 
       <div id="UseModal" class="modal modal-fixed-footer">
         <div class="modal-content">
-          <p>You used that item!</p>
+          <p>You used:</p> <input type="text" name="invName" id="invName" value=""/>
           <p>Your Friendler feels happier!</p>
           <div id="update"></div>
           <div class="center card-action">

@@ -1,21 +1,24 @@
 {
 	"inventory": [
 	{
+		"id":1,
 		"name": "Super Backpack",
 		"image": "/backpack.png",
-		"value": "1000",			
+		"value": "2000",			
 		"description": "This is a backpack..."
 	},
 	{
-		"name": "Ditto",
-		"image": "/ditto.png",
-		"value": "1000",			
-		"description": "This is a ditto..."
+		"id":2,
+		"name": "Friendler Food",
+		"image": "/poffin.jpg",
+		"value": "3000",			
+		"description": "Food for Friendlers, Increases Friender's Mood"
 	},
 	{
+		"id":3,
 		"name": "Evolution Stone",
 		"image": "/evo.png",
-		"value": "1000",			
+		"value": "5000",			
 		"description": "This is an evo stone..."
 	}
 	]

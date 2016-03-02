@@ -54,13 +54,13 @@
       console.log("yes2");
       var currentUser = Parse.User.current();
       var emo = showEmotion();
-      if ((emo - 5) < 0) {
+      if ((emo - 2) < 0) {
         currentUser.set("emotion", 0);
         currentUser.save();
         console.log("leggo");
       }
       else {
-        currentUser.set("emotion", emo - 5);
+        currentUser.set("emotion", emo - 2);
         currentUser.save();
         console.log("stillgood");
       }

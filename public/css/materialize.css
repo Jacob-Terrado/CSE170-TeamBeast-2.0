@@ -2599,6 +2599,7 @@ ul {
 }
 
 a {
+  display: block; 
   color: #039be5;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
