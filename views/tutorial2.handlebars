@@ -8,6 +8,7 @@
   <!-- CSS for Materialize -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
+  {{> googleAnalyticsExperiment}}
 </head>
 <body onLoad="Materialize.fadeInImage('#main-content')">
 <!-- Navigation Header -->
@@ -17,7 +18,7 @@
 <div class="container">
   <div class="card">
     <br>
-    <h2 class="header center black-text">Welcome to the World of Friendlers</h2>
+    <h5 class="header center black-text">Welcome to the World of Friendlers</h5>
     <div class="row">
       <div class="col s1">&nbsp;</div>
       <div class="center col s10">
@@ -28,38 +29,39 @@
     <div class="row">
       <div class="container">
         <div class="card-content">
-          <h5>Here is your very own Friendler! Keeping them happy and healthy by buying food and equipment for them with the points you earn! Make sure you treat them well, they can get a bit moody!</h5>
+          <p style="font-size:18px;">Here is your very own Friendler! Keeping it happy and healthy by buying food and equipment for it with the points you earn! Treat it well as it can get a bit moody!</p>
         </div>
       </div>
     </div>
     <div class="center card-action">
-      <a href="profile">Start my journey</a>
-      <a href="#learnMoreModal" onClick="$('#learnMoreModal').openModal();" style="color:red;">How To Play</a>
+      <a href="profile">Start Journey</a>
+      <a id="tutorialTest" href="#learnMoreModal" onClick="$('#learnMoreModal').openModal();" id="tutorialTest2" style="color:red;"><b>Learn to Play</b></a>
     </div>
-    <div class="col s1">&nbsp;</div>
-    <div id="learnMoreModal" class="modal modal-fixed-footer">
-      <div class="modal-content">
-        <h4>How to Play</h4>
-        <p>Earn points by checking into public places like restaurants, parks, and other venues!</p>
-        <p>You can check in by yourself or if you're feeling really adventurous, check in with others to get even more points!
-        <ul class="collection">
-          <li class="collection-item">By yourself (200 points)</li>
-          <li class="collection-item">With friends (200 points + 200 more points for every friend you're with!)</li>
-        </ul>
-        </p>
-        <p>Use your points to purchase:
-        <ul class="collection">
-          <li class="collection-item">Equipment for your Friendler</li>
-          <li class="collection-item">Food to feed your Friendler</li>
-        </ul>
-        </p>
-        <p>The number of points you earn also add up to help you level up your Friendler and reaching certain levels will unlock surprising new contents!
-        </p>
-      </div>
-      <div class="modal-footer">
-        <a href="profile" class=" modal-action modal-close waves-effect waves-green btn-flat">Start my journey</a>
-      </div>
-    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="learnMoreModal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>How to Play</h4>
+    <p>Earn points by checking into public places like restaurants, parks, and other venues!</p>
+    <p>You can check in by yourself or if you're feeling really adventurous, check in with others to get even more points!
+    <ul class="collection">
+      <li class="collection-item">By yourself (200 points)</li>
+      <li class="collection-item">With friends (200 points + 200 more points for every friend you're with!)</li>
+    </ul>
+    </p>
+    <p>Use your points to purchase:
+    <ul class="collection">
+      <li class="collection-item">Equipment for your Friendler</li>
+      <li class="collection-item">Food to feed your Friendler</li>
+    </ul>
+    </p>
+    <p>The number of points you earn also add up to help you level up your Friendler and reaching certain levels will unlock surprising new contents!
+    </p>
+  </div>
+  <div class="modal-footer">
+    <a href="profile" class=" modal-action modal-close waves-effect waves-green btn-flat">Start my journey</a>
   </div>
 </div>
 
