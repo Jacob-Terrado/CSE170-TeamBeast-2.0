@@ -339,8 +339,14 @@ function purchase() {
     }
 }
 
-function itemUsed(text) {
+function itemUsed(text, val) {
     var increase = showEmotion();
+    console.log(text);
+    if (text == "Mystery Gift"){
+        $('#PresentModal').openModal();
+        currentUser.set("emotion",100);
+    }
+    else{
     $('#UseModal').openModal();
     $(".modal-content #invName").val(text);
     if (increase + 5 > 100) {
@@ -361,8 +367,9 @@ function itemUsed(text) {
             alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
         }
     }
-    currentUser.save();
+}
     console.log(increase);
+    currentUser.save();
 }
 
 function levelUp() {

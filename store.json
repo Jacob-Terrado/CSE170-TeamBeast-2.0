@@ -16,10 +16,10 @@
 	},
 	{
 		"id": 3,
-		"name": "Evolution Stone",
-		"image": "/evo.png",
-		"value": "5000",			
-		"description": "This is an evo stone..."
+		"name": "Mystery Gift",
+		"image": "/gift.png",
+		"value": "25000",			
+		"description": "A gift your friendler put in the store, What's inside?"
 	}
 	]
 }

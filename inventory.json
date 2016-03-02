@@ -1,11 +1,11 @@
 {
 	"inventory": [
 	{
-		"id":1,
-		"name": "Super Backpack",
-		"image": "/backpack.png",
+		"id": 1, 
+		"name": "Super Ball",
+		"image": "/ball.png",
 		"value": "2000",			
-		"description": "This is a backpack..."
+		"description": "Friendler toy, Increases Friendler mood"
 	},
 	{
 		"id":2,
@@ -15,11 +15,11 @@
 		"description": "Food for Friendlers, Increases Friender's Mood"
 	},
 	{
-		"id":3,
-		"name": "Evolution Stone",
-		"image": "/evo.png",
-		"value": "5000",			
-		"description": "This is an evo stone..."
+		"id": 3,
+		"name": "Mystery Gift",
+		"image": "/gift.png",
+		"value": "25000",			
+		"description": "A gift your friendler put in the store, What's inside?"
 	}
 	]
 }
