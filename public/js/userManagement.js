@@ -44,6 +44,7 @@ function signUp() {
 
         person.signUp(null, {
             success: function (user) {
+                console.log(random);
                 if (random < 0.5) {
                     window.location = "/tutorial";
                 }
