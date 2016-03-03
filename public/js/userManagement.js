@@ -1,4 +1,4 @@
-    Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
+Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
 
 var currentUser = Parse.User.current();
 
@@ -114,7 +114,6 @@ function addFriends() {
     node.appendChild(inputNode);
     node.appendChild(label);
     container.appendChild(node);
-    alert("You have just added " + newFriend + " as a friend!");
 
     document.getElementById("friendName").value = "";
 }
@@ -144,20 +143,20 @@ function listFriends() {
     //console.log(inputNode.checked);
 }
 /*
-function listEvolutions() {
-    // stores all the friendler objects
-    var query = new Parse.Query("Friendler");
-    var container = document.getElementById("evolutions");
-    var projectHTML = "";
-    query.each(function(user) {
-        projectHTML = "<li><img class='responsive-img' src='" + user.get("path") + "' id='" + user.get("name") + "'</li>'";
-        $('#evolutions').append(projectHTML);
-        console.log(user);
-        console.log("Friendler name: " + user.get("name"));
-        console.log("Friendler path: " + user.get("path"));
-    });
-}
-*/
+ function listEvolutions() {
+ // stores all the friendler objects
+ var query = new Parse.Query("Friendler");
+ var container = document.getElementById("evolutions");
+ var projectHTML = "";
+ query.each(function(user) {
+ projectHTML = "<li><img class='responsive-img' src='" + user.get("path") + "' id='" + user.get("name") + "'</li>'";
+ $('#evolutions').append(projectHTML);
+ console.log(user);
+ console.log("Friendler name: " + user.get("name"));
+ console.log("Friendler path: " + user.get("path"));
+ });
+ }
+ */
 function resetCheckCount() {
     checkCount = 0;
 }
@@ -178,13 +177,17 @@ function checkedCount() {
 function storeFriendCount() {
     var friendCount = 0;
     console.log("There are these many checkboxes: " + $(":checkbox").length);
-    $(":checkbox").each(function() {
+    $(":checkbox").each(function () {
         if (this.checked) {
             friendCount++;
         }
     });
     console.log("Friend count is at: " + friendCount);
     localStorage.setItem("numOfFriends", friendCount);
+}
+
+function storeFriendCount2(num) {
+    localStorage.setItem("numOfFriends", num);
 }
 
 function showPoints() {
@@ -342,32 +345,31 @@ function purchase() {
 function itemUsed(text, val) {
     var increase = showEmotion();
     console.log(text);
-    if (text == "Mystery Gift"){
+    if (text == "Mystery Gift") {
         $('#PresentModal').openModal();
-        currentUser.set("emotion",100);
-    }
-    else{
-    $('#UseModal').openModal();
-    $(".modal-content #invName").val(text);
-    if (increase + 5 > 100) {
         currentUser.set("emotion", 100);
-    } else {
-        currentUser.set("emotion", increase + 5);
-        if ((increase + 5 >= 25) && (increase < 25))
-        {
-            alert("Your Friendler has finally put the table down. More gifts will make it happier!");
-        }
-        else if ((increase + 5 >= 40 ) && (increase < 40)){
-            alert("Your Friendler is currently satisfied");
-        }
-        else if ((increase + 5 >= 60) && (increase < 60)) {
-            alert("Your Friendler is currently happy, Good job!");
-        }
-        else if ((increase + 5 >= 90) && (increase < 90)){
-            alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+    }
+    else {
+        $('#UseModal').openModal();
+        $(".modal-content #invName").val(text);
+        if (increase + 5 > 100) {
+            currentUser.set("emotion", 100);
+        } else {
+            currentUser.set("emotion", increase + 5);
+            if ((increase + 5 >= 25) && (increase < 25)) {
+                alert("Your Friendler has finally put the table down. More gifts will make it happier!");
+            }
+            else if ((increase + 5 >= 40 ) && (increase < 40)) {
+                alert("Your Friendler is currently satisfied");
+            }
+            else if ((increase + 5 >= 60) && (increase < 60)) {
+                alert("Your Friendler is currently happy, Good job!");
+            }
+            else if ((increase + 5 >= 90) && (increase < 90)) {
+                alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+            }
         }
     }
-}
     console.log(increase);
     currentUser.save();
 }
@@ -392,7 +394,7 @@ function levelUp() {
         alert("You have just leveled up to " + nextLevel + "!!");
         //window.location.href = "profile";
     }
-};
+}
 
 function showEvo() {
     currentUser.fetch();
@@ -405,4 +407,4 @@ function showEvo() {
     else {
         document.getElementById('evo').style.visibility = 'hidden';
     }
-};
+}
