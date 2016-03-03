@@ -40,9 +40,16 @@ function signUp() {
         person.set("evolved", false);
         person.set("friends", []);
 
+        var random = Math.random();
+
         person.signUp(null, {
             success: function (user) {
-                window.location = "/tutorial";
+                if (random < 0.5) {
+                    window.location = "/tutorial";
+                }
+                else {
+                    window.location = "/tutorial2";
+                }
             },
             error: function (user, error) {
                 alert("The inputted email and username are already taken");
