@@ -16,6 +16,13 @@
 	},
 	{
 		"id": 3,
+		"name": "Coupon",
+		"image": "/coupon.jpg",
+		"value": "3000",			
+		"description": "Coupon for your venue"
+	}
+	{
+		"id": 4,
 		"name": "Mystery Gift",
 		"image": "/gift.png",
 		"value": "25000",			
