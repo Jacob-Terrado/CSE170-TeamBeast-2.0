@@ -46,10 +46,10 @@ function signUp() {
             success: function (user) {
                 console.log(random);
                 if (random < 0.5) {
-                    window.location = "/tutorial";
+                    window.location.href = "tutorial";
                 }
                 else {
-                    window.location = "/tutorial2";
+                    window.location.href = "tutorial2";
                 }
             },
             error: function (user, error) {
