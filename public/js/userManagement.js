@@ -39,6 +39,10 @@ function signUp() {
         person.set("bar", 0);
         person.set("evolved", false);
         person.set("friends", []);
+        person.set("itemA", 0);
+        person.set("itemB", 0);
+        person.set("itemC", 0);
+        person.set("itemD", 0);
 
         person.signUp(null, {
             success: function (user) {
@@ -308,10 +312,6 @@ function updatePoints(count) {
 }
 
 function confMod(des, nameF, imageF, valueF) {
-    console.log(des);
-    console.log(nameF);
-    console.log(imageF);
-    console.log(valueF);
     $(".modal-content #descript").val(des);
     $(".modal-content #price").val(valueF);
     $('#ConfirmModal').openModal();
@@ -323,15 +323,29 @@ function purchase() {
     console.log($(".modal-content #descript").val());
     console.log($(".modal-content #price").val());
     var itemP = $(".modal-content #price").val();
-    console.log(itemP);
     currentUser.fetch();
+    if (itemP == 2000) {
+        amount = valueItemA();
+        currentUser.set("itemA", amount + 1);
+    }
+    else if (itemP == 3000) {
+        amount = valueItemB();
+        currentUser.set("itemB", amount + 1);
+    }
+    else if (itemP == 5000) {
+        amount = valueItemC();
+        currentUser.set("itemC", amount + 1);
+    }
+    else if (itemP == 25000) {
+        amount = valueItemD();
+        currentUser.set("itemD", amount + 1);
+    }
     var userPts = currentUser.get('points');
     console.log(userPts);
     if (userPts >= itemP) {
         console.log(pls);
         newP = userPts - itemP
         currentUser.set("points", newP);
-        currentUser.save();
         $('#BuyModal').openModal();
         document.getElementById("update").innerHTML = newP;
         console.log("success");
@@ -340,71 +354,148 @@ function purchase() {
         console.log("fail");
         console.log(userPts);
     }
+    currentUser.save();
 }
 
-function itemUsed(text, val) {
+function itemUsed(text) {
     var increase = showEmotion();
     console.log(text);
     if (text == "Mystery Gift") {
         $('#PresentModal').openModal();
         currentUser.set("emotion", 100);
-    }
-    else {
+        amount = valueItemD();
+        currentUser.set("itemD", amount - 1);
+    } else {
+        if (text == "Super Ball") {
+            amount = valueItemA();
+            currentUser.set("itemA", amount - 1);
+        }
+        else if (text == "Friendler Food") {
+            amount = valueItemB();
+            currentUser.set("itemB", amount - 1);
+        }
+        else if (text == "Coupon") {
+            amount = valueItemC();
+            currentUser.set("itemC", amount - 1);
+        }
         $('#UseModal').openModal();
         $(".modal-content #invName").val(text);
         if (increase + 5 > 100) {
             currentUser.set("emotion", 100);
         } else {
-            currentUser.set("emotion", increase + 5);
-            if ((increase + 5 >= 25) && (increase < 25)) {
-                alert("Your Friendler has finally put the table down. More gifts will make it happier!");
-            }
-            else if ((increase + 5 >= 40 ) && (increase < 40)) {
-                alert("Your Friendler is currently satisfied");
-            }
-            else if ((increase + 5 >= 60) && (increase < 60)) {
-                alert("Your Friendler is currently happy, Good job!");
-            }
-            else if ((increase + 5 >= 90) && (increase < 90)) {
-                alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+            $('#UseModal').openModal();
+            $(".modal-content #invName").val(text);
+            if (increase + 5 > 100) {
+                currentUser.set("emotion", 100);
+            } else {
+                currentUser.set("emotion", increase + 5);
+                if ((increase + 5 >= 25) && (increase < 25)) {
+                    alert("Your Friendler has finally put the table down. More gifts will make it happier!");
+                } else if ((increase + 5 >= 40 ) && (increase < 40)) {
+                    alert("Your Friendler is currently satisfied");
+                } else if ((increase + 5 >= 60) && (increase < 60)) {
+                    alert("Your Friendler is currently happy, Good job!");
+                } else if ((increase + 5 >= 90) && (increase < 90)) {
+                    alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+                }
             }
         }
-    }
-    console.log(increase);
-    currentUser.save();
-}
-
-function levelUp() {
-    currentUser.fetch();
-    // store previous level 
-    var prevLevel = currentUser.get("level");
-    console.log(prevLevel);
-    // get the current user's total points
-    var totalPoints = currentUser.get("bar");
-    console.log(totalPoints);
-    // variable for the next level
-    var nextLevel;
-
-    // check if the total points entitle a level up
-    if (totalPoints >= 1000) {
-        nextLevel = prevLevel + 1;
-        currentUser.set("level", nextLevel);
-        currentUser.set("bar", 0);
+        console.log(increase);
         currentUser.save();
-        alert("You have just leveled up to " + nextLevel + "!!");
-        //window.location.href = "profile";
     }
-}
 
-function showEvo() {
-    currentUser.fetch();
-    var checkLevel = currentUser.get("level");
-    var evolved = currentUser.get('evolved');
-    if (checkLevel >= 3 && !evolved) {
-        alert("You can now evolve your friendler!!!");
-        document.getElementById('evo').style.visibility = 'visible';
+    function levelUp() {
+        currentUser.fetch();
+        // store previous level
+        var prevLevel = currentUser.get("level");
+        console.log(prevLevel);
+        // get the current user's total points
+        var totalPoints = currentUser.get("bar");
+        console.log(totalPoints);
+        // variable for the next level
+        var nextLevel;
+
+        // check if the total points entitle a level up
+        if (totalPoints >= 1000) {
+            nextLevel = prevLevel + 1;
+            currentUser.set("level", nextLevel);
+            currentUser.set("bar", 0);
+            currentUser.save();
+            alert("You have just leveled up to " + nextLevel + "!!");
+            //window.location.href = "profile";
+        }
     }
-    else {
-        document.getElementById('evo').style.visibility = 'hidden';
+
+    function showEvo() {
+        currentUser.fetch();
+        var checkLevel = currentUser.get("level");
+        var evolved = currentUser.get('evolved');
+        if (checkLevel >= 3 && !evolved) {
+            alert("You can now evolve your friendler!!!");
+            document.getElementById('evo').style.visibility = 'visible';
+        }
+        else {
+            document.getElementById('evo').style.visibility = 'hidden';
+        }
     }
-}
+
+    function valueItemA() {
+        currentUser.fetch();
+        return currentUser.get("itemA");
+    }
+
+    function valueItemB() {
+        currentUser.fetch();
+        return currentUser.get("itemB");
+    }
+
+    function valueItemC() {
+        currentUser.fetch();
+        return currentUser.get("itemC");
+    }
+
+    function valueItemD() {
+        currentUser.fetch();
+        return currentUser.get("itemD");
+    }
+
+    function itemChecker() {
+        if (valueItemA() == 0) {
+            document.getElementById("row1").style = "display:none;"
+        } else {
+            $("#row1").show();
+        }
+
+        if (valueItemB() == 0) {
+            document.getElementById("row2").style = "display:none;"
+        } else {
+            $("#row2").show();
+        }
+
+        if (valueItemC() == 0) {
+            document.getElementById("row3").style = "display:none;"
+        } else {
+            $("#row3").show();
+        }
+
+        if (valueItemD() == 0) {
+            document.getElementById("row4").style = "display:none;"
+        } else {
+            $("#row4").show();
+        }
+
+        document.getElementById("inv").innerHTML = valueItemA();
+        document.getElementById("inv2").innerHTML = valueItemB();
+        document.getElementById("inv3").innerHTML = valueItemC();
+        document.getElementById("inv4").innerHTML = valueItemD();
+
+        if (valueItemA() == 0 && valueItemB() == 0 && valueItemC() == 0 && valueItemD() == 0) {
+            document.getElementById("check").innerHTML = "No current items, is it time to go to the store?"
+            document.getElementById('storeB').style.visibility = 'visible';
+        } else {
+            console.log("bye");
+            document.getElementById('storeB').style.visibility = 'hidden';
+            document.getElementById("check").innerHTML = ""
+        }
+
+    }
