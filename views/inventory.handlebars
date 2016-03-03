@@ -9,18 +9,21 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
-<body onLoad="Materialize.fadeInImage('#main-content')">
+<body onLoad="Materialize.fadeInImage('#main-content'); itemChecker()">
 {{> navbar}}
 
 <!-- Content -->
 <div class="container">
   <div id="main-content" class="card">
-    <h2 class="header center black-text">Inventory</h2>
+    <h3 class="header center black-text">Inventory</h3>
+    <div class="container center">
+      <img class="responsive-img" src="images/backpack.png">
+      <a href = "store" class="waves-effect waves-light btn" id = "storeB" style="visibility:hidden;">STORE</a>
+      <h5 id = "check"></h5>
+    </div>
   </div>
 
-  <div class="ui four doubling stackable cards">
-    {{#each inventory}}
-      <div class="card">
+<!--       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="images/{{image}}">
         </div>
@@ -37,6 +40,44 @@
           </div>
         </div>
       </div>
+ -->
+
+    <div class = "valign-wrapper">
+      <table class = "respsonsive-table centered highlighted bordered striped" id="inven">
+        <thead>
+          <tr>
+              <th data-field="image">Item</th>
+              <th data-field="name">Name</th>
+              <th data-field="price">Stock</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr id = "row1" style="display:none">
+            <td><a onClick="itemUsed('Super Ball');"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/ball.png"></a></td>
+            <td><a onClick="itemUsed('Super Ball');"><p id = "itemName">Super Ball</a></td>
+            <td><a onClick="itemUsed('Super Ball');"><p id = "inv"></p></a></td>
+          </tr>
+          <tr id = "row2" style="display:none">
+            <td><a onClick="itemUsed('Friendler Food');"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/poffin.jpg"></a></td>
+            <td><a onClick="itemUsed('Friendler Food');"><p id = "itemName">Friendler Food</a></td>
+            <td><a onClick="itemUsed('Friendler Food');"><p id = "inv2"></p></a></td>
+          </tr>
+          <tr id = "row3" style="display:none">
+            <td><a onClick="itemUsed('Coupon');"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/coupon.jpg"></a></td>
+            <td><a onClick="itemUsed('Coupon');"><p id = "itemName">Coupon</a></td>
+            <td><a onClick="itemUsed('Coupon');"><p id = "inv3"></p></a></td>
+          </tr>
+          <tr id = "row4" style ="display:none">
+            <td><a onClick="itemUsed('Mystery Gift');"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/gift.png"></a></td>
+            <td><a onClick="itemUsed('Mystery Gift');"><p id = "itemName">Mystery Gift</a></td>
+            <td><a onClick="itemUsed('Mystery gift');"><p id = "inv4"></p></a></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+
 
       <div id="UseModal" class="modal modal-fixed-footer">
         <div class="modal-content">
@@ -60,8 +101,6 @@
         </div>
       </div>
 
-
-    {{/each}}
   </div>
 </div>
 
@@ -71,5 +110,6 @@
 {{> parseScripts}}
 {{> checkInFab}}
 {{> googleAnalytics}}
+
 </body>
 </html>
