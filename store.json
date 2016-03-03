@@ -20,7 +20,7 @@
 		"image": "/coupon.jpg",
 		"value": "3000",			
 		"description": "Coupon for your venue"
-	}
+	},
 	{
 		"id": 4,
 		"name": "Mystery Gift",
