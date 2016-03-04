@@ -1,4 +1,4 @@
-    Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
+Parse.initialize("gxu4L1e0XELkQTfADYQgfLtFHIov0P1TWcKh7KmV", "KuGlPT84K0fhs3Dwt3jCrFUbVVSxFoycOUCBvF8N");
 
 var currentUser = Parse.User.current();
 
@@ -118,7 +118,6 @@ function addFriends() {
     node.appendChild(inputNode);
     node.appendChild(label);
     container.appendChild(node);
-    alert("You have just added " + newFriend + " as a friend!");
 
     document.getElementById("friendName").value = "";
 }
@@ -148,20 +147,20 @@ function listFriends() {
     //console.log(inputNode.checked);
 }
 /*
-function listEvolutions() {
-    // stores all the friendler objects
-    var query = new Parse.Query("Friendler");
-    var container = document.getElementById("evolutions");
-    var projectHTML = "";
-    query.each(function(user) {
-        projectHTML = "<li><img class='responsive-img' src='" + user.get("path") + "' id='" + user.get("name") + "'</li>'";
-        $('#evolutions').append(projectHTML);
-        console.log(user);
-        console.log("Friendler name: " + user.get("name"));
-        console.log("Friendler path: " + user.get("path"));
-    });
-}
-*/
+ function listEvolutions() {
+ // stores all the friendler objects
+ var query = new Parse.Query("Friendler");
+ var container = document.getElementById("evolutions");
+ var projectHTML = "";
+ query.each(function(user) {
+ projectHTML = "<li><img class='responsive-img' src='" + user.get("path") + "' id='" + user.get("name") + "'</li>'";
+ $('#evolutions').append(projectHTML);
+ console.log(user);
+ console.log("Friendler name: " + user.get("name"));
+ console.log("Friendler path: " + user.get("path"));
+ });
+ }
+ */
 function resetCheckCount() {
     checkCount = 0;
 }
@@ -182,13 +181,17 @@ function checkedCount() {
 function storeFriendCount() {
     var friendCount = 0;
     console.log("There are these many checkboxes: " + $(":checkbox").length);
-    $(":checkbox").each(function() {
+    $(":checkbox").each(function () {
         if (this.checked) {
             friendCount++;
         }
     });
     console.log("Friend count is at: " + friendCount);
     localStorage.setItem("numOfFriends", friendCount);
+}
+
+function storeFriendCount2(num) {
+    localStorage.setItem("numOfFriends", num);
 }
 
 function showPoints() {
@@ -321,19 +324,19 @@ function purchase() {
     console.log($(".modal-content #price").val());
     var itemP = $(".modal-content #price").val();
     currentUser.fetch();
-    if (itemP == 2000){
+    if (itemP == 2000) {
         amount = valueItemA();
-        currentUser.set("itemA", amount +1);
+        currentUser.set("itemA", amount + 1);
     }
-    else if(itemP == 3000){
+    else if (itemP == 3000) {
         amount = valueItemB();
         currentUser.set("itemB", amount + 1);
     }
-    else if(itemP == 5000){
+    else if (itemP == 5000) {
         amount = valueItemC();
         currentUser.set("itemC", amount + 1);
     }
-    else if(itemP == 25000){
+    else if (itemP == 25000) {
         amount = valueItemD();
         currentUser.set("itemD", amount + 1);
     }
@@ -357,149 +360,142 @@ function purchase() {
 function itemUsed(text) {
     var increase = showEmotion();
     console.log(text);
-    if (text == "Mystery Gift"){
+    if (text == "Mystery Gift") {
         $('#PresentModal').openModal();
-        currentUser.set("emotion",100);
-        amount = valueItemD();
-        currentUser.set("itemD", amount -1);
-    }
-    else{
-        if (text == "Super Ball"){
-            amount = valueItemA();
-            currentUser.set("itemA", amount -1);
-        }
-        else if (text == "Friendler Food"){
-            amount = valueItemB();
-            currentUser.set("itemB", amount -1);
-        }
-        else if (text == "Coupon"){
-            amount = valueItemC();
-            currentUser.set("itemC", amount -1);
-        }
-    $('#UseModal').openModal();
-    $(".modal-content #invName").val(text);
-    if (increase + 5 > 100) {
         currentUser.set("emotion", 100);
+        amount = valueItemD();
+        currentUser.set("itemD", amount - 1);
     } else {
-        currentUser.set("emotion", increase + 5);
-        if ((increase + 5 >= 25) && (increase < 25))
-        {
-            alert("Your Friendler has finally put the table down. More gifts will make it happier!");
+        if (text == "Super Ball") {
+            amount = valueItemA();
+            currentUser.set("itemA", amount - 1);
         }
-        else if ((increase + 5 >= 40 ) && (increase < 40)){
-            alert("Your Friendler is currently satisfied");
+        else if (text == "Friendler Food") {
+            amount = valueItemB();
+            currentUser.set("itemB", amount - 1);
         }
-        else if ((increase + 5 >= 60) && (increase < 60)) {
-            alert("Your Friendler is currently happy, Good job!");
+        else if (text == "Coupon") {
+            amount = valueItemC();
+            currentUser.set("itemC", amount - 1);
         }
-        else if ((increase + 5 >= 90) && (increase < 90)){
-            alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+        $('#UseModal').openModal();
+        $(".modal-content #invName").val(text);
+        if (increase + 5 > 100) {
+            currentUser.set("emotion", 100);
+        } else {
+            $('#UseModal').openModal();
+            $(".modal-content #invName").val(text);
+            if (increase + 5 > 100) {
+                currentUser.set("emotion", 100);
+            } else {
+                currentUser.set("emotion", increase + 5);
+                if ((increase + 5 >= 25) && (increase < 25)) {
+                    alert("Your Friendler has finally put the table down. More gifts will make it happier!");
+                } else if ((increase + 5 >= 40 ) && (increase < 40)) {
+                    alert("Your Friendler is currently satisfied");
+                } else if ((increase + 5 >= 60) && (increase < 60)) {
+                    alert("Your Friendler is currently happy, Good job!");
+                } else if ((increase + 5 >= 90) && (increase < 90)) {
+                    alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+                }
+            }
         }
-    }
-}
-    console.log(increase);
-    currentUser.save();
-}
-
-function levelUp() {
-    currentUser.fetch();
-    // store previous level 
-    var prevLevel = currentUser.get("level");
-    console.log(prevLevel);
-    // get the current user's total points
-    var totalPoints = currentUser.get("bar");
-    console.log(totalPoints);
-    // variable for the next level
-    var nextLevel;
-
-    // check if the total points entitle a level up
-    if (totalPoints >= 1000) {
-        nextLevel = prevLevel + 1;
-        currentUser.set("level", nextLevel);
-        currentUser.set("bar", 0);
+        console.log(increase);
         currentUser.save();
-        alert("You have just leveled up to " + nextLevel + "!!");
-        //window.location.href = "profile";
-    }
-};
-
-function showEvo() {
-    currentUser.fetch();
-    var checkLevel = currentUser.get("level");
-    var evolved = currentUser.get('evolved');
-    if (checkLevel >= 3 && !evolved) {
-        alert("You can now evolve your friendler!!!");
-        document.getElementById('evo').style.visibility = 'visible';
-    }
-    else {
-        document.getElementById('evo').style.visibility = 'hidden';
-    }
-};
-
-function valueItemA() {
-    currentUser.fetch();
-    return currentUser.get("itemA");
-};
-
-function valueItemB() {
-    currentUser.fetch();
-    return currentUser.get("itemB");
-};
-
-function valueItemC() {
-    currentUser.fetch();
-    return currentUser.get("itemC");
-};
-
-function valueItemD() {
-    currentUser.fetch();
-    return currentUser.get("itemD");
-};
-
-function itemChecker() {
-    if (valueItemA() == 0){
-      document.getElementById("row1").style="display:none;"
-    }
-    else{
-      $("#row1").show();
     }
 
-    if (valueItemB() == 0){
-      document.getElementById("row2").style="display:none;"
-    }
-    else{
-      $("#row2").show();
+    function levelUp() {
+        currentUser.fetch();
+        // store previous level
+        var prevLevel = currentUser.get("level");
+        console.log(prevLevel);
+        // get the current user's total points
+        var totalPoints = currentUser.get("bar");
+        console.log(totalPoints);
+        // variable for the next level
+        var nextLevel;
+
+        // check if the total points entitle a level up
+        if (totalPoints >= 1000) {
+            nextLevel = prevLevel + 1;
+            currentUser.set("level", nextLevel);
+            currentUser.set("bar", 0);
+            currentUser.save();
+            alert("You have just leveled up to " + nextLevel + "!!");
+            //window.location.href = "profile";
+        }
     }
 
-    if (valueItemC() == 0){
-      document.getElementById("row3").style="display:none;"
+    function showEvo() {
+        currentUser.fetch();
+        var checkLevel = currentUser.get("level");
+        var evolved = currentUser.get('evolved');
+        if (checkLevel >= 3 && !evolved) {
+            alert("You can now evolve your friendler!!!");
+            document.getElementById('evo').style.visibility = 'visible';
+        }
+        else {
+            document.getElementById('evo').style.visibility = 'hidden';
+        }
     }
-    else{
-      $("#row3").show();
+
+    function valueItemA() {
+        currentUser.fetch();
+        return currentUser.get("itemA");
     }
 
-    if (valueItemD() == 0){
-      document.getElementById("row4").style="display:none;"
-    }
-    else{
-      $("#row4").show();
+    function valueItemB() {
+        currentUser.fetch();
+        return currentUser.get("itemB");
     }
 
-    document.getElementById("inv").innerHTML = valueItemA();
-    document.getElementById("inv2").innerHTML = valueItemB();
-    document.getElementById("inv3").innerHTML = valueItemC();
-    document.getElementById("inv4").innerHTML = valueItemD();
+    function valueItemC() {
+        currentUser.fetch();
+        return currentUser.get("itemC");
+    }
 
-if (valueItemA() == 0 && valueItemB() == 0 && valueItemC() == 0 && valueItemD() == 0)
-{
-  document.getElementById("check").innerHTML = "No current items, is it time to go to the store?"
-  document.getElementById('storeB').style.visibility = 'visible';
-}
-else{
-    console.log("bye");
-    document.getElementById('storeB').style.visibility = 'hidden';
-    document.getElementById("check").innerHTML = ""
-}
+    function valueItemD() {
+        currentUser.fetch();
+        return currentUser.get("itemD");
+    }
 
+    function itemChecker() {
+        if (valueItemA() == 0) {
+            document.getElementById("row1").style = "display:none;"
+        } else {
+            $("#row1").show();
+        }
 
-}
+        if (valueItemB() == 0) {
+            document.getElementById("row2").style = "display:none;"
+        } else {
+            $("#row2").show();
+        }
+
+        if (valueItemC() == 0) {
+            document.getElementById("row3").style = "display:none;"
+        } else {
+            $("#row3").show();
+        }
+
+        if (valueItemD() == 0) {
+            document.getElementById("row4").style = "display:none;"
+        } else {
+            $("#row4").show();
+        }
+
+        document.getElementById("inv").innerHTML = valueItemA();
+        document.getElementById("inv2").innerHTML = valueItemB();
+        document.getElementById("inv3").innerHTML = valueItemC();
+        document.getElementById("inv4").innerHTML = valueItemD();
+
+        if (valueItemA() == 0 && valueItemB() == 0 && valueItemC() == 0 && valueItemD() == 0) {
+            document.getElementById("check").innerHTML = "No current items, is it time to go to the store?"
+            document.getElementById('storeB').style.visibility = 'visible';
+        } else {
+            console.log("bye");
+            document.getElementById('storeB').style.visibility = 'hidden';
+            document.getElementById("check").innerHTML = ""
+        }
+
+    }

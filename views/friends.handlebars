@@ -35,7 +35,17 @@
     </div>
   </div>
   <div class="modal-footer">
-    <a href="#" class="modal-action modal-close teal btn-flat" onClick="addFriends()">Add Friend</a>
+    <a href="#" class="modal-action modal-close teal btn-flat" onClick="addFriends(); $('#addFriendConfirmModal').openModal();">Add Friend</a>
+  </div>
+</div>
+
+<div id="addFriendConfirmModal" class="modal">
+  <div class="modal-content">
+    <h5>You have a new Friend!</h5>
+    <p>Do you want to hangout with your new friend?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="checkin2" class="modal-action modal-close teal btn-flat" onclick="storeFriendCount2(1)">Hangout</a>
   </div>
 </div>
 
