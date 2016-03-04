@@ -54,7 +54,7 @@
 
         <tbody>
           <tr>
-            <td><a onClick="confMod('{{description}}', '{{name}}', '{{image}}',  {{value}})"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/{{image}}"></a></td>
+            <td><a onClick="confMod('{{description}}','{{name}}','{{image}}',{{value}})"><img class="activator responsive-img"style="width: 120px; height:120px;" src = "images/{{image}}"></a></td>
             <td><a onClick="confMod('{{description}}', '{{name}}', '{{image}}', {{value}})">{{name}}</a></td>
             <td><a onClick="confMod('{{description}}', '{{name}}', '{{image}}', {{value}})"><p id = "pts">{{value}}</p></a></td>
           </tr>
@@ -65,9 +65,9 @@
 
       <div id="ConfirmModal" class="modal modal-fixed-footer">
         <div class="modal-content">
-            <input type="text" name="descript" id="descript" value=""/>
+            <p id="descript"></p>
             <p>Buy the Item? Price:</p>
-            <input type="text" name="price" id="price" value=""/>
+            <p id="price"></p>
           <div class="left card-action">
             <a onClick="purchase()">Yes</a>
           </div>

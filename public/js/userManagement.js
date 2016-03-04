@@ -312,17 +312,15 @@ function updatePoints(count) {
 }
 
 function confMod(des, nameF, imageF, valueF) {
-    $(".modal-content #descript").val(des);
-    $(".modal-content #price").val(valueF);
+    document.getElementById("descript").innerHTML = des;
+    document.getElementById("price").innerHTML = valueF;
     $('#ConfirmModal').openModal();
 }
 
 
 function purchase() {
     var pls = document.getElementById("pts").innerHTML;
-    console.log($(".modal-content #descript").val());
-    console.log($(".modal-content #price").val());
-    var itemP = $(".modal-content #price").val();
+    var itemP = document.getElementById("price").innerHTML
     currentUser.fetch();
     if (itemP == 2000) {
         amount = valueItemA();
