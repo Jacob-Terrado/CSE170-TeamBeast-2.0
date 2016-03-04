@@ -369,12 +369,10 @@ function itemUsed(text) {
         if (text == "Super Ball") {
             amount = valueItemA();
             currentUser.set("itemA", amount - 1);
-        }
-        else if (text == "Friendler Food") {
+        } else if (text == "Friendler Food") {
             amount = valueItemB();
             currentUser.set("itemB", amount - 1);
-        }
-        else if (text == "Coupon") {
+        } else if (text == "Coupon") {
             amount = valueItemC();
             currentUser.set("itemC", amount - 1);
         }
@@ -403,99 +401,100 @@ function itemUsed(text) {
         console.log(increase);
         currentUser.save();
     }
+}
 
-    function levelUp() {
-        currentUser.fetch();
-        // store previous level
-        var prevLevel = currentUser.get("level");
-        console.log(prevLevel);
-        // get the current user's total points
-        var totalPoints = currentUser.get("bar");
-        console.log(totalPoints);
-        // variable for the next level
-        var nextLevel;
+function levelUp() {
+    currentUser.fetch();
+    // store previous level
+    var prevLevel = currentUser.get("level");
+    console.log(prevLevel);
+    // get the current user's total points
+    var totalPoints = currentUser.get("bar");
+    console.log(totalPoints);
+    // variable for the next level
+    var nextLevel;
 
-        // check if the total points entitle a level up
-        if (totalPoints >= 1000) {
-            nextLevel = prevLevel + 1;
-            currentUser.set("level", nextLevel);
-            currentUser.set("bar", 0);
-            currentUser.save();
-            alert("You have just leveled up to " + nextLevel + "!!");
-            //window.location.href = "profile";
-        }
+    // check if the total points entitle a level up
+    if (totalPoints >= 1000) {
+        nextLevel = prevLevel + 1;
+        currentUser.set("level", nextLevel);
+        currentUser.set("bar", 0);
+        currentUser.save();
+        alert("You have just leveled up to " + nextLevel + "!!");
+        //window.location.href = "profile";
+    }
+}
+
+function showEvo() {
+    currentUser.fetch();
+    var checkLevel = currentUser.get("level");
+    var evolved = currentUser.get('evolved');
+    if (checkLevel >= 3 && !evolved) {
+        alert("You can now evolve your friendler!!!");
+        document.getElementById('evo').style.visibility = 'visible';
+    }
+    else {
+        document.getElementById('evo').style.visibility = 'hidden';
+    }
+}
+
+function valueItemA() {
+    currentUser.fetch();
+    return currentUser.get("itemA");
+}
+
+function valueItemB() {
+    currentUser.fetch();
+    return currentUser.get("itemB");
+}
+
+function valueItemC() {
+    currentUser.fetch();
+    return currentUser.get("itemC");
+}
+
+function valueItemD() {
+    currentUser.fetch();
+    return currentUser.get("itemD");
+}
+
+function itemChecker() {
+    if (valueItemA() == 0) {
+        document.getElementById("row1").style = "display:none;"
+    } else {
+        $("#row1").show();
     }
 
-    function showEvo() {
-        currentUser.fetch();
-        var checkLevel = currentUser.get("level");
-        var evolved = currentUser.get('evolved');
-        if (checkLevel >= 3 && !evolved) {
-            alert("You can now evolve your friendler!!!");
-            document.getElementById('evo').style.visibility = 'visible';
-        }
-        else {
-            document.getElementById('evo').style.visibility = 'hidden';
-        }
+    if (valueItemB() == 0) {
+        document.getElementById("row2").style = "display:none;"
+    } else {
+        $("#row2").show();
     }
 
-    function valueItemA() {
-        currentUser.fetch();
-        return currentUser.get("itemA");
+    if (valueItemC() == 0) {
+        document.getElementById("row3").style = "display:none;"
+    } else {
+        $("#row3").show();
     }
 
-    function valueItemB() {
-        currentUser.fetch();
-        return currentUser.get("itemB");
+    if (valueItemD() == 0) {
+        document.getElementById("row4").style = "display:none;"
+    } else {
+        $("#row4").show();
     }
 
-    function valueItemC() {
-        currentUser.fetch();
-        return currentUser.get("itemC");
+    document.getElementById("inv").innerHTML = valueItemA();
+    document.getElementById("inv2").innerHTML = valueItemB();
+    document.getElementById("inv3").innerHTML = valueItemC();
+    document.getElementById("inv4").innerHTML = valueItemD();
+
+    if (valueItemA() == 0 && valueItemB() == 0 && valueItemC() == 0 && valueItemD() == 0) {
+        document.getElementById("check").innerHTML = "No current items, is it time to go to the store?"
+        document.getElementById('storeB').style.visibility = 'visible';
+    } else {
+        console.log("bye");
+        document.getElementById('storeB').style.visibility = 'hidden';
+        document.getElementById("check").innerHTML = ""
     }
 
-    function valueItemD() {
-        currentUser.fetch();
-        return currentUser.get("itemD");
-    }
-
-    function itemChecker() {
-        if (valueItemA() == 0) {
-            document.getElementById("row1").style = "display:none;"
-        } else {
-            $("#row1").show();
-        }
-
-        if (valueItemB() == 0) {
-            document.getElementById("row2").style = "display:none;"
-        } else {
-            $("#row2").show();
-        }
-
-        if (valueItemC() == 0) {
-            document.getElementById("row3").style = "display:none;"
-        } else {
-            $("#row3").show();
-        }
-
-        if (valueItemD() == 0) {
-            document.getElementById("row4").style = "display:none;"
-        } else {
-            $("#row4").show();
-        }
-
-        document.getElementById("inv").innerHTML = valueItemA();
-        document.getElementById("inv2").innerHTML = valueItemB();
-        document.getElementById("inv3").innerHTML = valueItemC();
-        document.getElementById("inv4").innerHTML = valueItemD();
-
-        if (valueItemA() == 0 && valueItemB() == 0 && valueItemC() == 0 && valueItemD() == 0) {
-            document.getElementById("check").innerHTML = "No current items, is it time to go to the store?"
-            document.getElementById('storeB').style.visibility = 'visible';
-        } else {
-            console.log("bye");
-            document.getElementById('storeB').style.visibility = 'hidden';
-            document.getElementById("check").innerHTML = ""
-        }
-
-    }
+}
