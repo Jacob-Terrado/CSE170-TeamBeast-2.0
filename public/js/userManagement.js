@@ -322,7 +322,10 @@ function purchase() {
     var pls = document.getElementById("pts").innerHTML;
     var itemP = document.getElementById("price").innerHTML
     currentUser.fetch();
-    if (itemP == 2000) {
+    var userPts = currentUser.get('points');
+    console.log(userPts);
+    if (userPts >= itemP) {
+        if (itemP == 2000) {
         amount = valueItemA();
         currentUser.set("itemA", amount + 1);
     }
@@ -338,9 +341,6 @@ function purchase() {
         amount = valueItemD();
         currentUser.set("itemD", amount + 1);
     }
-    var userPts = currentUser.get('points');
-    console.log(userPts);
-    if (userPts >= itemP) {
         console.log(pls);
         newP = userPts - itemP
         currentUser.set("points", newP);
