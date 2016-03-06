@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {{> googleAnalyticsExperiment}}
   <meta charset="UTF-8">
   <title>Friendler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,31 +15,68 @@
 
 <!-- Content -->
 <div class="container">
-  <div class="card">
-    <br>
-    <h5 class="header center black-text">Welcome to the World of Friendlers</h5>
-    <div class="row">
-      <div class="col s1">&nbsp;</div>
-      <div class="center col s10">
-        <img class="responsive-img" src="images/ditto.png">
-      </div>
-      <div class="col s1">&nbsp;</div>
-    </div>
-    <div class="row">
-      <div class="container">
-        <div class="card-content">
-          <p style="font-size:18px;">Here is your very own Friendler! Keep it happy and healthy by checking in with them at the venues that you visit or by buying it food from the store! Treat it well as it can get a bit moody!</p>
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <h4 class="header center black-text">Welcome to the World of Friendlers</h4>
+        <div class="container">
+          <img class="responsive-img" src="images/ditto.png" id="tutorialImage">
         </div>
-      </div>
-    </div>
-    <div class="center card-action">
-      <a href="profile">Start Journey</a>
-      <a id="tutorialTest" href="#learnMoreModal" onClick="$('#learnMoreModal').openModal();" id="tutorialTest">Learn to Play</a>
-    </div>
+        <div class="container">
+          <p style="color:black;" align="center">Here is your very own Friendler! Keep it happy and healthy by checking in at the venues that you visit or by feeding it food from the store! Level it up and treat it well! They can get a bit moody!</p>
+        </div>
+      </li>
+      <li>
+        <img class="responsive-img" src="images/addFriend.png" id="tutorialImage">
+        <div class="container">
+          <b><p style="font-size:18px; color:black;" align="center">Adding a friend (they don't need to have Friendler)</p></b>
+          <p style="color:black;" align="center"><i class="tiny material-icons">label</i>Navigate to your Friends List </p>
+          <p style="color:black;" align="center"><i class="tiny material-icons">label</i>Click on Add Friend</p>
+          <p style="color:black;" align="center"><i class="tiny material-icons">label</i>Enter your friend's name</p>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <br>
+          <br>
+          <br>
+          <br>
+          <b>
+            <p style="font-size:18px; color:black" align="center">Earn points by checking into public places like restaurants, parks, and other venues!</p>
+            <p style="font-size:14px; color:black" align="center">Points are given by checking-in:
+            </p>
+          </b>
+         <p style="color:black;" align="center"><i class="tiny material-icons">label</i>By yourself (200 points)</p>
+         <p style="color:black;" align="center"><i class="tiny material-icons">label</i>With friends (200 points + 200 more points for every friend you're with!)</p>
+        </div>
+      </li>
+      <li>
+        <img class="responsive-img" src="images/checkin.png" id="tutorialImage">
+        <div class="container">
+          <b><p style="font-size:18px; color:black;" align="center">How do you check-in?</p></b>
+          <p style="color:black;" align="center"><i class="tiny material-icons">label</i>Navigate to your Check-In </p>
+          <p style="color:black;" align="center"><i class="tiny material-icons">label</i>Type in the name of the venue you're at</p>
+          <p style="color:black;" align="center"><i class="tiny material-icons">label</i>Click Search and click on the correct location listed</p>
+        </div>
+      </li>
+      <li>
+        <img class="responsive-img" src="images/storess.png" id="tutorialImage">
+        <div class="container">
+          <b>
+            <p style="font-size:18px; color:black;" align="center">Buy cool items from the store!</p>
+          </b>
+            <p style="color:black;" align="center"><i class="tiny material-icons">label</i>Food</p>
+            <p style="color:black;" align="center"><i class="tiny material-icons">label</i>Coupons</p>
+            <p style="color:black;" align="center"><i class="tiny material-icons">label</i>The Mystery Box</p>
+            <p align="center"><a href="profile" class="btn teal">Start my journey</a></p>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 
 <!-- Modal -->
+
 <div id="learnMoreModal" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4>How to Play</h4>
@@ -65,10 +101,18 @@
   </div>
 </div>
 
-{{> footer}}
-
+{{> footer }}
 {{> materializeScripts}}
 {{> parseScripts}}
-{{> googleAnalytics}}
+
+  <script>
+    $(document).ready(function(){
+      $('.slider').slider({full_width: true});
+      $('.slider').slider('pause');
+      $('.indicator-item').on('click',function(){
+        $('.slider').slider('pause');
+      });
+    });
+  </script>
 </body>
 </html>
