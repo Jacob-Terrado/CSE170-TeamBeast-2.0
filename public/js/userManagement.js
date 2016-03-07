@@ -34,7 +34,7 @@ function signUp() {
         person.set("lastName", lastName);
         person.set("points", 0);
         person.set("level", 1);
-        person.set("avatar", "images/ditto.png");
+        person.set("avatar", "images/cuteSlime.jpg");
         person.set("emotion", 50);
         person.set("bar", 0);
         person.set("evolved", false);
