@@ -264,17 +264,19 @@ function updatePoints(count) {
     var newPoints = currPoints + pt;
     var exp = 200 * (count + 1);
     var newXP = currXP + exp;
+
+    document.getElementById("checkInMessage").innerHTML = "You just gained " + pt + " points! Reward your Friendler by purchasing items at the store!";
+    $('#successfulCheckInModal').openModal();
+    setTimeout(function() {window.location.href = "profile"}, 2500);
+
     // save data to the database
     currentUser.save({
         points: newPoints,
         bar: newXP
     }, {
         success: function (currUser) {
-            alert("YOU JUST GAINED " + pt + " Points!!");
-            window.location.href = "profile";
         },
         error: function (currUser, error) {
-            alert("FAILED TO GAIN XP");
         }
     });
 }
@@ -376,8 +378,8 @@ function levelUp() {
         currentUser.set("level", nextLevel);
         currentUser.set("bar", 0);
         currentUser.save();
-        alert("You have just leveled up to " + nextLevel + "!!");
-        //window.location.href = "profile";
+        document.getElementById("levelUpMessage").innerHTML = "" + document.getElementById("friendlerName").innerHTML + " is now level " + nextLevel + "!";
+        $('#levelUpModal').openModal();
     }
 }
 
@@ -386,7 +388,8 @@ function showEvo() {
     var checkLevel = currentUser.get("level");
     var evolved = currentUser.get('evolved');
     if (checkLevel >= 3 && !evolved) {
-        alert("You can now evolve your friendler!!!");
+        document.getElementById("evolutionMessage").innerHTML = "You can now evolve " + document.getElementById("friendlerName").innerHTML + "!";
+        $('#evolutionModal').openModal();
         document.getElementById('evo').style.visibility = 'visible';
     }
     else {
