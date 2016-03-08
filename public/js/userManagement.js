@@ -49,7 +49,8 @@ function signUp() {
                 window.location = "/tutorial";
             },
             error: function (user, error) {
-                console.log(error);
+                //console.log(error);
+                Materialize.toast(error.message, 1000);
             }
         });
     }
@@ -67,7 +68,7 @@ function login() {
                 window.location = "/profile";
             },
             error: function (user, error) {
-                alert("The username and password do not match or does not exist");
+                Materialize.toast(error.message, 1000);
             }
         });
     }
@@ -78,15 +79,16 @@ function logout() {
 }
 
 function resetPassword() {
-    // Grab Email
+    event.preventDefault();
+    var email = document.getElementById("emailReset").value;
 
     Parse.User.requestPasswordReset(email, {
         success: function () {
-            // Password reset request was sent successfully
+            Materialize.toast("Password request sent to your email", 2000);
+            $("#passwordModal").closeModal();
         },
         error: function (error) {
-            // Show the error message somewhere
-            alert("Error: " + error.code + " " + error.message);
+            Materialize.toast(error.message, 1000);
         }
     });
 }
@@ -234,7 +236,9 @@ function avatarSet(number) {
     }
     currentUser.set("evolved", true);
     currentUser.save();
-    alert("You have evolved into a new Friendler!");
+
+    document.getElementById("evolutionPickMessage").innerHTML = "Your Friendler evolved";
+    $('#evolutionPickModal').openModal();
 }
 
 function moodSet() {
@@ -349,13 +353,17 @@ function itemUsed(text) {
             } else {
                 currentUser.set("emotion", increase + 5);
                 if ((increase + 5 >= 25) && (increase < 25)) {
-                    alert("Your Friendler has finally put the table down. More gifts will make it happier!");
+                    document.getElementById("itemUsedMessage").innerHTML = "Your Friendler would like more gifts";
+                    $('#itemUsedModal').openModal();
                 } else if ((increase + 5 >= 40 ) && (increase < 40)) {
-                    alert("Your Friendler is currently satisfied");
+                    document.getElementById("itemUsedMessage").innerHTML = "Your Friendler is very satisfied.";
+                    $('#itemUsedModal').openModal();
                 } else if ((increase + 5 >= 60) && (increase < 60)) {
-                    alert("Your Friendler is currently happy, Good job!");
+                    document.getElementById("itemUsedMessage").innerHTML = "Your Friendler is in a happy mood ^^";
+                    $('#itemUsedModal').openModal();
                 } else if ((increase + 5 >= 90) && (increase < 90)) {
-                    alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+                    document.getElementById("itemUsedMessage").innerHTML = "Your Friender is the happiest it could be! YOU are an amazing Friend";
+                    $('#itemUsedModal').openModal();
                 }
             }
         }

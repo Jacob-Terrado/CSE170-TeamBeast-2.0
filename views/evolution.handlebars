@@ -10,10 +10,10 @@
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
 <body onLoad="">
-  {{> navbar}}
+{{> navbar}}
 
-  <!-- Content -->
-  <div class="container">
+<!-- Content -->
+<div class="container">
   <div id="main-content" class="card">
     <h3 class="header center black-text">Choose your evolution!</h3>
   </div>
@@ -32,7 +32,7 @@
           <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
           <p>{{description}}</p>
           <div class="center card-action">
-            <a href = "profile" onClick="avatarSet({{id}});">Choose this Friendler</a>
+            <a href="profile" onClick="avatarSet({{id}});">Choose this Friendler</a>
           </div>
         </div>
       </div>
@@ -40,11 +40,13 @@
   </div>
 </div>
 
-  {{> footer}}
+{{> footer}}
 
-  {{> materializeScripts}}
-  {{> parseScripts}}
-  {{> googleAnalytics}}
-  <script src="../js/evolution.js"></script>
+{{> materializeScripts}}
+{{> parseScripts}}
+{{> googleAnalytics}}
+{{> evolutionPickModal}}
+
+<script src="../js/evolution.js"></script>
 </body>
 </html>
