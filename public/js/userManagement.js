@@ -49,11 +49,9 @@ function signUp() {
                 window.location = "/tutorial";
             },
             error: function (user, error) {
-                alert("The inputted email and username are already taken");
+                console.log(error);
             }
         });
-    } else {
-        alert("Please Fill out all of fields");
     }
 }
 
@@ -72,8 +70,6 @@ function login() {
                 alert("The username and password do not match or does not exist");
             }
         });
-    } else {
-        alert("Please fill out both fields");
     }
 }
 
@@ -124,8 +120,6 @@ function addFriends() {
 
 function listFriends() {
     currentUser.fetch();
-    console.log(currentUser);
-    console.log(currentUser.get("username"));
     var friendsList = currentUser.get("friends");
     var container = document.getElementById("friendsList");
     if (friendsList) {
@@ -143,50 +137,29 @@ function listFriends() {
             container.appendChild(node);
         }
     }
-    console.log("listFriends is being called");
-    //console.log(inputNode.checked);
 }
-/*
- function listEvolutions() {
- // stores all the friendler objects
- var query = new Parse.Query("Friendler");
- var container = document.getElementById("evolutions");
- var projectHTML = "";
- query.each(function(user) {
- projectHTML = "<li><img class='responsive-img' src='" + user.get("path") + "' id='" + user.get("name") + "'</li>'";
- $('#evolutions').append(projectHTML);
- console.log(user);
- console.log("Friendler name: " + user.get("name"));
- console.log("Friendler path: " + user.get("path"));
- });
- }
- */
+
 function resetCheckCount() {
     checkCount = 0;
 }
 
 function checkedCount() {
     var checkCount = 0;
-    console.log($(":checkbox").length);
     $(":checkbox").each(function () {
         if (this.checked) {
             checkCount++;
-            console.log(checkCount);
         }
     });
-    console.log(checkCount);
     updatePoints(checkCount);
 }
 
 function storeFriendCount() {
     var friendCount = 0;
-    console.log("There are these many checkboxes: " + $(":checkbox").length);
     $(":checkbox").each(function () {
         if (this.checked) {
             friendCount++;
         }
     });
-    console.log("Friend count is at: " + friendCount);
     localStorage.setItem("numOfFriends", friendCount);
 }
 
@@ -222,9 +195,7 @@ function showXP() {
 
 function avatarCheck() {
     currentUser.fetch();
-    console.log(currentUser.get('avatar'));
     var userAvatar = currentUser.get('avatar');
-    console.log(userAvatar);
     var imgHTML = "<img class='responsive-img' src='" + userAvatar + "'>";
     $("#avatar").append(imgHTML);
     return userAvatar;
@@ -284,12 +255,10 @@ function moodSet() {
 function updatePoints(count) {
     event.preventDefault();
     currentUser.fetch();
-    console.log(currentUser);
     // get the current amount of spending points
     var currPoints = currentUser.get('points');
     // get the current amount of total points earned
     var currXP = currentUser.get('bar');
-    console.log(currPoints);
     // set the new point values to be stored
     var pt = 200 * (count + 1);
     var newPoints = currPoints + pt;
@@ -308,7 +277,6 @@ function updatePoints(count) {
             alert("FAILED TO GAIN XP");
         }
     });
-    console.log(currentUser.get("points"));
 }
 
 function confMod(des, nameF, imageF, valueF) {
@@ -317,47 +285,40 @@ function confMod(des, nameF, imageF, valueF) {
     $('#ConfirmModal').openModal();
 }
 
-
 function purchase() {
     var pls = document.getElementById("pts").innerHTML;
     var itemP = document.getElementById("price").innerHTML
     currentUser.fetch();
     var userPts = currentUser.get('points');
-    console.log(userPts);
     if (userPts >= itemP) {
         if (itemP == 2000) {
-        amount = valueItemA();
-        currentUser.set("itemA", amount + 1);
-    }
-    else if (itemP == 3000) {
-        amount = valueItemB();
-        currentUser.set("itemB", amount + 1);
-    }
-    else if (itemP == 5000) {
-        amount = valueItemC();
-        currentUser.set("itemC", amount + 1);
-    }
-    else if (itemP == 25000) {
-        amount = valueItemD();
-        currentUser.set("itemD", amount + 1);
-    }
-        console.log(pls);
+            amount = valueItemA();
+            currentUser.set("itemA", amount + 1);
+        }
+        else if (itemP == 3000) {
+            amount = valueItemB();
+            currentUser.set("itemB", amount + 1);
+        }
+        else if (itemP == 5000) {
+            amount = valueItemC();
+            currentUser.set("itemC", amount + 1);
+        }
+        else if (itemP == 25000) {
+            amount = valueItemD();
+            currentUser.set("itemD", amount + 1);
+        }
         newP = userPts - itemP
         currentUser.set("points", newP);
         $('#BuyModal').openModal();
         document.getElementById("update").innerHTML = newP;
-        console.log("success");
     } else {
         $('#FailModal').openModal();
-        console.log("fail");
-        console.log(userPts);
     }
     currentUser.save();
 }
 
 function itemUsed(text) {
     var increase = showEmotion();
-    console.log(text);
     if (text == "Mystery Gift") {
         $('#PresentModal').openModal();
         currentUser.set("emotion", 100);
@@ -396,7 +357,6 @@ function itemUsed(text) {
                 }
             }
         }
-        console.log(increase);
         currentUser.save();
     }
 }
@@ -405,10 +365,8 @@ function levelUp() {
     currentUser.fetch();
     // store previous level
     var prevLevel = currentUser.get("level");
-    console.log(prevLevel);
     // get the current user's total points
     var totalPoints = currentUser.get("bar");
-    console.log(totalPoints);
     // variable for the next level
     var nextLevel;
 
@@ -490,9 +448,7 @@ function itemChecker() {
         document.getElementById("check").innerHTML = "No current items, is it time to go to the store?"
         document.getElementById('storeB').style.visibility = 'visible';
     } else {
-        console.log("bye");
         document.getElementById('storeB').style.visibility = 'hidden';
         document.getElementById("check").innerHTML = ""
     }
-
 }
