@@ -23,7 +23,7 @@
       <div class="collection">
         <li class="collection-item">Name:<span class="badge"><a onClick="$('#editNameModal').openModal();" id="friendlerName" class="badge"></a></span></li>
         <li class="collection-item">Mood:<span class="badge"><a href="inventory" id="mood"></a></span></li>
-        <a onClick= "xpModal()" class="collection-item">Level:<span class="badge"><span id="level"></span></span>
+        <li class="collection-item">Level:<span class="badge"><a onClick="xpModal()" id="level"></a></span></li>
         <li class="collection-item">Points To Spend:<span class="badge"><a href="store" id="point"></a></span></li>
       </div>
       <div class="container center">
@@ -43,6 +43,7 @@
     <div class="center card-action"><a href="profile" class="modal-action modal-close btn teal" onClick="setName();">Change Name</a></div>
     <br>
     <div class="center card-action"><a onClick="$('#editNameModal').closeModal();" class="modal-action modal-close btn teal">Don't Change Name</a></div>
+  </div>
 </div>
 
 <div id="XPModal" class="modal modal-fixed-footer">
@@ -52,7 +53,6 @@
   <div class="center card-action">
     <a onClick= "$('#XPModal').closeModal();">Confirm</a>
   </div>
-
   </div>
 </div>
 
