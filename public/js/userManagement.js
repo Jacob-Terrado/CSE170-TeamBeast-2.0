@@ -426,6 +426,11 @@ function showName() {
     $("#friendlerName").append(currentUser.get("friendlerName"));
 }
 
+function getName() {
+    currentUser.fetch();
+    return currentUser.get("friendlerName");
+}
+
 function setName() {
     currentUser.fetch();
     var newName = document.getElementById("editName").value;

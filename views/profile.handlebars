@@ -100,13 +100,14 @@
 <script>
   var encouragementArray = new Array();
   var index = 0;
+  var friendlerName = getName();
 
-  encouragementArray[0] = document.getElementById('friendlerName').innerHTML + " : Let's hangout with your friends today!";
-  encouragementArray[1] = document.getElementById('friendlerName').innerHTML + " : Small steps. Small steps.";
-  encouragementArray[2] = document.getElementById('friendlerName').innerHTML + " : Don't be afraid to talk to others!";
-  encouragementArray[3] = document.getElementById('friendlerName').innerHTML + " : Say 'hi' to a stranger and make them your friend";
-  encouragementArray[4] = document.getElementById('friendlerName').innerHTML + " : I hope you're doing well!";
-  encouragementArray[5] = document.getElementById('friendlerName').innerHTML + " : I'm hungry. Purchase me something from the store!";
+  encouragementArray[0] = friendlerName + " : Let's hangout with your friends today!";
+  encouragementArray[1] = friendlerName + " : Small steps. Small steps.";
+  encouragementArray[2] = friendlerName + " : Don't be afraid to talk to others!";
+  encouragementArray[3] = friendlerName + " : Say 'hi' to a stranger and make them your friend";
+  encouragementArray[4] = friendlerName + " : I hope you're doing well!";
+  encouragementArray[5] = friendlerName + " : I'm hungry. Purchase me something from the store!";
 
   function sendEncouragement() {
     Materialize.toast(encouragementArray[index], 3000);
