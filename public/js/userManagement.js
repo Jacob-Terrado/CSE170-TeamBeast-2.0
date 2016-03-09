@@ -279,16 +279,8 @@ function updatePoints(count) {
         bar: newXP
     }, {
         success: function (currUser) {
-<<<<<<< HEAD
-            alert("YOU JUST GAINED " + pt + " Points and XP!!");
-            window.location.href = "profile";
         },
         error: function (currUser, error) {
-            alert("FAILED TO GAIN Points or XP");
-=======
-        },
-        error: function (currUser, error) {
->>>>>>> 1d00e4a0d810ebdd33a9cb9148a3ad4c790d022d
         }
     });
 }
@@ -332,6 +324,7 @@ function purchase() {
 }
 
 function itemUsed(text) {
+    event.preventDefault();
     var increase = showEmotion();
     if (text == "Mystery Gift") {
         $('#PresentModal').openModal();

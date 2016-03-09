@@ -83,7 +83,7 @@
           <p>Updated Points:</p>
           <div id="update"></div>
           <div class="center card-action">
-            <a href="store" onClick="$('#BuyModal').closeModal();">Confirm</a>
+            <a href="" onClick="$('#BuyModal').closeModal(); event.preventDefault();">Confirm</a>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@
         <div class="modal-content">
           <p>Sorry, you do not have enough points</p>
           <div class="center card-action">
-            <a href="store" onClick="$('#FailModal').closeModal();">Confirm</a>
+            <a href="" onClick="$('#FailModal').closeModal(); event.preventDefault();">Confirm</a>
           </div>
         </div>
       </div>
