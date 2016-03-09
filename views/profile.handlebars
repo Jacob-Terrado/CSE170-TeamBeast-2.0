@@ -10,7 +10,7 @@
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
 <body
-  onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel(); showEvo()">
+  onLoad="Materialize.fadeInImage('#main-content'); setTimeout(sendEncouragement(), 3000); levelUp(); showPoints(); showLevel(); showEvo()">
 {{> navbar}}
 
 <!-- Content -->
@@ -54,6 +54,9 @@
 {{> checkInFab}}
 {{> googleAnalytics}}
 
+{{> levelUpModal}}
+{{> evolutionModal}}
+
 <script>
   $(document).ready(function () {
     var midnight = new Date();
@@ -81,12 +84,12 @@
   var encouragementArray = new Array();
   var index = 0;
 
-  encouragementArray[0] = document.getElementById('friendlerName').innerHTML + ": Let's hangout with your friends today!";
-  encouragementArray[1] = document.getElementById('friendlerName').innerHTML + ": Small steps. Small steps.";
-  encouragementArray[2] = document.getElementById('friendlerName').innerHTML + ": Don't be afraid to talk to others!";
-  encouragementArray[3] = document.getElementById('friendlerName').innerHTML + ": Say 'hi' to a stranger and make them your friend";
-  encouragementArray[4] = document.getElementById('friendlerName').innerHTML + ": I hope you're doing well!";
-  encouragementArray[5] = document.getElementById('friendlerName').innerHTML + ": I'm hungry. Purchase me something from the store!";
+  encouragementArray[0] = document.getElementById('friendlerName').innerHTML + " : Let's hangout with your friends today!";
+  encouragementArray[1] = document.getElementById('friendlerName').innerHTML + " : Small steps. Small steps.";
+  encouragementArray[2] = document.getElementById('friendlerName').innerHTML + " : Don't be afraid to talk to others!";
+  encouragementArray[3] = document.getElementById('friendlerName').innerHTML + " : Say 'hi' to a stranger and make them your friend";
+  encouragementArray[4] = document.getElementById('friendlerName').innerHTML + " : I hope you're doing well!";
+  encouragementArray[5] = document.getElementById('friendlerName').innerHTML + " : I'm hungry. Purchase me something from the store!";
 
   function sendEncouragement() {
     Materialize.toast(encouragementArray[index], 3000);
