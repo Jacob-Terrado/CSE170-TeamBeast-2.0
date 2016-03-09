@@ -331,24 +331,35 @@ function itemUsed(text) {
         currentUser.set("emotion", 100);
         amount = valueItemD();
         currentUser.set("itemD", amount - 1);
+        if (currentUser.get("itemD") < 0) {
+            currentUser.set("itemD") == 0;
+        }
+        console.log(currentUser.get("itemD"));
     } else {
         if (text == "Super Ball") {
             amount = valueItemA();
             currentUser.set("itemA", amount - 1);
+            if (currentUser.get("itemA") < 0) {
+            currentUser.set("itemA") == 0;
+        }
+        console.log(currentUser.get("itemA"));
         } else if (text == "Friendler Food") {
             amount = valueItemB();
             currentUser.set("itemB", amount - 1);
+            if (currentUser.get("itemB") < 0) {
+            currentUser.set("itemB") == 0;
+        }
+        console.log(currentUser.get("itemB"));
         } else if (text == "Coupon") {
             amount = valueItemC();
             currentUser.set("itemC", amount - 1);
+            if (currentUser.get("itemC") < 0) {
+            currentUser.set("itemC") == 0;
         }
-        $('#UseModal').openModal();
-        $(".modal-content #invName").val(text);
-        if (increase + 5 > 100) {
-            currentUser.set("emotion", 100);
-        } else {
+        console.log(currentUser.get("itemC"));
+        }
             $('#UseModal').openModal();
-            $(".modal-content #invName").val(text);
+            document.getElementById("invName").innerHTML = text;
             if (increase + 5 > 100) {
                 currentUser.set("emotion", 100);
             } else {
@@ -370,7 +381,6 @@ function itemUsed(text) {
         }
         currentUser.save();
     }
-}
 
 function levelUp() {
     currentUser.fetch();
