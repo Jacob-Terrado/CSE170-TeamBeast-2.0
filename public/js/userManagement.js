@@ -95,18 +95,22 @@ function resetPassword() {
 }
 
 function addFriends() {
-    var currUser = Parse.User.current();
-    console.log(currUser);
+    currentUser.fetch();
+    console.log(currentUser);
 
     var newFriend = document.getElementById('friendName').value;
     console.log(newFriend);
+    var currFriends = currentUser.get("friends");
 
     if ( $.trim( $('#friendName').val() ) == '' ) {
         alert("I'm sorry what was your friend's name again? Please try again.");
     }
+    else if (currFriends.indexOf(String(newFriend)) > -1){
+        alert("You already have a friend named: " + newFriend + ". Please enter a different name.");
+    }
     else {
-        currUser.addUnique("friends", newFriend);
-        currUser.save();
+        currentUser.addUnique("friends", newFriend);
+        currentUser.save();
 
         var container = document.getElementById("friendsList");
         var node = document.createElement("LI");
@@ -123,7 +127,7 @@ function addFriends() {
         container.appendChild(node);
 
         // open friend modal after
-        $('#addFriendConfirmModal').openModal();
+        $('#addFriendConfirmModal').openModal();  
     }
 }
 
