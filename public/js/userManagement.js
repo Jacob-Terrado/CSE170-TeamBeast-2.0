@@ -270,11 +270,11 @@ function updatePoints(count) {
         bar: newXP
     }, {
         success: function (currUser) {
-            alert("YOU JUST GAINED " + pt + " Points!!");
+            alert("YOU JUST GAINED " + pt + " Points and XP!!");
             window.location.href = "profile";
         },
         error: function (currUser, error) {
-            alert("FAILED TO GAIN XP");
+            alert("FAILED TO GAIN Points or XP");
         }
     });
 }
@@ -392,6 +392,21 @@ function showEvo() {
     else {
         document.getElementById('evo').style.visibility = 'hidden';
     }
+}
+
+function xpModal() {
+    currentUser.fetch();
+    $('#XPModal').openModal();
+    currXP = showXP();
+    if (currXP == 0) {
+        needXP = "Need EXP: 0";
+    }
+    else {
+        needXP = "Need EXP: " + (1000 - currXP);
+    }
+    currXP = "Current EXP: " + showXP() + "/1000";
+    document.getElementById('cXP').innerHTML = currXP;
+    document.getElementById('nXP').innerHTML = needXP;
 }
 
 function valueItemA() {

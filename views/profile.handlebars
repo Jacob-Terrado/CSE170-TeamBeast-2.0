@@ -24,7 +24,7 @@
       <div class="collection">
         <li class="collection-item">Name:<span id="friendlerName" class="badge">Ditto</span></li>
         <a href="inventory" class="collection-item">Mood:<span class="badge"><span id="mood"></span></span></a>
-        <li class="collection-item">Level:<span class="badge"><span id="level"></span></span></li>
+        <a onClick= "xpModal()" class="collection-item">Level:<span class="badge"><span id="level"></span></span>
         <a href="store" class="collection-item">Points To Spend:<span class="badge"><span id="point"></span></span></a>
       </div>
       <div class="container center">
@@ -33,6 +33,17 @@
         <br>
       </div>
     </ul>
+  </div>
+</div>
+
+
+<div id="XPModal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <p id="cXP"></p>
+    <p id="nXP"></p>
+  <div class="center card-action">
+    <a onClick= "$('#XPModal').closeModal();">Confirm</a>
+  </div>
   </div>
 </div>
 
