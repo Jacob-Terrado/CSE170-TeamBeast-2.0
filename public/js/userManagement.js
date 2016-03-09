@@ -295,6 +295,19 @@ function updatePoints(count) {
 function confMod(des, nameF, imageF, valueF) {
     document.getElementById("descript").innerHTML = des;
     document.getElementById("price").innerHTML = valueF;
+    console.log(nameF);
+    if (nameF == "Super Ball"){
+        document.getElementById("stock").innerHTML = "Stock: " + valueItemA();
+    }
+    else if (nameF == "Friendler Food"){
+        document.getElementById("stock").innerHTML = "Stock: " + valueItemB();
+    }
+    else if (nameF == "Coupon"){
+        document.getElementById("stock").innerHTML = "Stock: " + valueItemC();
+    }
+    else if (nameF == "Mystery Gift"){
+        document.getElementById("stock").innerHTML = "Stock: " + valueItemD();
+    }
     $('#ConfirmModal').openModal();
 }
 
@@ -324,14 +337,14 @@ function purchase() {
             currentUser.set("itemD", amount + 1);
             console.log(currentUser.get("itemD"));
         }
-        newP = userPts - itemP
+        currentUser.save();
+        newP = userPts - itemP;
         currentUser.set("points", newP);
         $('#BuyModal').openModal();
         document.getElementById("update").innerHTML = newP;
     } else {
         $('#FailModal').openModal();
     }
-    currentUser.save();
 }
 
 function itemUsed(text) {
@@ -346,6 +359,7 @@ function itemUsed(text) {
             currentUser.set("itemD") == 0;
         }
         console.log(currentUser.get("itemD"));
+        currentUser.save();
     } else {
         if (text == "Super Ball") {
             amount = valueItemA();
@@ -369,6 +383,8 @@ function itemUsed(text) {
         }
         console.log(currentUser.get("itemC"));
         }
+        currentUser.save();
+        currentUser.fetch();
             $('#UseModal').openModal();
             document.getElementById("invName").innerHTML = text;
             if (increase + 5 > 100) {
@@ -389,8 +405,8 @@ function itemUsed(text) {
                     $('#itemUsedModal').openModal();
                 }
             }
+            currentUser.save();
         }
-        currentUser.save();
     }
 
 function levelUp() {
