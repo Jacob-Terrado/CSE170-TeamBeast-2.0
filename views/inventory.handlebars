@@ -10,7 +10,11 @@
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
 <body onLoad="Materialize.fadeInImage('#main-content'); itemChecker()">
+
 {{> navbar}}
+{{> materializeScripts}}
+{{> parseScripts}}
+
 
 <!-- Content -->
 <div class="container">
@@ -83,7 +87,7 @@
           <p>Your Friendler feels happier!</p>
           <div id="update"></div>
           <div class="center card-action">
-            <a href="inventory" onClick="$('#UseModal').closeModal();">Confirm</a>
+            <a href="profile" onClick="$('#UseModal').closeModal();">Confirm</a>
           </div>
         </div>
       </div>
@@ -94,7 +98,7 @@
           <img class="responsive img" src="images/ama.jpg" width = 80%>
           <p>Your Friendler's happiness is at its max!!!</p>
           <div class="center card-action">
-            <a href="inventory" onClick="$('#PresentModal').closeModal();">Confirm</a>
+            <a href="profile" onClick="$('#PresentModal').closeModal();">Confirm</a>
           </div>
         </div>
       </div>
@@ -104,11 +108,12 @@
 
 {{> footer}}
 
-{{> materializeScripts}}
-{{> parseScripts}}
 {{> checkInFab}}
 {{> googleAnalytics}}
 {{> itemUsedModal}}
+
+  <script>
+  </script>
 
 </body>
 </html>

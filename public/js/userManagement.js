@@ -325,16 +325,16 @@ function confMod(des, nameF, imageF, valueF) {
     document.getElementById("price").innerHTML = valueF;
     console.log(nameF);
     if (nameF == "Super Ball"){
-        document.getElementById("stock").innerHTML = "Stock: " + valueItemA();
+        document.getElementById("stock").innerHTML = "Amount in Inventory: " + valueItemA();
     }
     else if (nameF == "Friendler Food"){
-        document.getElementById("stock").innerHTML = "Stock: " + valueItemB();
+        document.getElementById("stock").innerHTML = "Amount in Inventory: " + valueItemB();
     }
     else if (nameF == "Coupon"){
-        document.getElementById("stock").innerHTML = "Stock: " + valueItemC();
+        document.getElementById("stock").innerHTML = "Amount in Inventory: " + valueItemC();
     }
     else if (nameF == "Mystery Gift"){
-        document.getElementById("stock").innerHTML = "Stock: " + valueItemD();
+        document.getElementById("stock").innerHTML = "Amount in Inventory: " + valueItemD();
     }
     $('#ConfirmModal').openModal();
 }
@@ -411,8 +411,6 @@ function itemUsed(text) {
         }
         console.log(currentUser.get("itemC"));
         }
-        currentUser.save();
-        currentUser.fetch();
             $('#UseModal').openModal();
             document.getElementById("invName").innerHTML = text;
             if (increase + 5 > 100) {
@@ -433,8 +431,8 @@ function itemUsed(text) {
                     $('#itemUsedModal').openModal();
                 }
             }
-            currentUser.save();
         }
+        currentUser.save();
     }
 
 function levelUp() {
