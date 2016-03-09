@@ -17,7 +17,10 @@
     <li class="collection-header"><h4>Friends List</h4></li>
   </ul>
   <!-- Modal Trigger -->
-  <button data-target="modal1" class="btn modal-trigger" onClick="$('#addFriendModal').openModal();">Add Friend</button>
+  <button class="btn modal-trigger" onClick="$('#addFriendModal').openModal();">Add Friend</button>
+  <br>
+  <br>
+  <button class="btn red modal-trigger" onClick="$('#deleteFriendModal').openModal();">Delete Friend(s)</button>
 </div>
 
 <div class = "fixed-action-btn" style = "top:45px; right:24px">
@@ -43,9 +46,29 @@
   <div class="modal-content">
     <h5>You have a new Friend!</h5>
     <p>Do you want to hangout with your new friend?</p>
+    <div style="text-align:center">
+      <a href="checkin2" onClick="storeFriendCount2(1)" style="color:white;">
+        <button class="btn">Hangout</button>
+      </a>
+      <br>
+      <button class="btn red center" onClick="$('#addFriendConfirmModal').closeModal();" style="color:white">
+        Don't Hangout
+      </button>
+    </div>
   </div>
-  <div class="modal-footer">
-    <a href="checkin2" class="modal-action modal-close teal btn-flat" onclick="storeFriendCount2(1)" style="color:white;">Hangout</a>
+</div>
+
+<div id="deleteFriendModal" class="modal">
+  <div class="container">
+    <b>
+      <p style="font-size:18px;">Are you sure you want to delete the friends you checked?</p>
+    </b>
+  </div>
+  <div class="left btn red card-action">
+    <a onClick="deleteFriends()" style="color:white">Delete</a>
+  </div>
+  <div class="right btn card-action">
+    <a onClick="$('#deleteFriendModal').closeModal();" style="color:white">Don't Delete</a>
   </div>
 </div>
 

@@ -139,7 +139,8 @@ function listFriends() {
             label.setAttribute("for", friendsList[i]);
             label.innerHTML = friendsList[i];
             inputNode.type = "checkbox";
-            inputNode.class = "filled-in"
+            inputNode.class = "filled-in";
+            inputNode.value = String(friendsList[i]);
             inputNode.id = friendsList[i];
             node.appendChild(inputNode);
             node.appendChild(label);
@@ -174,6 +175,29 @@ function storeFriendCount() {
 
 function storeFriendCount2(num) {
     localStorage.setItem("numOfFriends", num);
+}
+
+function deleteFriends() {
+    console.log("we are in delete friends");
+    var newArr = currentUser.get("friends");
+    console.log(newArr);
+    var count = $(":checkbox").length;
+    console.log("The number of checkboxes are: " + $(":checkbox").length);
+    console.log("The count is: " + count);
+
+    var i = 0;
+    $(":checkbox").each(function() {
+        if (this.checked) {
+            console.log("Deleting " + newArr[i]);
+            newArr.splice(i, 1);
+        } else {
+            i++;
+        }
+    })
+    console.log("After deleting: " + newArr);
+    currentUser.set("friends", newArr);
+    currentUser.save();
+    window.location = "friends";
 }
 
 function showPoints() {
