@@ -10,7 +10,7 @@
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
 <body
-  onLoad="Materialize.fadeInImage('#main-content'); sendEncouragement(); levelUp(); showPoints(); showLevel(); showEvo()">
+  onLoad="Materialize.fadeInImage('#main-content'); showName(); sendEncouragement(); levelUp(); showPoints(); showLevel(); showEvo()">
 {{> navbar}}
 
 <!-- Content -->
@@ -22,10 +22,10 @@
     </div>
     <ul class="container">
       <div class="collection">
-        <li class="collection-item">Name:<span id="friendlerName" class="badge">Ditto</span></li>
-        <a href="inventory" class="collection-item">Mood:<span class="badge"><span id="mood"></span></span></a>
+        <li class="collection-item">Name:<span class="badge"><a onClick="$('#editNameModal').openModal();" id="friendlerName" class="badge"></a></span></li>
+        <li class="collection-item">Mood:<span class="badge"><a href="inventory" id="mood"></a></span></li>
         <li class="collection-item">Level:<span class="badge"><span id="level"></span></span></li>
-        <a href="store" class="collection-item">Points To Spend:<span class="badge"><span id="point"></span></span></a>
+        <li class="collection-item">Points To Spend:<span class="badge"><a href="store" id="point"></a></span></li>
       </div>
       <div class="container center">
         <div><a class="waves-effect waves-light btn-large" href="evolution" id="evo" style="visibility:hidden;"><i
@@ -36,12 +36,31 @@
   </div>
 </div>
 
+<div id="editNameModal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <p>You can change your Friendler's name here!</p>
+    <input type="text" id="editName" placeholder="Enter your new Friendler's name">
+    <br>
+    <div class="center card-action"><a href="profile" class="modal-action modal-close btn teal" onClick="setName();">Change Name</a></div>
+    <br>
+    <div class="center card-action"><a onClick="$('#editNameModal').closeModal();" class="modal-action modal-close btn teal">Don't Change Name</a></div>
+  </div>
+</div>
+
 {{> footer}}
 
 {{> materializeScripts}}
 {{> parseScripts}}
 {{> checkInFab}}
 {{> googleAnalytics}}
+
+<script>
+   $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+          
+</script>
 
 <script>
   $(document).ready(function () {

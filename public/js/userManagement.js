@@ -35,6 +35,7 @@ function signUp() {
         person.set("points", 0);
         person.set("level", 1);
         person.set("avatar", "images/cuteSlime.jpg");
+        person.set("friendlerName", "Slimey");
         person.set("emotion", 50);
         person.set("bar", 0);
         person.set("evolved", false);
@@ -392,6 +393,19 @@ function showEvo() {
     else {
         document.getElementById('evo').style.visibility = 'hidden';
     }
+}
+
+function showName() {
+    currentUser.fetch();
+    $("#friendlerName").append(currentUser.get("friendlerName"));
+}
+
+function setName() {
+    currentUser.fetch();
+    var newName = document.getElementById("editName").value;
+    currentUser.set("friendlerName", String(newName));
+    currentUser.save();
+    alert("You have just changed your Friendler's name to " + newName);
 }
 
 function valueItemA() {
