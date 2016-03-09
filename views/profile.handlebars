@@ -9,8 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
-<body
-  onLoad="Materialize.fadeInImage('#main-content'); showName(); sendEncouragement(); levelUp(); showPoints(); showLevel(); showEvo()">
+<body onLoad="Materialize.fadeInImage('#main-content'); setTimeout(sendEncouragement(), 3000); showName(); levelUp(); showPoints(); showLevel(); showEvo()">
 {{> navbar}}
 
 <!-- Content -->
@@ -24,7 +23,7 @@
       <div class="collection">
         <li class="collection-item">Name:<span class="badge"><a onClick="$('#editNameModal').openModal();" id="friendlerName" class="badge"></a></span></li>
         <li class="collection-item">Mood:<span class="badge"><a href="inventory" id="mood"></a></span></li>
-        <li class="collection-item">Level:<span class="badge"><span id="level"></span></span></li>
+        <a onClick= "xpModal()" class="collection-item">Level:<span class="badge"><span id="level"></span></span>
         <li class="collection-item">Points To Spend:<span class="badge"><a href="store" id="point"></a></span></li>
       </div>
       <div class="container center">
@@ -44,6 +43,16 @@
     <div class="center card-action"><a href="profile" class="modal-action modal-close btn teal" onClick="setName();">Change Name</a></div>
     <br>
     <div class="center card-action"><a onClick="$('#editNameModal').closeModal();" class="modal-action modal-close btn teal">Don't Change Name</a></div>
+</div>
+
+<div id="XPModal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <p id="cXP"></p>
+    <p id="nXP"></p>
+  <div class="center card-action">
+    <a onClick= "$('#XPModal').closeModal();">Confirm</a>
+  </div>
+
   </div>
 </div>
 
@@ -53,6 +62,9 @@
 {{> parseScripts}}
 {{> checkInFab}}
 {{> googleAnalytics}}
+
+{{> levelUpModal}}
+{{> evolutionModal}}
 
 <script>
    $(document).ready(function(){
@@ -89,12 +101,12 @@
   var encouragementArray = new Array();
   var index = 0;
 
-  encouragementArray[0] = document.getElementById('friendlerName').innerHTML + ": Let's hangout with your friends today!";
-  encouragementArray[1] = document.getElementById('friendlerName').innerHTML + ": Small steps. Small steps.";
-  encouragementArray[2] = document.getElementById('friendlerName').innerHTML + ": Don't be afraid to talk to others!";
-  encouragementArray[3] = document.getElementById('friendlerName').innerHTML + ": Say 'hi' to a stranger and make them your friend";
-  encouragementArray[4] = document.getElementById('friendlerName').innerHTML + ": I hope you're doing well!";
-  encouragementArray[5] = document.getElementById('friendlerName').innerHTML + ": I'm hungry. Purchase me something from the store!";
+  encouragementArray[0] = document.getElementById('friendlerName').innerHTML + " : Let's hangout with your friends today!";
+  encouragementArray[1] = document.getElementById('friendlerName').innerHTML + " : Small steps. Small steps.";
+  encouragementArray[2] = document.getElementById('friendlerName').innerHTML + " : Don't be afraid to talk to others!";
+  encouragementArray[3] = document.getElementById('friendlerName').innerHTML + " : Say 'hi' to a stranger and make them your friend";
+  encouragementArray[4] = document.getElementById('friendlerName').innerHTML + " : I hope you're doing well!";
+  encouragementArray[5] = document.getElementById('friendlerName').innerHTML + " : I'm hungry. Purchase me something from the store!";
 
   function sendEncouragement() {
     Materialize.toast(encouragementArray[index], 3000);

@@ -3,14 +3,14 @@
 	{
 		"id": 1, 
 		"name": "Super Ball",
-		"image": "/ball.png",
+		"image": "/ball.jpg",
 		"value": "2000",			
 		"description": "Friendler toy, Increases Friendler mood"
 	},
 	{
 		"id":2,
 		"name": "Friendler Food",
-		"image": "/poffin.jpg",
+		"image": "/ban.jpg",
 		"value": "3000",			
 		"description": "Food for Friendlers, Increases Friender's Mood"
 	},

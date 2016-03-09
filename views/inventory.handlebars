@@ -54,12 +54,12 @@
 
         <tbody>
           <tr id = "row1" style="display:none">
-            <td><a onClick="itemUsed('Super Ball');"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/ball.png"></a></td>
+            <td><a onClick="itemUsed('Super Ball');"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/ball.jpg"></a></td>
             <td><a onClick="itemUsed('Super Ball');"><p id = "itemName">Super Ball</a></td>
             <td><a onClick="itemUsed('Super Ball');"><p id = "inv"></p></a></td>
           </tr>
           <tr id = "row2" style="display:none">
-            <td><a onClick="itemUsed('Friendler Food');"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/poffin.jpg"></a></td>
+            <td><a onClick="itemUsed('Friendler Food');"><img class = "activator responsive-img" style="width: 120px; height:120px;" src = "images/ban.jpg"></a></td>
             <td><a onClick="itemUsed('Friendler Food');"><p id = "itemName">Friendler Food</a></td>
             <td><a onClick="itemUsed('Friendler Food');"><p id = "inv2"></p></a></td>
           </tr>
@@ -77,9 +77,9 @@
       </table>
   </div>
 
-      <div id="UseModal" class="modal modal-fixed-footer">
+      <div id="UseModal" class="modal modal-fixed-footer" data-backdrop="static" data-keyboard="false">
         <div class="modal-content">
-          <p>You used:</p> <input type="text" name="invName" id="invName" value=""/>
+          <p>You used:</p> <p id="invName"></p>
           <p>Your Friendler feels happier!</p>
           <div id="update"></div>
           <div class="center card-action">
@@ -88,10 +88,10 @@
         </div>
       </div>
 
-      <div id="PresentModal" class="modal modal-fixed-footer">
+      <div id="PresentModal" class="modal modal-fixed-footer" data-backdrop="static" data-keyboard="false">
         <div class="modal-content">
           <p>Wow you have been such a good friend, this is a gift from your friendler</p>
-          <img class="responsive img" src="images/ama.jpg" width = 90%>
+          <img class="responsive img" src="images/ama.jpg" width = 80%>
           <p>Your Friendler's happiness is at its max!!!</p>
           <div class="center card-action">
             <a href="inventory" onClick="$('#PresentModal').closeModal();">Confirm</a>
@@ -108,6 +108,7 @@
 {{> parseScripts}}
 {{> checkInFab}}
 {{> googleAnalytics}}
+{{> itemUsedModal}}
 
 </body>
 </html>

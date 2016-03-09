@@ -50,7 +50,8 @@ function signUp() {
                 window.location = "/tutorial";
             },
             error: function (user, error) {
-                console.log(error);
+                //console.log(error);
+                Materialize.toast(error.message, 1000);
             }
         });
     }
@@ -68,7 +69,7 @@ function login() {
                 window.location = "/profile";
             },
             error: function (user, error) {
-                alert("The username and password do not match or does not exist");
+                Materialize.toast(error.message, 1000);
             }
         });
     }
@@ -79,15 +80,16 @@ function logout() {
 }
 
 function resetPassword() {
-    // Grab Email
+    event.preventDefault();
+    var email = document.getElementById("emailReset").value;
 
     Parse.User.requestPasswordReset(email, {
         success: function () {
-            // Password reset request was sent successfully
+            Materialize.toast("Password request sent to your email", 2000);
+            $("#passwordModal").closeModal();
         },
         error: function (error) {
-            // Show the error message somewhere
-            alert("Error: " + error.code + " " + error.message);
+            Materialize.toast(error.message, 1000);
         }
     });
 }
@@ -235,7 +237,9 @@ function avatarSet(number) {
     }
     currentUser.set("evolved", true);
     currentUser.save();
-    alert("You have evolved into a new Friendler!");
+
+    document.getElementById("evolutionPickMessage").innerHTML = "Your Friendler evolved";
+    $('#evolutionPickModal').openModal();
 }
 
 function moodSet() {
@@ -265,17 +269,19 @@ function updatePoints(count) {
     var newPoints = currPoints + pt;
     var exp = 200 * (count + 1);
     var newXP = currXP + exp;
+
+    document.getElementById("checkInMessage").innerHTML = "You just gained " + pt + " points! Reward your Friendler by purchasing items at the store!";
+    $('#successfulCheckInModal').openModal();
+    setTimeout(function() {window.location.href = "profile"}, 2500);
+
     // save data to the database
     currentUser.save({
         points: newPoints,
         bar: newXP
     }, {
         success: function (currUser) {
-            alert("YOU JUST GAINED " + pt + " Points!!");
-            window.location.href = "profile";
         },
         error: function (currUser, error) {
-            alert("FAILED TO GAIN XP");
         }
     });
 }
@@ -295,18 +301,22 @@ function purchase() {
         if (itemP == 2000) {
             amount = valueItemA();
             currentUser.set("itemA", amount + 1);
+            console.log(currentUser.get("itemA"));
         }
         else if (itemP == 3000) {
             amount = valueItemB();
             currentUser.set("itemB", amount + 1);
+            console.log(currentUser.get("itemB"));
         }
         else if (itemP == 5000) {
             amount = valueItemC();
             currentUser.set("itemC", amount + 1);
+            console.log(currentUser.get("itemC"));
         }
         else if (itemP == 25000) {
             amount = valueItemD();
             currentUser.set("itemD", amount + 1);
+            console.log(currentUser.get("itemD"));
         }
         newP = userPts - itemP
         currentUser.set("points", newP);
@@ -319,48 +329,63 @@ function purchase() {
 }
 
 function itemUsed(text) {
+    event.preventDefault();
     var increase = showEmotion();
     if (text == "Mystery Gift") {
         $('#PresentModal').openModal();
         currentUser.set("emotion", 100);
         amount = valueItemD();
         currentUser.set("itemD", amount - 1);
+        if (currentUser.get("itemD") < 0) {
+            currentUser.set("itemD") == 0;
+        }
+        console.log(currentUser.get("itemD"));
     } else {
         if (text == "Super Ball") {
             amount = valueItemA();
             currentUser.set("itemA", amount - 1);
+            if (currentUser.get("itemA") < 0) {
+            currentUser.set("itemA") == 0;
+        }
+        console.log(currentUser.get("itemA"));
         } else if (text == "Friendler Food") {
             amount = valueItemB();
             currentUser.set("itemB", amount - 1);
+            if (currentUser.get("itemB") < 0) {
+            currentUser.set("itemB") == 0;
+        }
+        console.log(currentUser.get("itemB"));
         } else if (text == "Coupon") {
             amount = valueItemC();
             currentUser.set("itemC", amount - 1);
+            if (currentUser.get("itemC") < 0) {
+            currentUser.set("itemC") == 0;
         }
-        $('#UseModal').openModal();
-        $(".modal-content #invName").val(text);
-        if (increase + 5 > 100) {
-            currentUser.set("emotion", 100);
-        } else {
+        console.log(currentUser.get("itemC"));
+        }
             $('#UseModal').openModal();
-            $(".modal-content #invName").val(text);
+            document.getElementById("invName").innerHTML = text;
             if (increase + 5 > 100) {
                 currentUser.set("emotion", 100);
             } else {
                 currentUser.set("emotion", increase + 5);
                 if ((increase + 5 >= 25) && (increase < 25)) {
-                    alert("Your Friendler has finally put the table down. More gifts will make it happier!");
+                    document.getElementById("itemUsedMessage").innerHTML = "Your Friendler would like more gifts";
+                    $('#itemUsedModal').openModal();
                 } else if ((increase + 5 >= 40 ) && (increase < 40)) {
-                    alert("Your Friendler is currently satisfied");
+                    document.getElementById("itemUsedMessage").innerHTML = "Your Friendler is very satisfied.";
+                    $('#itemUsedModal').openModal();
                 } else if ((increase + 5 >= 60) && (increase < 60)) {
-                    alert("Your Friendler is currently happy, Good job!");
+                    document.getElementById("itemUsedMessage").innerHTML = "Your Friendler is in a happy mood ^^";
+                    $('#itemUsedModal').openModal();
                 } else if ((increase + 5 >= 90) && (increase < 90)) {
-                    alert("WOW, Your Friendler is the happiest it could be. YOU. Are an amazing Friend!!!");
+                    document.getElementById("itemUsedMessage").innerHTML = "Your Friender is the happiest it could be! YOU are an amazing Friend";
+                    $('#itemUsedModal').openModal();
                 }
             }
         }
         currentUser.save();
     }
-}
 
 function levelUp() {
     currentUser.fetch();
@@ -377,8 +402,8 @@ function levelUp() {
         currentUser.set("level", nextLevel);
         currentUser.set("bar", 0);
         currentUser.save();
-        alert("You have just leveled up to " + nextLevel + "!!");
-        //window.location.href = "profile";
+        document.getElementById("levelUpMessage").innerHTML = "" + document.getElementById("friendlerName").innerHTML + " is now level " + nextLevel + "!";
+        $('#levelUpModal').openModal();
     }
 }
 
@@ -387,7 +412,8 @@ function showEvo() {
     var checkLevel = currentUser.get("level");
     var evolved = currentUser.get('evolved');
     if (checkLevel >= 3 && !evolved) {
-        alert("You can now evolve your friendler!!!");
+        document.getElementById("evolutionMessage").innerHTML = "You can now evolve " + document.getElementById("friendlerName").innerHTML + "!";
+        $('#evolutionModal').openModal();
         document.getElementById('evo').style.visibility = 'visible';
     }
     else {
@@ -406,6 +432,21 @@ function setName() {
     currentUser.set("friendlerName", String(newName));
     currentUser.save();
     alert("You have just changed your Friendler's name to " + newName);
+}
+
+function xpModal() {
+    currentUser.fetch();
+    $('#XPModal').openModal();
+    currXP = showXP();
+    if (currXP == 0) {
+        needXP = "Need EXP: 0";
+    }
+    else {
+        needXP = "Need EXP: " + (1000 - currXP);
+    }
+    currXP = "Current EXP: " + showXP() + "/1000";
+    document.getElementById('cXP').innerHTML = currXP;
+    document.getElementById('nXP').innerHTML = needXP;
 }
 
 function valueItemA() {
