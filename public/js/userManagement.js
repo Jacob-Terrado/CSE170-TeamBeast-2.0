@@ -300,18 +300,22 @@ function purchase() {
         if (itemP == 2000) {
             amount = valueItemA();
             currentUser.set("itemA", amount + 1);
+            console.log(currentUser.get("itemA"));
         }
         else if (itemP == 3000) {
             amount = valueItemB();
             currentUser.set("itemB", amount + 1);
+            console.log(currentUser.get("itemB"));
         }
         else if (itemP == 5000) {
             amount = valueItemC();
             currentUser.set("itemC", amount + 1);
+            console.log(currentUser.get("itemC"));
         }
         else if (itemP == 25000) {
             amount = valueItemD();
             currentUser.set("itemD", amount + 1);
+            console.log(currentUser.get("itemD"));
         }
         newP = userPts - itemP
         currentUser.set("points", newP);

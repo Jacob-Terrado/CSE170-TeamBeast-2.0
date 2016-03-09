@@ -63,7 +63,7 @@
   </div>
 
 
-      <div id="ConfirmModal" class="modal modal-fixed-footer">
+      <div id="ConfirmModal" class="modal modal-fixed-footer" data-backdrop="static" data-keyboard="false">
         <div class="modal-content">
             <p id="descript"></p>
             <p>Buy the Item? Price:</p>
@@ -77,18 +77,18 @@
         </div>
       </div>
 
-      <div id="BuyModal" class="modal modal-fixed-footer">
+      <div id="BuyModal" class="modal modal-fixed-footer" data-backdrop="static" data-keyboard="false">
         <div class="modal-content">
           <p>Thanks for buying that item!</p>
           <p>Updated Points:</p>
           <div id="update"></div>
           <div class="center card-action">
-            <a href="" onClick="$('#BuyModal').closeModal(); event.preventDefault();">Confirm</a>
+            <a href="" onClick="$('#BuyModal').closeModal(); $('#ConfirmModal').closeModal(); event.preventDefault();">Confirm</a>
           </div>
         </div>
       </div>
 
-      <div id="FailModal" class="modal modal-fixed-footer">
+      <div id="FailModal" class="modal modal-fixed-footer" data-backdrop="static" data-keyboard="false">
         <div class="modal-content">
           <p>Sorry, you do not have enough points</p>
           <div class="center card-action">
