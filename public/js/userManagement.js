@@ -101,24 +101,30 @@ function addFriends() {
     var newFriend = document.getElementById('friendName').value;
     console.log(newFriend);
 
-    currUser.addUnique("friends", newFriend);
-    currUser.save();
+    if ( $.trim( $('#friendName').val() ) == '' ) {
+        alert("I'm sorry what was your friend's name again? Please try again.");
+    }
+    else {
+        currUser.addUnique("friends", newFriend);
+        currUser.save();
 
-    var container = document.getElementById("friendsList");
-    var node = document.createElement("LI");
-    var inputNode = document.createElement("input");
-    var label = document.createElement("label");
+        var container = document.getElementById("friendsList");
+        var node = document.createElement("LI");
+        var inputNode = document.createElement("input");
+        var label = document.createElement("label");
 
-    label.setAttribute("for", newFriend);
-    label.innerHTML = newFriend;
-    inputNode.type = "checkbox";
-    inputNode.class = "filled-in";
-    inputNode.id = newFriend;
-    node.appendChild(inputNode);
-    node.appendChild(label);
-    container.appendChild(node);
+        label.setAttribute("for", newFriend);
+        label.innerHTML = newFriend;
+        inputNode.type = "checkbox";
+        inputNode.class = "filled-in";
+        inputNode.id = newFriend;
+        node.appendChild(inputNode);
+        node.appendChild(label);
+        container.appendChild(node);
 
-    document.getElementById("friendName").value = "";
+        // open friend modal after
+        $('#addFriendConfirmModal').openModal();
+    }
 }
 
 function listFriends() {
