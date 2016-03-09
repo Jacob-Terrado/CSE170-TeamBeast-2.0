@@ -95,18 +95,22 @@ function resetPassword() {
 }
 
 function addFriends() {
-    var currUser = Parse.User.current();
-    console.log(currUser);
+    currentUser.fetch();
+    console.log(currentUser);
 
     var newFriend = document.getElementById('friendName').value;
     console.log(newFriend);
+    var currFriends = currentUser.get("friends");
 
     if ( $.trim( $('#friendName').val() ) == '' ) {
         alert("I'm sorry what was your friend's name again? Please try again.");
     }
+    else if (currFriends.indexOf(String(newFriend)) > -1){
+        alert("You already have a friend named: " + newFriend + ". Please enter a different name.");
+    }
     else {
-        currUser.addUnique("friends", newFriend);
-        currUser.save();
+        currentUser.addUnique("friends", newFriend);
+        currentUser.save();
 
         var container = document.getElementById("friendsList");
         var node = document.createElement("LI");
@@ -123,7 +127,7 @@ function addFriends() {
         container.appendChild(node);
 
         // open friend modal after
-        $('#addFriendConfirmModal').openModal();
+        $('#addFriendConfirmModal').openModal();  
     }
 }
 
@@ -139,7 +143,8 @@ function listFriends() {
             label.setAttribute("for", friendsList[i]);
             label.innerHTML = friendsList[i];
             inputNode.type = "checkbox";
-            inputNode.class = "filled-in"
+            inputNode.class = "filled-in";
+            inputNode.value = String(friendsList[i]);
             inputNode.id = friendsList[i];
             node.appendChild(inputNode);
             node.appendChild(label);
@@ -174,6 +179,29 @@ function storeFriendCount() {
 
 function storeFriendCount2(num) {
     localStorage.setItem("numOfFriends", num);
+}
+
+function deleteFriends() {
+    console.log("we are in delete friends");
+    var newArr = currentUser.get("friends");
+    console.log(newArr);
+    var count = $(":checkbox").length;
+    console.log("The number of checkboxes are: " + $(":checkbox").length);
+    console.log("The count is: " + count);
+
+    var i = 0;
+    $(":checkbox").each(function() {
+        if (this.checked) {
+            console.log("Deleting " + newArr[i]);
+            newArr.splice(i, 1);
+        } else {
+            i++;
+        }
+    })
+    console.log("After deleting: " + newArr);
+    currentUser.set("friends", newArr);
+    currentUser.save();
+    window.location = "friends";
 }
 
 function showPoints() {
