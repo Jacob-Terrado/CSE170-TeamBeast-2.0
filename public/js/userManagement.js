@@ -99,7 +99,6 @@ function addFriends() {
     console.log(currentUser);
 
     var newFriend = document.getElementById('friendName').value;
-    console.log(newFriend);
     var currFriends = currentUser.get("friends");
 
     if ( $.trim( $('#friendName').val() ) == '' ) {
@@ -201,7 +200,7 @@ function deleteFriends() {
     console.log("After deleting: " + newArr);
     currentUser.set("friends", newArr);
     currentUser.save();
-    window.location = "friends";
+    window.location.href = "friends";
 }
 
 function showPoints() {
