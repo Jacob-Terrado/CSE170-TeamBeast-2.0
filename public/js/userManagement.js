@@ -381,9 +381,9 @@ function purchase() {
             currentUser.set("itemD", amount + 1);
             console.log(currentUser.get("itemD"));
         }
-        currentUser.save();
         newP = userPts - itemP;
         currentUser.set("points", newP);
+        currentUser.save();
         $('#BuyModal').openModal();
         document.getElementById("update").innerHTML = newP;
     } else {
