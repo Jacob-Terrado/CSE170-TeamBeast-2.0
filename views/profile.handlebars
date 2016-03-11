@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../css/materialize.css"/>
 </head>
-<body onLoad="Materialize.fadeInImage('#main-content'); setTimeout(sendEncouragement(), 3000); showName(); levelUp(); showPoints(); showLevel(); showEvo()">
+<body onLoad="Materialize.fadeInImage('#main-content'); setTimeout(sendEncouragement(), 3000); showName(); levelUp(); showPoints(); showLevel(); showEvo();  avatarCheck();">
 {{> navbar}}
 
 <!-- Content -->
@@ -115,7 +115,6 @@
     index = ++index % 6;
     setTimeout('sendEncouragement()', 12000);
   }
-  avatarCheck();
 </script>
 
 </body>

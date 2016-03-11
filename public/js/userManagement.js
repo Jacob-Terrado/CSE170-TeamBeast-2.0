@@ -230,28 +230,45 @@ function showXP() {
     return currentUser.get('bar');
 }
 
-function avatarCheck() {
-    currentUser.fetch();
-    var userAvatar = currentUser.get('avatar');
-    var imgHTML = "<img class='responsive-img' src='" + userAvatar + "'>";
-    $("#avatar").append(imgHTML);
-    return userAvatar;
-}
+    function avatarCheck() {
+        currentUser.fetch();
+        var userAvatar = currentUser.get('avatar');
+        console.log(userAvatar);
+        var imgHTML = "<img class='responsive-img' src='" + userAvatar + "'>";
+        // if (userAvatar == "images/reg-sloth.gif") {
+        // mood = showEmotion();
+        // console.log(mood);
+        // if (mood < 25){
+        //     var sGif = "<img class='responsive-img' src='images/sad-sloth.gif'>";
+        // }
+        // if (mood >= 25 && mood < 60){
+        //     var sGif = "<img class='responsive-img' src='images/reg-sloth.gif'>";
+        // }  
+        // if (mood >= 60 && mood < 90){
+        //     var sGif = "<img class='responsive-img' src='images/happy-sloth.gif'>";
+        // }  
+        // if (mood >= 90){
+        //     var sGif = "<img class='responsive-img' src='images/max-sloth.gif'>";
+            
+        // }   
+        // $("#avatar").append(sGif); 
+        $("#avatar").append(imgHTML);
+    }
 
 function avatarSet(number) {
     currentUser.fetch();
     switch (number) {
         case 1:
-            currentUser.set("avatar", "images/alpaca.jpg");
+            currentUser.set("avatar", "images/reg-sloth.gif");
             break;
         case 2:
-            currentUser.set("avatar", "images/captainPlanet.jpg");
+            currentUser.set("avatar", "images/corgi.gif");
             break;
         case 3:
             currentUser.set("avatar", "images/chao.jpg");
             break;
         case 4:
-            currentUser.set("avatar", "images/chocobo.jpg");
+            currentUser.set("avatar", "images/alpaca.jpg");
             break;
         case 5:
             currentUser.set("avatar", "images/corgi_friendler.png");

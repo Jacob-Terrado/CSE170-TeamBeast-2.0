@@ -2,15 +2,15 @@
 	"friendler": [
 	{
 		"id": 1,
-		"name": "Alpaca",
-		"image":"images/alpaca.jpg",
-		"description": "This alpaca has the ability to conduct electricity and use it!" 
+		"name": "Slothilda",
+		"image":"images/reg-sloth.gif",
+		"description": "This sloth is the laziest and the friendliest!" 
 	},
 	{
 		"id": 2,
-		"name": "Captain",
-		"image": "images/captainPlanet.jpg",
-		"description": "If you never thought that there is something in this world that has the same large appetite as you, you're wrong." 
+		"name": "Corgi",
+		"image": "images/corgi.gif",
+		"description": "This dog is a master of backflips."
 	},
 	{
 		"id": 3,
@@ -18,17 +18,17 @@
 		"image": "images/chao.jpg",
 		"description": "Don't be fooled by its cuteness because it has the ability to control water."
 	},
-	{
+{
 		"id": 4,
-		"name": "Chocobo",
-		"image": "images/chocobo.jpg",
-		"description": "You ever thought about how it is like to fly without having to use an airplane? This bird can fulfill those dreams."
+		"name": "Alpaca",
+		"image":"images/alpaca.jpg",
+		"description": "This alpaca has the ability to conduct electricity and use it!" 
 	},
 	{
 		"id": 5,
-		"name": "Corgi",
+		"name": "Corgi 2",
 		"image": "images/corgi_friendler.png",
-		"description": "This dog is a master of backflips."
+		"description": "We like dogs."
 	},
 	{
 		"id": 6,
