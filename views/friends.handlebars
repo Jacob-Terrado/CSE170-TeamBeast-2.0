@@ -23,9 +23,6 @@
   <button class="btn red modal-trigger" onClick="$('#deleteFriendModal').openModal();">Delete Friend(s)</button>
 </div>
 
-<div class = "fixed-action-btn" style = "top:45px; right:24px">
-  <a onClick = "$('#HelpModal').openModal();" class="btn-floating btn-small waves-effect waves-light red"><i class="large material-icons">help</i></a>
-</div>
 
 <div id="addFriendModal" class="modal modal-fixed-footer">
   <div class="modal-content">
@@ -72,17 +69,6 @@
   </div>
 </div>
 
-<div id="HelpModal" class="modal modal-fixed-footer">
-  <div class="modal-content">
-    <h4>How to add friends!</h4>
-    <p>Here you can add any friend you want, whether they be real or imaginary!</p>
-    <p>Type in the name and that's it!!!</p>
-  <div id="update"></div>
-    <div class="center card-action">
-      <a href="friends" onClick="$('#HelpModal').closeModal();" style="color:white;">Confirm</a>
-    </div>
-  </div>
-</div>
 
 {{> footer}}
 
